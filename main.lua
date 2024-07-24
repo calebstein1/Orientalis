@@ -6,6 +6,6 @@ function _update()
 
 end
 
-function draw()
+function _draw()
 
 end
