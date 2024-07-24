@@ -5,6 +5,7 @@ end
 
 function _update()
     set_camera()
+    update_player()
 end
 
 function _draw()
