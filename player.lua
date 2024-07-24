@@ -15,6 +15,14 @@ function init_player()
         ]]
         facing=0,
         --[[
+        dir:
+        0 left
+        1 right
+        2 up
+        3 down
+        ]]
+        dir=0,
+        --[[
         state:
         0 idle
         1 walking
@@ -46,22 +54,38 @@ function player_controls()
             player.state=0
         end
         if btn(0) then
+            player.dir=0
             player.state=1
             player.x-=player.speed
         end
         if btn(1) then
+            player.dir=1
             player.state=1
             player.x+=player.speed
         end
         if btn(2) then
+            player.dir=2
             player.state=1
             player.facing=1
             player.y-=player.speed
         end
         if btn(3) then
+            player.dir=3
             player.state=1
             player.facing=0
             player.y+=player.speed
+        end
+
+        if player.state==1 and collide(player,player.dir,0) then
+            if player.dir==0 then
+                player.x+=1
+            elseif player.dir==1 then
+                player.x-=1
+            elseif player.dir==2 then
+                player.y+=1
+            elseif player.dir==3 then
+                player.y-=1
+            end
         end
     end
 end
