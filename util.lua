@@ -48,7 +48,7 @@ function collide(obj,dir,flag)
     y1/=8
     y2/=8
 
-    if fget(mget(x1,x1), flag)
+    if fget(mget(x1,y1), flag)
     or fget(mget(x1,y2), flag)
     or fget(mget(x2,y1), flag)
     or fget(mget(x2,y2), flag) then
