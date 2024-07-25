@@ -6,6 +6,7 @@ function draw_sprites()
     elseif m==1 then
         spr(player.sp,player.x,player.y,1,1,player.flp)
     elseif m==2 then
+        spr(player.sp,player.x,player.y,1,1,player.flp)
     end
 end
 
@@ -31,13 +32,13 @@ function collide(obj,aim,flag)
         y1=y
         y2=y+h-1
     elseif aim==2 then
-        x1=x+1
-        x2=x+w-1
+        x1=x+2
+        x2=x+w-2
         y1=y-1
         y2=y
     elseif aim==3 then
-        x1=x
-        x2=x+w
+        x1=x+2
+        x2=x+w-2
         y1=y+h
         y2=y+h+1
     end

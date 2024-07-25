@@ -1,9 +1,9 @@
 function _init()
     init_player()
-    draw_map()
 end
 
 function _update()
+    set_map()
     set_camera()
     update_player()
 end

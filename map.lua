@@ -5,8 +5,8 @@
 3 chapter 1 cave
 ]]
 
-function draw_map()
-    m=player.map
+function set_map()
+    local m=player.map
 
     if m==0 then
         -- Combat map

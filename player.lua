@@ -35,14 +35,20 @@ function init_player()
         atk=2,
         def=1,
         mag=1,
+        warp_x=0,
+        warp_y=0,
+        warp_map=2,
         chapter=1,
-        map=1
+        map=1,
+        submap=1
     }
 end
 
 function update_player()
     player_controls()
     animate_player()
+    set_warp()
+    check_warp()
 end
 
 function player_controls()
@@ -76,7 +82,7 @@ function player_controls()
             player.y+=player.speed
         end
 
-        if player.state==1 and collide(player,player.dir,0) then
+        if collide(player,player.dir,0) then
             if player.dir==0 then
                 player.x+=1
             elseif player.dir==1 then
@@ -115,6 +121,44 @@ function do_walk_anim()
             player.sp=210
         else
             player.sp=209
+        end
+    end
+end
+
+function check_warp()
+    if collide(player,player.dir,1) then
+        player.map=player.warp_map
+        player.x=player.warp_x
+        player.y=player.warp_y
+    end
+end
+
+function set_warp()
+    local m=player.map
+    local sm=player.submap
+
+    if m==1 then
+        player.warp_map=2
+        if sm==0 then
+            player.warp_x=2*8
+            player.warp_y=2*8
+        elseif sm==1 then
+            player.warp_x=8*8
+            player.warp_y=2*8
+        end
+    elseif m==2 then
+        if player.y<3*8 then
+            if player.x>6*8 then
+                player.warp_map=1
+                player.submap=1
+                player.warp_x=42*8
+                player.warp_y=6*8
+            else
+                player.warp_map=1
+                player.submap=0
+                player.warp_x=42*8
+                player.warp_y=6*8
+            end
         end
     end
 end
