@@ -9,12 +9,6 @@ function init_player()
         anim=0,
         flp=false,
         --[[
-        facing:
-        0 down
-        1 up
-        ]]
-        facing=0,
-        --[[
         dir:
         0 left
         1 right
@@ -59,49 +53,41 @@ function player_controls()
         and not btn(3) then
             player.state=0
         end
-        if btn(0) then
+        if btn(0) and not collide(player,0,0) then
             player.dir=0
             player.state=1
             player.x-=player.speed
         end
-        if btn(1) then
+        if btn(1) and not collide(player,1,0) then
             player.dir=1
             player.state=1
             player.x+=player.speed
         end
-        if btn(2) then
+        if btn(2) and not collide(player,2,0) then
             player.dir=2
             player.state=1
-            player.facing=1
             player.y-=player.speed
         end
-        if btn(3) then
+        if btn(3) and not collide(player,3,0) then
             player.dir=3
             player.state=1
-            player.facing=0
             player.y+=player.speed
-        end
-
-        if collide(player,player.dir,0) then
-            if player.dir==0 then
-                player.x+=1
-            elseif player.dir==1 then
-                player.x-=1
-            elseif player.dir==2 then
-                player.y+=1
-            elseif player.dir==3 then
-                player.y-=1
-            end
         end
     end
 end
 
 function animate_player()
     if player.state==0 then
-        if player.facing==0 then
-            player.sp=192
-        elseif player.facing==1 then
+        if player.dir==0 then
+            player.sp=195
+            player.flp=true
+        elseif player.dir==1 then
+            player.sp=195
+            player.flp=false
+        elseif player.dir==2 then
             player.sp=208
+        elseif player.dir==3 then
+            player.sp=192
         end
     elseif player.state==1 and time()-player.anim>0.3 then
         do_walk_anim()
@@ -110,17 +96,31 @@ function animate_player()
 end
 
 function do_walk_anim()
-    if player.facing==0 then
-        if player.sp==193 then
-            player.sp=194
+    if player.dir==0 then
+        player.flp=true
+        if player.sp==196 then
+            player.sp=195
         else
-            player.sp=193
+            player.sp=196
         end
-    elseif player.facing==1 then
+    elseif player.dir==1 then
+        player.flp=false
+        if player.sp==196 then
+            player.sp=195
+        else
+            player.sp=196
+        end
+    elseif player.dir==2 then
         if player.sp==209 then
             player.sp=210
         else
             player.sp=209
+        end
+    elseif player.dir==3 then
+        if player.sp==193 then
+            player.sp=194
+        else
+            player.sp=193
         end
     end
 end
@@ -145,6 +145,15 @@ function set_warp()
         elseif sm==1 then
             player.warp_x=8*8
             player.warp_y=2*8
+        elseif sm==2 then
+            player.warp_x=3*8
+            player.warp_y=14*8
+        elseif sm==3 then
+            player.warp_x=6*8
+            player.warp_y=14*8
+        elseif sm==4 then
+            player.warp_x=10*8
+            player.warp_y=17*8
         end
     elseif m==2 then
         if player.y<3*8 then
@@ -158,6 +167,25 @@ function set_warp()
                 player.submap=0
                 player.warp_x=42*8
                 player.warp_y=6*8
+            end
+        elseif player.y<17*8 then
+            if player.x<2*8 then
+            elseif player.x<4*8 then
+                player.warp_map=1
+                player.submap=2
+                player.warp_x=42*8
+                player.warp_y=6*8
+            elseif player.x<8*8 then
+                player.warp_map=1
+                player.submap=3
+                player.warp_x=42*8
+                player.warp_y=6*8
+            elseif player.x<12*8 then
+                player.warp_map=1
+                player.submap=4
+                player.warp_x=42*8
+                player.warp_y=6*8
+            else
             end
         end
     end

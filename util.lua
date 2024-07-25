@@ -10,7 +10,7 @@ function draw_sprites()
     end
 end
 
-function collide(obj,aim,flag)
+function collide(obj,dir,flag)
     local x=obj.x
     local y=obj.y
     local w=obj.w
@@ -21,22 +21,22 @@ function collide(obj,aim,flag)
     local y1=0
     local y2=0
 
-    if aim==0 then
+    if dir==0 then
         x1=x-1
         x2=x
         y1=y
         y2=y+h-1
-    elseif aim==1 then
+    elseif dir==1 then
         x1=x+w
         x2=x+w+1
         y1=y
         y2=y+h-1
-    elseif aim==2 then
+    elseif dir==2 then
         x1=x+2
         x2=x+w-2
         y1=y-1
         y2=y
-    elseif aim==3 then
+    elseif dir==3 then
         x1=x+2
         x2=x+w-2
         y1=y+h
