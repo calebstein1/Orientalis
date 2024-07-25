@@ -3,7 +3,7 @@ function init_player()
         sp=192,
         x=36*8,
         y=4*8,
-        speed=1,
+        movement=1,
         w=8,
         h=8,
         anim=0,
@@ -28,6 +28,7 @@ function init_player()
         pp=10,
         atk=2,
         def=1,
+        speed=5,
         mag=1,
         warp_x=0,
         warp_y=0,
@@ -56,22 +57,22 @@ function player_controls()
         if btn(0) and not collide(player,0,0) then
             player.dir=0
             player.state=1
-            player.x-=player.speed
+            player.x-=player.movement
         end
         if btn(1) and not collide(player,1,0) then
             player.dir=1
             player.state=1
-            player.x+=player.speed
+            player.x+=player.movement
         end
         if btn(2) and not collide(player,2,0) then
             player.dir=2
             player.state=1
-            player.y-=player.speed
+            player.y-=player.movement
         end
         if btn(3) and not collide(player,3,0) then
             player.dir=3
             player.state=1
-            player.y+=player.speed
+            player.y+=player.movement
         end
     end
 end

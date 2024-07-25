@@ -52,7 +52,7 @@ function set_warp()
             player.warp_x=3*8
             player.warp_y=19*8
         elseif sm==6 then
-            player.warp_x=11*8
+            player.warp_x=14*8
             player.warp_y=20*8
         end
     elseif m==2 then
@@ -68,7 +68,7 @@ function set_warp()
                 player.warp_x=42*8
                 player.warp_y=6*8
             end
-        elseif player.y<17*8 then
+        elseif player.y<15*8 then
             if player.x<2*8 then
             elseif player.x<4*8 then
                 player.warp_map=1
@@ -80,17 +80,17 @@ function set_warp()
                 player.submap=3
                 player.warp_x=42*8
                 player.warp_y=6*8
-            elseif player.x<12*8 then
-                player.warp_map=1
-                player.submap=4
-                player.warp_x=42*8
-                player.warp_y=6*8
             else
             end
         elseif player.y<21*8 then
             if player.x<5*8 then
                 player.warp_map=1
                 player.submap=5
+                player.warp_x=42*8
+                player.warp_y=6*8
+            elseif player.x<12*8 then
+                player.warp_map=1
+                player.submap=4
                 player.warp_x=42*8
                 player.warp_y=6*8
             else

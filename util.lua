@@ -1,11 +1,17 @@
 function draw_sprites()
     m=player.map
+    sm=player.submap
 
     if m==0 then
         -- Combat map
     elseif m==1 then
+        if sm==4 then
+            spr(240,46*8,2*8,1,1,false)
+        end
         spr(player.sp,player.x,player.y,1,1,player.flp)
     elseif m==2 then
+        spr(241,2*8,16*8,1,1,false)
+        spr(242,27*8,14*8,1,1,false)
         spr(player.sp,player.x,player.y,1,1,player.flp)
     end
 end
