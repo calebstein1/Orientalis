@@ -5,15 +5,14 @@ function draw_sprites()
     if m==0 then
         -- Combat map
     elseif m==1 then
-        if sm==4 then
-            spr(240,ttop(46),ttop(2),1,1,false)
-        end
-        spr(player.sp,player.x,player.y,1,1,player.flp)
+        draw_map1_interior(sm)
     elseif m==2 then
-        spr(241,ttop(2),ttop(16),1,1,false)
-        spr(242,ttop(27),ttop(14),1,1,false)
-        spr(player.sp,player.x,player.y,1,1,player.flp)
+        if player.chapter==1 then
+            spr(241,ttop(2),ttop(16))
+        end
+        spr(242,ttop(27),ttop(14))
     end
+    spr(player.sp,player.x,player.y,1,1,player.flp)
 end
 
 function collide(obj,dir,flag)
