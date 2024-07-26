@@ -103,7 +103,6 @@ function set_warp()
 end
 
 function draw_map1_interior(sm)
-    pal(11,4)
     if sm==1 then
         spr(44,ttop(39),ttop(1))
         spr(44,ttop(39),ttop(2))
