@@ -30,6 +30,8 @@ function init_player()
         def=1,
         speed=5,
         mag=1,
+        xp=0,
+        level_up=10,
         warp={
             x=0,
             y=0,
