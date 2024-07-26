@@ -30,9 +30,11 @@ function init_player()
         def=1,
         speed=5,
         mag=1,
-        warp_x=0,
-        warp_y=0,
-        warp_map=2,
+        warp={
+            x=0,
+            y=0,
+            map=2
+        },
         chapter=1,
         map=1,
         submap=1
@@ -128,8 +130,8 @@ end
 
 function check_warp()
     if collide(player,player.dir,1) then
-        player.map=player.warp_map
-        player.x=player.warp_x
-        player.y=player.warp_y
+        player.map=player.warp.map
+        player.x=player.warp.x
+        player.y=player.warp.y
     end
 end

@@ -30,76 +30,80 @@ end
 function set_warp()
     local m=player.map
     local sm=player.submap
+    local wx=0
+    local wy=0
+    local wm=0
 
     if m==1 then
-        player.warp_map=2
+        wm=2
         if sm==0 then
-            player.warp_x=2*8
-            player.warp_y=2*8
+            wx=2*8
+            wy=2*8
         elseif sm==1 then
-            player.warp_x=8*8
-            player.warp_y=2*8
+            wx=8*8
+            wy=2*8
         elseif sm==2 then
-            player.warp_x=3*8
-            player.warp_y=14*8
+            wx=3*8
+            wy=14*8
         elseif sm==3 then
-            player.warp_x=6*8
-            player.warp_y=14*8
+            wx=6*8
+            wy=14*8
         elseif sm==4 then
-            player.warp_x=10*8
-            player.warp_y=17*8
+            wx=10*8
+            wy=17*8
         elseif sm==5 then
-            player.warp_x=3*8
-            player.warp_y=19*8
+            wx=3*8
+            wy=19*8
         elseif sm==6 then
-            player.warp_x=14*8
-            player.warp_y=20*8
+            wx=14*8
+            wy=20*8
         end
     elseif m==2 then
         if player.y<3*8 then
             if player.x>6*8 then
-                player.warp_map=1
                 player.submap=1
-                player.warp_x=42*8
-                player.warp_y=13*8
+                wx=42*8
+                wy=13*8
+                wm=1
             else
-                player.warp_map=1
                 player.submap=0
-                player.warp_x=42*8
-                player.warp_y=13*8
+                wx=42*8
+                wy=13*8
+                wm=1
             end
         elseif player.y<15*8 then
             if player.x<2*8 then
             elseif player.x<4*8 then
-                player.warp_map=1
                 player.submap=2
-                player.warp_x=42*8
-                player.warp_y=13*8
+                wx=42*8
+                wy=13*8
+                wm=1
             elseif player.x<8*8 then
-                player.warp_map=1
                 player.submap=3
-                player.warp_x=42*8
-                player.warp_y=13*8
+                wx=42*8
+                wy=13*8
+                wm=1
             else
             end
         elseif player.y<21*8 then
             if player.x<5*8 then
-                player.warp_map=1
                 player.submap=5
-                player.warp_x=42*8
-                player.warp_y=13*8
+                wx=42*8
+                wy=13*8
+                wm=1
             elseif player.x<12*8 then
-                player.warp_map=1
                 player.submap=4
-                player.warp_x=42*8
-                player.warp_y=13*8
+                wx=42*8
+                wy=13*8
+                wm=1
             else
-                player.warp_map=1
                 player.submap=6
-                player.warp_x=42*8
-                player.warp_y=13*8
+                wx=42*8
+                wy=13*8
+                wm=1
             end
         else
         end
     end
+    player.warp={x=wx,y=wy,map=wm}
 end
