@@ -64,10 +64,12 @@ function collide(obj,dir,flag)
     end
 end
 
+-- Tile to Pixel
 function ttop(n)
     return n*8
 end
 
+-- Pixel to Tile
 function ptot(n)
     return n/8
 end
