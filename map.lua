@@ -59,48 +59,34 @@ function set_warp()
             wy=20
         end
     elseif m==2 then
+        --[[
+        Default to house interior
+        Individual warps will override values as needed
+        ]]
+        wx=42
+        wy=13
+        wm=1
         if player.y<ttop(3) then
             if player.x>ttop(6) then
                 player.submap=1
-                wx=42
-                wy=13
-                wm=1
             else
                 player.submap=0
-                wx=42
-                wy=13
-                wm=1
             end
         elseif player.y<ttop(15) then
             if player.x<ttop(2) then
             elseif player.x<ttop(4) then
                 player.submap=2
-                wx=42
-                wy=13
-                wm=1
             elseif player.x<ttop(8) then
                 player.submap=3
-                wx=42
-                wy=13
-                wm=1
             else
             end
         elseif player.y<ttop(21) then
             if player.x<ttop(5) then
                 player.submap=5
-                wx=42
-                wy=13
-                wm=1
             elseif player.x<ttop(12) then
                 player.submap=4
-                wx=42
-                wy=13
-                wm=1
             else
                 player.submap=6
-                wx=42
-                wy=13
-                wm=1
             end
         else
         end
