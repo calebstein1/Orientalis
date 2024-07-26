@@ -6,12 +6,12 @@ function draw_sprites()
         -- Combat map
     elseif m==1 then
         if sm==4 then
-            spr(240,46*8,2*8,1,1,false)
+            spr(240,ttop(46),ttop(2),1,1,false)
         end
         spr(player.sp,player.x,player.y,1,1,player.flp)
     elseif m==2 then
-        spr(241,2*8,16*8,1,1,false)
-        spr(242,27*8,14*8,1,1,false)
+        spr(241,ttop(2),ttop(16),1,1,false)
+        spr(242,ttop(27),ttop(14),1,1,false)
         spr(player.sp,player.x,player.y,1,1,player.flp)
     end
 end
@@ -49,10 +49,10 @@ function collide(obj,dir,flag)
         y2=y+h+1
     end
 
-    x1/=8
-    x2/=8
-    y1/=8
-    y2/=8
+    x1=ptot(x1)
+    x2=ptot(x2)
+    y1=ptot(y1)
+    y2=ptot(y2)
 
     if fget(mget(x1,y1), flag)
     or fget(mget(x1,y2), flag)
@@ -62,4 +62,12 @@ function collide(obj,dir,flag)
     else
         return false
     end
+end
+
+function ttop(n)
+    return n*8
+end
+
+function ptot(n)
+    return n/8
 end

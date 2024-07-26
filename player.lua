@@ -2,8 +2,8 @@ function init_player()
     player={
         name="Terra",
         sp=192,
-        x=36*8,
-        y=4*8,
+        x=ttop(36),
+        y=ttop(4),
         movement=1,
         w=8,
         h=8,
