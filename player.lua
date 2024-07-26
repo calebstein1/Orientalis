@@ -2,6 +2,7 @@ function init_player()
     player={
         name="Terra",
         sp=192,
+        head=226,
         x=ttop(36),
         y=ttop(4),
         movement=1,
@@ -14,9 +15,12 @@ function init_player()
         state:
         0 idle
         1 walking
-        2 cutscene
-        3 combat
-        4 dialog
+        2 climbing
+        3 cutscene
+        4 combat
+        5 dialog
+        6 select
+        7 game over
         ]]
         state=0,
         hp=10,
@@ -73,6 +77,9 @@ function player_controls()
             player.state=1
             player.y+=player.movement
         end
+        if btn(5) then
+            game_over()
+        end
     end
 end
 
@@ -92,6 +99,16 @@ function animate_player()
     elseif player.state==1 and time()-player.anim>0.3 then
         do_walk_anim()
         player.anim=time()
+    elseif player.state==7 then
+        player.sp=224
+        if time()-player.anim>0.5 then
+            if player.head==226 then
+                player.head=227
+            else
+                player.head=226
+            end
+            player.anim=time()
+        end
     end
 end
 
@@ -131,4 +148,12 @@ function check_warp()
         player.x=player.warp.x
         player.y=player.warp.y
     end
+end
+
+function game_over()
+    player.state=7
+    player.flp=false
+    player.map=4
+    player.x=ttop(56)
+    player.y=ttop(8)
 end

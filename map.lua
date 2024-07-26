@@ -3,6 +3,7 @@
 1 indoor house
 2 outdoor chapter 1
 3 chapter 1 cave
+4 game over
 ]]
 
 function set_map()
@@ -23,6 +24,13 @@ function set_map()
             x_end=ttop(34),
             y_start=0,
             y_end=ttop(28)
+        }
+    elseif m==4 then
+        map_d={
+            x_start=ttop(50),
+            x_end=ttop(66),
+            y_start=0,
+            y_end=ttop(16)
         }
     end
 end
@@ -95,6 +103,7 @@ function set_warp()
 end
 
 function draw_map1_interior(sm)
+    pal(11,4)
     if sm==1 then
         spr(44,ttop(39),ttop(1))
         spr(44,ttop(39),ttop(2))

@@ -5,12 +5,27 @@ function draw_sprites()
     if m==0 then
         -- Combat map
     elseif m==1 then
+        pal(11,4)
         draw_map1_interior(sm)
     elseif m==2 then
+        pal(11,11)
         if player.chapter==1 then
             spr(241,ttop(2),ttop(16))
         end
         spr(242,ttop(27),ttop(14))
+    elseif m==4 then
+        pal(11,6)
+        spr(13,ttop(56),0)
+        spr(13,ttop(55),ttop(1))
+        spr(13,ttop(54),ttop(2))
+        spr(13,ttop(53),ttop(3))
+        spr(13,ttop(59),0,1,1,true)
+        spr(13,ttop(60),ttop(1),1,1,true)
+        spr(13,ttop(61),ttop(2),1,1,true)
+        spr(13,ttop(62),ttop(3),1,1,true)
+        spr(player.sp+1,player.x+8,player.y,1,1,player.flp)
+        spr(player.head,player.x+16,player.y,1,1,player.flp)
+        print("game over!",ttop(55)+4,ttop(4),1)
     end
     spr(player.sp,player.x,player.y,1,1,player.flp)
 end
