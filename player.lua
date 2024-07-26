@@ -1,5 +1,6 @@
 function init_player() 
     player={
+        name="Terra",
         sp=192,
         x=36*8,
         y=4*8,
@@ -8,13 +9,6 @@ function init_player()
         h=8,
         anim=0,
         flp=false,
-        --[[
-        dir:
-        0 left
-        1 right
-        2 up
-        3 down
-        ]]
         dir=0,
         --[[
         state:
@@ -22,6 +16,7 @@ function init_player()
         1 walking
         2 cutscene
         3 combat
+        4 dialog
         ]]
         state=0,
         hp=10,
