@@ -2,13 +2,13 @@ function init_player()
     player={
         name="Terra",
         sp=192,
-        head=226,
         x=ttop(36),
         y=ttop(4),
         movement=1,
         w=8,
         h=8,
         anim=0,
+        a_over=0,
         flp=false,
         dir=0,
         --[[
@@ -38,7 +38,8 @@ function init_player()
         },
         chapter=1,
         map=1,
-        submap=1
+        submap=1,
+        quit=false
     }
 end
 
@@ -77,8 +78,29 @@ function player_controls()
             player.state=1
             player.y+=player.movement
         end
-        if btn(5) then
+        if btnp(5) then
             game_over()
+        end
+    elseif player.state==7 then
+        if not player.quit and (btnp(2) or btnp(3)) then
+            if player.y==ttop(5) then
+                player.y=ttop(6)
+            else
+                player.y=ttop(5)
+            end
+        end
+        if btnp(4) then
+            if player.y==ttop(5) then
+                player.x=ttop(36)
+                player.y=ttop(4)
+                player.map=1
+                player.submap=1
+                player.state=0
+            else
+                player.x=0
+                player.y=0
+                player.quit=true
+            end          
         end
     end
 end
@@ -100,12 +122,13 @@ function animate_player()
         do_walk_anim()
         player.anim=time()
     elseif player.state==7 then
-        player.sp=224
+        player.sp=211
+        player.flp=false
         if time()-player.anim>0.5 then
-            if player.head==226 then
-                player.head=227
+            if player.a_over==227 then
+                player.a_over=228
             else
-                player.head=226
+                player.a_over=227
             end
             player.anim=time()
         end
@@ -152,8 +175,7 @@ end
 
 function game_over()
     player.state=7
-    player.flp=false
     player.map=4
-    player.x=ttop(56)
-    player.y=ttop(8)
+    player.x=ttop(55)+4
+    player.y=ttop(5)
 end

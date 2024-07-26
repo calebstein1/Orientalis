@@ -23,9 +23,18 @@ function draw_sprites()
         spr(13,ttop(60),ttop(1),1,1,true)
         spr(13,ttop(61),ttop(2),1,1,true)
         spr(13,ttop(62),ttop(3),1,1,true)
-        spr(player.sp+1,player.x+8,player.y,1,1,player.flp)
-        spr(player.head,player.x+16,player.y,1,1,player.flp)
+        spr(224,ttop(56),ttop(8))
+        spr(225,ttop(57),ttop(8))
+        spr(226,ttop(58),ttop(8))
         print("game over!",ttop(55)+4,ttop(4),1)
+        if not player.quit then
+            spr(player.a_over,ttop(58),ttop(8))
+            print("CONTINUE",ttop(56)+4,ttop(5),1)
+            print("QUIT",ttop(56)+4,ttop(6),1)
+        else
+            pal(15,7)
+            pal(9,10)
+        end
     end
     spr(player.sp,player.x,player.y,1,1,player.flp)
 end
