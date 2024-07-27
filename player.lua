@@ -42,8 +42,7 @@ function init_player()
         chapter=0,
         map=4,
         submap=1,
-        game_over=false,
-        go_spr=0
+        game_over=false
     }
 end
 
@@ -231,5 +230,4 @@ function game_over()
     player.map=4
     player.x=ttop(55)+4
     player.y=ttop(6)
-    player.go_spr=frame%2
 end

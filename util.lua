@@ -74,13 +74,8 @@ end
 function draw_main_menu()
     draw_map4_border()
     if player.game_over then
-        if player.go_spr==0 then
-            spr(224,ttop(57),ttop(4),3,1)
-            spr(player.a_over,ttop(59),ttop(4))
-        else
-            spr(201,ttop(57),ttop(4),3,1)
-            spr(player.a_over,ttop(57),ttop(4))
-        end
+        spr(224,ttop(57),ttop(4),3,1)
+        spr(player.a_over,ttop(59),ttop(4))
         print("game over!",ttop(55)+6,ttop(2),1)
     else
         spr(197,ttop(57),ttop(2)+6,2,3)
