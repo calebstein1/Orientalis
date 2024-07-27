@@ -35,10 +35,10 @@ function print_combat_string(s)
             print(str,ttop(4),ttop(2+(i-1)),7)
         end
     elseif s==3 then
-        print(enemies[e_id].name.." was", ttop(4),ttop(1),7)
+        print(enemies[e_id].name.." is", ttop(4),ttop(1),7)
         print("defeated!",ttop(4),ttop(2),7)
     elseif s==4 then
-        print(player.name.." collapsed from", ttop(4),ttop(1),7)
+        print(player.name.." collapses from", ttop(4),ttop(1),7)
         print(enemies[e_id].name.."'s", ttop(4),ttop(2),7)
         print("attack!", ttop(4),ttop(3),7)
     elseif s==5 then

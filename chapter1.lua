@@ -8,7 +8,7 @@ function init_c1_enemies()
             def=2,
             speed=3,
             xp=20,
-            atk_str={"shot "..player.name.." in","the chest with","his shotgun"}
+            atk_str={"shoots "..player.name.." in","the chest with his","shotgun"}
         },
         {
             name="the feral cat",
@@ -18,7 +18,7 @@ function init_c1_enemies()
             def=0,
             speed=6,
             xp=3,
-            atk_str={"scratched at "..player.name,"with its sharp claws"}
+            atk_str={"scratches at "..player.name,"with its sharp claws"}
         }
     }
 end
