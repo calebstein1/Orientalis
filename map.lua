@@ -102,15 +102,24 @@ function set_warp()
     player.warp={x=ttop(wx),y=ttop(wy),map=wm}
 end
 
-function draw_map1_interior(sm)
-    if sm==1 then
-        spr(44,ttop(39),ttop(1))
-        spr(44,ttop(39),ttop(2))
-        spr(44,ttop(39),ttop(4))
-        spr(44,ttop(39),ttop(5))
-        spr(54,ttop(35),ttop(2))
-        spr(55,ttop(35),ttop(1))
-    elseif sm==4 then
-        spr(240,ttop(46),ttop(2))
+function draw_sprites()
+    m=player.map
+    sm=player.submap
+
+    if m==0 then
+        -- Combat map
+    elseif m==1 then
+        pal(11,4)
+        draw_map1_interior(sm)
+    elseif m==2 then
+        pal(11,11)
+        if player.chapter==1 then
+            spr(241,ttop(2),ttop(16))
+        end
+        spr(242,ttop(27),ttop(14))
+    elseif m==4 then
+        pal(11,6)
+        draw_game_over()
     end
+    spr(player.sp,player.x,player.y,1,1,player.flp)
 end
