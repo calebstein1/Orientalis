@@ -8,7 +8,7 @@ function init_player()
         w=8,
         h=8,
         anim=0,
-        a_over=0,
+        a_over=245,
         flp=false,
         dir=0,
         --[[
@@ -40,7 +40,9 @@ function init_player()
         },
         chapter=0,
         map=4,
-        submap=1
+        submap=1,
+        game_over=false,
+        go_spr=0
     }
 end
 
@@ -107,6 +109,7 @@ function player_controls()
                 start_chapter1()
             else
                 if player.state==7 then
+                    player.game_over=true
                     main_menu()
                 end
             end          
@@ -133,11 +136,18 @@ function animate_player()
     elseif player.state==4 or player.state==7 or player.state==8 then
         player.sp=211
         player.flp=false
-        if player.state==7 and time()-player.anim>0.5 then
+        if (player.state==7 or (player.state==8 and player.game_over)) and time()-player.anim>0.5 then
             if player.a_over==227 then
                 player.a_over=228
             else
                 player.a_over=227
+            end
+            player.anim=time()
+        elseif player.state==8 and time()-player.anim>0.8 then
+            if player.a_over==245 or player.a_over==246 or player.a_over==247 then
+                player.a_over+=1
+            else
+                player.a_over=245
             end
             player.anim=time()
         end
@@ -193,8 +203,10 @@ function check_combat()
 end
 
 function game_over()
+    player.a_over=227
     player.state=7
     player.map=4
     player.x=ttop(55)+4
     player.y=ttop(6)
+    player.go_spr=rnd()
 end

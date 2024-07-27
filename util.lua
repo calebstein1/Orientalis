@@ -66,25 +66,33 @@ end
 
 function draw_main_menu()
     draw_map4_border()
-    spr(197,ttop(57),ttop(2)+6,2,3)
-    print("terradestined",ttop(54)+6,ttop(2),1)
+    if player.game_over then
+        if player.go_spr>0.5 then
+            spr(224,ttop(57),ttop(4),3,1)
+            spr(player.a_over,ttop(59),ttop(4))
+        else
+            spr(201,ttop(57),ttop(4),3,1)
+            spr(player.a_over,ttop(57),ttop(4))
+        end
+        print("game over!",ttop(55)+6,ttop(2),1)
+    else
+        spr(197,ttop(57),ttop(2)+6,2,3)
+        spr(player.a_over,ttop(58),ttop(3)+5)
+        print("terradestined",ttop(54)+6,ttop(2),1)
+    end
     print("NEW GAME",ttop(56)+4,ttop(6),1)
     print("CONTINUE",ttop(56)+4,ttop(7),1)
 end
 
 function draw_game_over()
     draw_map4_border()
-    spr(224,ttop(56),ttop(8),3,1)
-    if not player.quit then
-        spr(player.a_over,ttop(58),ttop(8))
-        print("you can do this,",ttop(54)+2,ttop(2),1)
-        print(player.name..", the world",ttop(54)+2,ttop(3),1)
-        print("is counting on you!",ttop(54)+2,ttop(4),1)
-        print("CONTINUE",ttop(56)+4,ttop(6),1)
-        print("QUIT",ttop(56)+4,ttop(7),1)
-    else
-        print("game over!",ttop(55)+4,ttop(4),1)
-    end
+    spr(199,ttop(57),ttop(8)-1,2,2)
+    spr(player.a_over,ttop(57),ttop(8)-1)
+    print("you can do this,",ttop(54)+2,ttop(2),1)
+    print(player.name..", the world",ttop(54)+2,ttop(3),1)
+    print("is counting on you!",ttop(54)+2,ttop(4),1)
+    print("CONTINUE",ttop(56)+4,ttop(6),1)
+    print("QUIT",ttop(56)+4,ttop(7),1)
 end
 
 function draw_map4_border()
