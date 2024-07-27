@@ -56,15 +56,24 @@ function ptot(n)
     return n/8
 end
 
+function main_menu()
+    player.state=8
+    player.map=4
+    player.x=ttop(55)+4
+    player.y=ttop(6)
+    player.chapter=0
+end
+
+function draw_main_menu()
+    draw_map4_border()
+    spr(197,ttop(57),ttop(2)+6,2,3)
+    print("terradestined",ttop(54)+6,ttop(2),1)
+    print("NEW GAME",ttop(56)+4,ttop(6),1)
+    print("CONTINUE",ttop(56)+4,ttop(7),1)
+end
+
 function draw_game_over()
-    spr(13,ttop(55),0)
-    spr(13,ttop(54),ttop(1))
-    spr(13,ttop(53),ttop(2))
-    spr(13,ttop(52),ttop(3))
-    spr(13,ttop(60),0,1,1,true)
-    spr(13,ttop(61),ttop(1),1,1,true)
-    spr(13,ttop(62),ttop(2),1,1,true)
-    spr(13,ttop(63),ttop(3),1,1,true)
+    draw_map4_border()
     spr(224,ttop(56),ttop(8),3,1)
     if not player.quit then
         spr(player.a_over,ttop(58),ttop(8))
@@ -75,7 +84,16 @@ function draw_game_over()
         print("QUIT",ttop(56)+4,ttop(7),1)
     else
         print("game over!",ttop(55)+4,ttop(4),1)
-        pal(15,7)
-        pal(9,10)
     end
+end
+
+function draw_map4_border()
+    spr(13,ttop(55),0)
+    spr(13,ttop(54),ttop(1))
+    spr(13,ttop(53),ttop(2))
+    spr(13,ttop(52),ttop(3))
+    spr(13,ttop(60),0,1,1,true)
+    spr(13,ttop(61),ttop(1),1,1,true)
+    spr(13,ttop(62),ttop(2),1,1,true)
+    spr(13,ttop(63),ttop(3),1,1,true)
 end

@@ -1,3 +1,24 @@
+c1_enemies={
+    feral_cat={
+        sp=243,
+        name="feral cat",
+        hp=1,
+        atk=2,
+        def=0,
+        speed=6,
+        xp=3
+    }
+}
+
+function start_chapter1()
+    player.x=ttop(36)
+    player.y=ttop(4)
+    player.map=1
+    player.submap=1
+    player.state=0
+    player.chapter=1
+end
+
 function draw_map1_interior(sm)
     if sm==1 then
         spr(44,ttop(39),ttop(1))

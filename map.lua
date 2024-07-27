@@ -3,7 +3,7 @@
 1 indoor house
 2 outdoor chapter 1
 3 chapter 1 cave
-4 game over
+4 game over/main menu
 ]]
 
 function set_map()
@@ -119,7 +119,11 @@ function draw_sprites()
         spr(242,ttop(27),ttop(14))
     elseif m==4 then
         pal(11,6)
-        draw_game_over()
+        if player.state==7 then
+            draw_game_over()
+        elseif player.state==8 then
+            draw_main_menu()
+        end
     end
     spr(player.sp,player.x,player.y,1,1,player.flp)
 end

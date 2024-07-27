@@ -1,9 +1,9 @@
 function init_player() 
     player={
         name="terra",
-        sp=192,
-        x=ttop(36),
-        y=ttop(4),
+        sp=211,
+        x=ttop(55)+4,
+        y=ttop(6),
         movement=1,
         w=8,
         h=8,
@@ -21,8 +21,9 @@ function init_player()
         5 dialog
         6 select
         7 game over
+        8 main menu
         ]]
-        state=0,
+        state=8,
         hp=10,
         pp=10,
         atk=2,
@@ -36,10 +37,9 @@ function init_player()
             y=0,
             map=2
         },
-        chapter=1,
-        map=1,
-        submap=1,
-        quit=false
+        chapter=0,
+        map=4,
+        submap=1
     }
 end
 
@@ -81,7 +81,7 @@ function player_controls()
         if btnp(5) then
             game_over()
         end
-    elseif player.state==7 then
+    elseif player.state==7 or player.state==8 then
         if not player.quit and (btnp(2) or btnp(3)) then
             if player.y==ttop(6) then
                 player.y=ttop(7)
@@ -91,15 +91,11 @@ function player_controls()
         end
         if btnp(4) then
             if player.y==ttop(6) then
-                player.x=ttop(36)
-                player.y=ttop(4)
-                player.map=1
-                player.submap=1
-                player.state=0
+                start_chapter1()
             else
-                player.x=0
-                player.y=0
-                player.quit=true
+                if player.state==7 then
+                    main_menu()
+                end
             end          
         end
     end
@@ -121,7 +117,7 @@ function animate_player()
     elseif player.state==1 and time()-player.anim>0.3 then
         do_walk_anim()
         player.anim=time()
-    elseif player.state==7 then
+    elseif player.state==7 or player.state==8 then
         player.sp=211
         player.flp=false
         if time()-player.anim>0.5 then
