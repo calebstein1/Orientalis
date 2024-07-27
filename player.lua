@@ -85,8 +85,11 @@ function player_controls()
             player.state=1
             player.y+=player.movement
         end
-        if btn(4) then
+        if btnp(4) then
             check_dialog()
+        end
+        if btnp(5) then
+            show_menu()
         end
     elseif player.state==4 then
         if btnp(4) then
@@ -100,7 +103,7 @@ function player_controls()
             end
         end
     elseif player.state==5 then
-        if btnp(4) then
+        if btnp(4) or btnp(5) then
             advance_dialog()
         end
     elseif player.state==7 or player.state==8 then
@@ -213,6 +216,12 @@ function check_combat()
     if collide(player,player.dir,2) then
         engage_combat(player.map)
     end
+end
+
+function show_menu()
+    dia="hp: "..player.hp.." pp: "..player.pp
+    add(dialog_strs,dia)
+    advance_dialog()
 end
 
 function game_over()
