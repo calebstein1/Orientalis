@@ -1,6 +1,6 @@
 function init_player() 
     player={
-        name="Terra",
+        name="terra",
         sp=192,
         x=ttop(36),
         y=ttop(4),
@@ -83,14 +83,14 @@ function player_controls()
         end
     elseif player.state==7 then
         if not player.quit and (btnp(2) or btnp(3)) then
-            if player.y==ttop(5) then
-                player.y=ttop(6)
+            if player.y==ttop(6) then
+                player.y=ttop(7)
             else
-                player.y=ttop(5)
+                player.y=ttop(6)
             end
         end
         if btnp(4) then
-            if player.y==ttop(5) then
+            if player.y==ttop(6) then
                 player.x=ttop(36)
                 player.y=ttop(4)
                 player.map=1
@@ -177,5 +177,5 @@ function game_over()
     player.state=7
     player.map=4
     player.x=ttop(55)+4
-    player.y=ttop(5)
+    player.y=ttop(6)
 end
