@@ -48,6 +48,27 @@ function check_chapter1_events()
     end
 end
 
+function chapter1_dialog()
+    if frame<dialog_finished+30 then
+        return
+    end
+
+    local dia={}
+    if player.submap==4 and in_range(player.x,ttop(45),ttop(48)) and in_range (player.y,ttop(1),ttop(4)) then
+        dia={"why hello there, "..player.name..",","anything i can do for you","today?"}
+    elseif in_range(player.x,ttop(1),ttop(4)) and in_range(player.y,ttop(15),ttop(17)) then
+        dia={"well howdy "..player.name..", fine","day ain't it?","listen, i heard some strange","noises coming from the cave","right back here.",
+            "might wanna make sure","your equipment's in order","before you go explorin' now"}
+    end
+    if dia==nil then
+        return
+    end
+    for d in all(dia) do
+        add(dialog_strs,d)
+    end
+    advance_dialog()
+end
+
 function draw_map1_interior(sm)
     if sm==1 then
         spr(44,ttop(39),ttop(1))

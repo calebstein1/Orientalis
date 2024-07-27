@@ -85,6 +85,9 @@ function player_controls()
             player.state=1
             player.y+=player.movement
         end
+        if btn(4) then
+            check_dialog()
+        end
     elseif player.state==4 then
         if btnp(4) then
             advance_combat()
@@ -185,6 +188,12 @@ function do_walk_anim()
         else
             player.sp=193
         end
+    end
+end
+
+function check_dialog()
+    if player.chapter==1 then
+        chapter1_dialog()
     end
 end
 

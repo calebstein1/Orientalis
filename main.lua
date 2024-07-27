@@ -1,7 +1,6 @@
 function _init()
     frame=0
-    dialog_strs={}
-    dialog_scene=false
+    init_dialog()
     init_player()
 end
 

@@ -56,6 +56,13 @@ function ptot(n)
     return n/8
 end
 
+function in_range(n,l,h)
+    if l<n and n<h then
+        return true
+    end
+    return false
+end
+
 function main_menu()
     player.state=8
     player.map=4

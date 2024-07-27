@@ -1,3 +1,9 @@
+function init_dialog()
+    dialog_strs={}
+    dialog_scene=false
+    dialog_finished=0
+end
+
 function advance_dialog()
     dialog_scene=true
     player.state=5
@@ -8,6 +14,7 @@ end
 function draw_dialog()
     if player.state==5 then
         if dialog_str==nil then
+            dialog_finished=frame
             player.state=0
             dialog_scene=false
             return
