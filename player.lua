@@ -47,6 +47,9 @@ function init_player()
 end
 
 function update_player()
+    if player.chapter==1 then
+        check_chapter1_events()
+    end
     player_controls()
     animate_player()
     set_warp()
@@ -95,6 +98,10 @@ function player_controls()
             else
                 player.x=ttop(2)
             end
+        end
+    elseif player.state==5 then
+        if btnp(4) then
+            advance_dialog()
         end
     elseif player.state==7 or player.state==8 then
         if not player.quit and (btnp(2) or btnp(3)) then

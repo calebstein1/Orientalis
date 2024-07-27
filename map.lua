@@ -72,6 +72,9 @@ function set_warp()
         elseif sm==6 then
             wx=14
             wy=20
+        elseif sm==7 then
+            wx=28
+            wy=9
         end
     elseif m==2 then
         --[[
@@ -93,6 +96,8 @@ function set_warp()
                 player.submap=2
             elseif player.x<ttop(9) then
                 player.submap=3
+            elseif player.x<ttop(30) then
+                player.submap=7
             else
             end
         elseif player.y<ttop(21) then

@@ -1,6 +1,15 @@
 function init_c1_enemies()
     enemies={
-        {},
+        {
+            name="the drunk fisherman",
+            max_hp=20,
+            hp=20,
+            atk=100,
+            def=2,
+            speed=3,
+            xp=20,
+            atk_str={"shot "..player.name.." in","the chest with","his shotgun"}
+        },
         {
             name="the feral cat",
             max_hp=5,
@@ -24,6 +33,14 @@ function start_chapter1()
     player.state=0
     player.chapter=1
     init_c1_enemies()
+    seen_fisherman=false
+end
+
+function check_chapter1_events()
+    if player.map==1 and player.submap==7 and not seen_fisherman then
+        seen_fisherman=true
+        drunk_fisherman_event()
+    end
 end
 
 function draw_map1_interior(sm)
@@ -37,4 +54,12 @@ function draw_map1_interior(sm)
     elseif sm==4 then
         spr(240,ttop(46),ttop(2))
     end
+end
+
+function drunk_fisherman_event()
+    local dia={"stop... *hic* tresspasser!","you're not *urp* going","nowhere, young lady!"}
+    for d in all(dia) do
+        add(dialog_strs,d)
+    end
+    advance_dialog()
 end
