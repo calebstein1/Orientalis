@@ -10,7 +10,12 @@ function set_map()
     local m=player.map
 
     if m==0 then
-        -- Combat map
+        map_d={
+            x_start=0,
+            x_end=ttop(16),
+            y_start=0,
+            y_end=ttop(16)
+        }
     elseif m==1 then
         map_d={
             x_start=ttop(34),
@@ -42,7 +47,9 @@ function set_warp()
     local wy=0
     local wm=0
 
-    if m==1 then
+    if m==0 then
+        return
+    elseif m==1 then
         wm=2
         if sm==0 then
             wx=2
@@ -107,7 +114,10 @@ function draw_sprites()
     sm=player.submap
 
     if m==0 then
-        -- Combat map
+        cls()
+        print_combat_string(c_str)
+        print("hp: "..player.hp,ttop(7),ttop(14),7)
+        print("pp: "..player.pp,ttop(7),ttop(15),7)
     elseif m==1 then
         pal(11,4)
         draw_map1_interior(sm)
@@ -117,6 +127,7 @@ function draw_sprites()
             spr(241,ttop(2),ttop(16))
         end
         spr(242,ttop(27),ttop(14))
+    elseif m==3 then
     elseif m==4 then
         pal(11,6)
         if player.state==7 then

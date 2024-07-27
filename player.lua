@@ -24,6 +24,7 @@ function init_player()
         8 main menu
         ]]
         state=8,
+        max_hp=10,
         hp=10,
         pp=10,
         atk=2,
@@ -48,6 +49,7 @@ function update_player()
     animate_player()
     set_warp()
     check_warp()
+    check_combat()
 end
 
 function player_controls()
@@ -80,6 +82,17 @@ function player_controls()
         end
         if btnp(5) then
             game_over()
+        end
+    elseif player.state==4 then
+        if btnp(4) then
+            advance_combat()
+        end
+        if btnp(0) or btnp(1) then
+            if player.x==ttop(2) then
+                player.x=ttop(8)
+            else
+                player.x=ttop(2)
+            end
         end
     elseif player.state==7 or player.state==8 then
         if not player.quit and (btnp(2) or btnp(3)) then
@@ -117,10 +130,10 @@ function animate_player()
     elseif player.state==1 and time()-player.anim>0.3 then
         do_walk_anim()
         player.anim=time()
-    elseif player.state==7 or player.state==8 then
+    elseif player.state==4 or player.state==7 or player.state==8 then
         player.sp=211
         player.flp=false
-        if time()-player.anim>0.5 then
+        if player.state==7 and time()-player.anim>0.5 then
             if player.a_over==227 then
                 player.a_over=228
             else
@@ -163,9 +176,19 @@ end
 
 function check_warp()
     if collide(player,player.dir,1) then
-        player.map=player.warp.map
-        player.x=player.warp.x
-        player.y=player.warp.y
+        warp_player(player.warp)
+    end
+end
+
+function warp_player(w)
+    player.x=w.x
+    player.y=w.y
+    player.map=w.map
+end
+
+function check_combat()
+    if collide(player,player.dir,2) then
+        engage_combat(player.map)
     end
 end
 
