@@ -37,9 +37,14 @@ function start_chapter1()
 end
 
 function check_chapter1_events()
-    if player.map==1 and player.submap==7 and not seen_fisherman then
-        seen_fisherman=true
-        drunk_fisherman_event()
+    if player.map==1 and player.submap==7 then
+        if not seen_fisherman then
+            drunk_fisherman_event()
+            seen_fisherman=true
+        end
+        if seen_fisherman and not dialog_scene then
+            engage_combat(player.map)
+        end
     end
 end
 
@@ -53,6 +58,8 @@ function draw_map1_interior(sm)
         spr(55,ttop(35),ttop(1))
     elseif sm==4 then
         spr(240,ttop(46),ttop(2))
+    elseif sm==7 then
+        spr(240,ttop(42),ttop(11))
     end
 end
 

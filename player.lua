@@ -85,9 +85,6 @@ function player_controls()
             player.state=1
             player.y+=player.movement
         end
-        if btnp(5) then
-            game_over()
-        end
     elseif player.state==4 then
         if btnp(4) then
             advance_combat()

@@ -1,4 +1,5 @@
 function advance_dialog()
+    dialog_scene=true
     player.state=5
     dialog_str=dialog_strs[1]
     deli(dialog_strs, 1)
@@ -8,6 +9,7 @@ function draw_dialog()
     if player.state==5 then
         if dialog_str==nil then
             player.state=0
+            dialog_scene=false
             return
         end
         spr(231,cam_x,cam_y+ttop(14))
