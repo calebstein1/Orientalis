@@ -7,6 +7,7 @@ function engage_combat(e)
     3: player victory
     4: player defeat
     5: player turn result
+    6: game over message
     ]]
     player.warp={x=player.x-16,y=player.y-16,map=player.map}
     player.state=4
@@ -38,7 +39,8 @@ function print_combat_string(s)
         print("defeated!",ttop(4),ttop(2),7)
     elseif s==4 then
         print(player.name.." collapsed from", ttop(4),ttop(1),7)
-        print(enemies[e_id].name.."'s attack!", ttop(4),ttop(2),7)
+        print(enemies[e_id].name.."'s", ttop(4),ttop(2),7)
+        print("attack!", ttop(4),ttop(3),7)
     elseif s==5 then
         print(player.name.." strikes",ttop(4),ttop(1),7)
         print(enemies[e_id].name.."!",ttop(4),ttop(2),7)
@@ -69,12 +71,19 @@ function advance_combat()
         game_over()
     elseif c_state==5 then
         player_result()
+    elseif c_state==6 then
+        player_death()
     end
 end
 
 function player_turn()
     c_str=1
     c_state=5
+end
+
+function player_death()
+    c_str=4
+    c_state=4
 end
 
 function player_result()
@@ -99,8 +108,8 @@ function enemy_turn()
         e_def=0
     end
     if player.hp<=0 then
-        c_str=4
-        c_state=4
+        c_str=2
+        c_state=6
     else
         c_str=2
         c_state=1
