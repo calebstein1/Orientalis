@@ -24,6 +24,7 @@ function init_player()
         8 main menu
         ]]
         state=8,
+        money=100,
         max_hp=10,
         hp=10,
         pp=10,
@@ -219,7 +220,7 @@ function check_combat()
 end
 
 function show_menu()
-    dia="hp: "..player.hp.." pp: "..player.pp
+    dia="hp: "..player.hp.." pp: "..player.pp.." money: "..player.money
     add(dialog_strs,dia)
     advance_dialog()
 end
