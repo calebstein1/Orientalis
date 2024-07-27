@@ -67,7 +67,7 @@ end
 function draw_main_menu()
     draw_map4_border()
     if player.game_over then
-        if player.go_spr>0.5 then
+        if player.go_spr==0 then
             spr(224,ttop(57),ttop(4),3,1)
             spr(player.a_over,ttop(59),ttop(4))
         else

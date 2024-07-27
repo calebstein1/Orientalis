@@ -208,5 +208,5 @@ function game_over()
     player.map=4
     player.x=ttop(55)+4
     player.y=ttop(6)
-    player.go_spr=rnd()
+    player.go_spr=frame%2
 end
