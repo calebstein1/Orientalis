@@ -124,17 +124,17 @@ function draw_sprites()
         print("hp: "..player.hp,ttop(7),ttop(14),7)
         print("pp: "..player.pp,ttop(7),ttop(15),7)
     elseif m==1 then
-        pal(11,4)
+        set_colors(2)
         draw_map1_interior(sm)
     elseif m==2 then
-        pal(11,11)
+        set_colors(0)
         if player.chapter==1 then
             spr(241,ttop(2),ttop(16))
         end
         spr(242,ttop(27),ttop(14))
     elseif m==3 then
     elseif m==4 then
-        pal(11,6)
+        set_colors(6)
         if player.state==7 then
             draw_game_over()
         elseif player.state==8 then

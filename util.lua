@@ -63,6 +63,34 @@ function in_range(n,l,h)
     return false
 end
 
+function set_colors(p)
+    for i=0,15 do
+        pal(i,i)
+    end
+    --[[
+    0 default
+    1 outdoor night
+    2 indoor house
+    3 cave
+    4 island
+    5 snow
+    6 menu
+    ]]
+    if p==0 then
+        return
+    elseif p==1 then
+        pal(4,5)
+        pal(11,1)
+    elseif p==2 then
+        pal(11,4)
+    elseif p==3 then
+    elseif p==4 then
+    elseif p==5 then
+    elseif p==6 then
+        pal(11,6)
+    end
+end
+
 function main_menu()
     player.state=8
     player.map=4
