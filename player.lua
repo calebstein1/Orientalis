@@ -140,26 +140,26 @@ function animate_player()
         elseif player.dir==3 then
             player.sp=192
         end
-    elseif player.state==1 and time()-player.anim>0.3 then
+    elseif player.state==1 and frame-player.anim>9 then
         do_walk_anim()
-        player.anim=time()
+        player.anim=frame
     elseif player.state==4 or player.state==7 or player.state==8 then
         player.sp=211
         player.flp=false
-        if (player.state==7 or (player.state==8 and player.game_over)) and time()-player.anim>0.5 then
+        if (player.state==7 or (player.state==8 and player.game_over)) and frame-player.anim>15 then
             if player.a_over==227 then
                 player.a_over=228
             else
                 player.a_over=227
             end
-            player.anim=time()
-        elseif player.state==8 and time()-player.anim>0.8 then
+            player.anim=frame
+        elseif player.state==8 and frame-player.anim>24 then
             if player.a_over==245 or player.a_over==246 or player.a_over==247 then
                 player.a_over+=1
             else
                 player.a_over=245
             end
-            player.anim=time()
+            player.anim=frame
         end
     end
 end
