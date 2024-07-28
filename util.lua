@@ -89,7 +89,7 @@ end
 function draw_game_over()
     draw_map4_border()
     spr(199,ttop(57),ttop(8)-1,2,2)
-    spr(player.a_over,ttop(57),ttop(8)-1)
+    spr(player.a_over,ttop(57),ttop(8)-2)
     print("you can do this,",ttop(54)+2,ttop(2),1)
     print(player.name..", the world",ttop(54)+2,ttop(3),1)
     print("is counting on you!",ttop(54)+2,ttop(4),1)

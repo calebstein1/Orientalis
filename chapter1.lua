@@ -61,7 +61,7 @@ function chapter1_dialog()
         dia={"well howdy "..player.name..", fine","day ain't it?","listen, i heard some strange","noises coming from the cave","right back here.",
             "might wanna make sure","your equipment's in order","before you go explorin' now"}
     elseif in_range(player.x,ttop(26),ttop(29)) and in_range(player.y,ttop(13),ttop(16)) then
-        dia={"i heard hank, the","fisherman who lives in","the house right by the","water, drinking and sounding","agitated.",
+        dia={"hey "..player.name..", i heard hank, the","fisherman who lives in","the house right by the","water, drinking and sounding","agitated.",
             "might be a wise idea","to give him a wide berth","until he sobers up."}
     end
     if dia==nil then
@@ -89,7 +89,7 @@ function draw_map1_interior(sm)
 end
 
 function drunk_fisherman_event()
-    local dia={"stop... *hic* tresspasser!","you're not *urp* going","nowhere, young lady!"}
+    local dia={"stop... *hic* tresspasser!","you're not *urp* going","nowhere today!"}
     for d in all(dia) do
         add(dialog_strs,d)
     end
