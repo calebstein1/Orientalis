@@ -2,6 +2,7 @@ function _init()
     frame=0
     init_dialog()
     init_player()
+    load_strings()
 end
 
 function _update()

@@ -56,13 +56,11 @@ function chapter1_dialog()
 
     local dia={}
     if player.submap==4 and in_range(player.x,ttop(45),ttop(48)) and in_range (player.y,ttop(1),ttop(4)) then
-        dia={"why hello there, "..player.name..",","anything i can do for you","today?"}
+        dia=strings[1]
     elseif in_range(player.x,ttop(1),ttop(4)) and in_range(player.y,ttop(15),ttop(18)) then
-        dia={"well howdy "..player.name..", fine","day ain't it?","listen, i heard some strange","noises coming from the cave","right back here.",
-            "might wanna make sure","your equipment's in order","before you go explorin' now"}
+        dia=strings[2]
     elseif in_range(player.x,ttop(26),ttop(29)) and in_range(player.y,ttop(13),ttop(16)) then
-        dia={"hey "..player.name..", i heard hank, the","fisherman who lives in","the house right by the","water, drinking and sounding","agitated.",
-            "might be a wise idea","to give him a wide berth","until he sobers up."}
+        dia=strings[3]
     end
     if dia==nil then
         return
@@ -89,7 +87,7 @@ function draw_map1_interior(sm)
 end
 
 function drunk_fisherman_event()
-    local dia={"stop... *hic* tresspasser!","you're not *urp* going","nowhere today!"}
+    local dia=strings[4]
     for d in all(dia) do
         add(dialog_strs,d)
     end
