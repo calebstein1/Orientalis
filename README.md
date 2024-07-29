@@ -1,6 +1,6 @@
 # TerraDestined
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.gif)
 
 TerraDestined is an rpg adventure game for the PICO-8 fantasy console.
 It is heavily inspired by my favorite video game of all time, which happens to have a somewhat similar name, containing words of which both "Terra" and "Destined" and synonyms 😉
