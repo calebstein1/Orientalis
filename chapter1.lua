@@ -48,7 +48,6 @@ function start_chapter1()
     player.x=ttop(36)
     player.y=ttop(4)
     player.money=100
-    player.cod=0
     player.max_hp=10
     player.hp=player.max_hp
     player.map=1
@@ -77,7 +76,7 @@ function chapter1_dialog()
     end
 
     local dia={}
-    if player.submap==4 and in_range(player.x,ttop(45),ttop(48)) and in_range (player.y,ttop(1),ttop(4)) then
+    if player.submap==4 and in_range(player.x,ttop(45),ttop(48)) and in_range(player.y,ttop(1),ttop(4)) then
         dia=strings[1]
     elseif in_range(player.x,ttop(1),ttop(4)) and in_range(player.y,ttop(15),ttop(18)) then
         dia=strings[2]
