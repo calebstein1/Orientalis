@@ -75,27 +75,15 @@ function set_warp()
     elseif m==1 then
         wm=2
         if sm==0 then
-            wx=2
+            wx=4
             wy=2
         elseif sm==1 then
             wx=8
             wy=2
         elseif sm==2 then
-            wx=3
-            wy=14
-        elseif sm==3 then
-            wx=7
-            wy=14
-        elseif sm==4 then
-            wx=10
+            wx=12
             wy=17
-        elseif sm==5 then
-            wx=3
-            wy=19
-        elseif sm==6 then
-            wx=14
-            wy=20
-        elseif sm==7 then
+        elseif sm==3 then
             wx=28
             wy=9
         end
@@ -107,34 +95,19 @@ function set_warp()
         wx=42
         wy=13
         wm=1
-        if player.y<ttop(3) then
-            if player.x>ttop(6) then
-                player.submap=1
-            else
-                player.submap=0
-            end
-        elseif player.y<ttop(15) then
-            if player.x<ttop(2) then
-            elseif player.x<ttop(5) then
-                player.submap=2
-            elseif player.x<ttop(9) then
-                player.submap=3
-            elseif player.x<ttop(30) then
-                player.submap=7
-            else
-                wx=35
-                wy=19
-                wm=3
-            end
-        elseif player.y<ttop(21) then
-            if player.x<ttop(5) then
-                player.submap=5
-            elseif player.x<ttop(12) then
-                player.submap=4
-            else
-                player.submap=6
-            end
+        if player.x<ttop(2) then
+        elseif player.x<ttop(6) then
+            player.submap=0
+        elseif player.x<ttop(10) then
+            player.submap=1
+        elseif player.x<ttop(14) then
+            player.submap=2
+        elseif player.x<ttop(30) then
+            player.submap=3
         else
+            wx=35
+            wy=19
+            wm=3
         end
     elseif m==3 then
         wx=32
@@ -165,17 +138,14 @@ function draw_sprites()
         spr(116,ttop(4),ttop(19))
     elseif m==3 then
         set_colors(3)
+        spr(113,ttop(43),ttop(18))
         if player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
             map_fog()
         end
     elseif m==4 then
         cls()
         set_colors(0)
-        rectfill(ttop(56),0,ttop(59)+8,8,6)
-        rectfill(ttop(55),ttop(1),ttop(60)+8,ttop(1)+8,6)
-        rectfill(ttop(54),ttop(2),ttop(61)+8,ttop(2)+8,6)
-        rectfill(ttop(53),ttop(3),ttop(62)+8,ttop(3)+8,6)
-        rectfill(ttop(52),ttop(4),ttop(63)+8,ttop(9)+8,6)
+        circfill(ttop(58),ttop(4)+4,48,6)
         if player.state==7 then
             draw_game_over()
         elseif player.state==8 then
@@ -198,9 +168,25 @@ function do_overworld_hazard()
     if m==3 then
         player.hp-=1
         if player.hp<=0 then
-            game_over()
+            player.state=9
         else
             knockback(4)
         end
     end
+end
+
+function draw_main_menu()
+    spr(69,ttop(57),ttop(2)+6,2,3)
+    spr(player.a_over,ttop(58),ttop(3)+5)
+    print("terradestined",ttop(54)+6,ttop(2),1)
+    print("NEW GAME",ttop(56)+4,ttop(6),1)
+    print("CONTINUE",ttop(56)+4,ttop(7),1)
+end
+
+function draw_game_over()
+    spr(96,ttop(57),ttop(4),3,1)
+    spr(player.a_over,ttop(59),ttop(4))
+    print("game over!",ttop(55)+6,ttop(2),1)
+    print("CONTINUE",ttop(56)+4,ttop(6),1)
+    print("QUIT",ttop(56)+4,ttop(7),1)
 end
