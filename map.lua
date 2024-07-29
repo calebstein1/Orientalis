@@ -31,6 +31,13 @@ function set_map()
             y_start=0,
             y_end=ttop(28)
         }
+    elseif m==3 then
+        map_d={
+            x_start=ttop(34),
+            x_end=ttop(50),
+            y_start=ttop(16),
+            y_end=ttop(44)
+        }
     elseif m==4 then
         map_d={
             x_start=ttop(50),
@@ -115,6 +122,9 @@ function set_warp()
             elseif player.x<ttop(30) then
                 player.submap=7
             else
+                wx=35
+                wy=19
+                wm=3
             end
         elseif player.y<ttop(21) then
             if player.x<ttop(5) then
@@ -126,6 +136,10 @@ function set_warp()
             end
         else
         end
+    elseif m==3 then
+        wx=32
+        wy=15
+        wm=2
     end
     player.warp={x=ttop(wx),y=ttop(wy),map=wm}
 end
@@ -150,6 +164,10 @@ function draw_sprites()
         spr(114,ttop(27),ttop(14))
         spr(116,ttop(4),ttop(19))
     elseif m==3 then
+        set_colors(3)
+        if player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
+            map_fog()
+        end
     elseif m==4 then
         cls()
         rectfill(ttop(56),0,ttop(59)+8,8,6)

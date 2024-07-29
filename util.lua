@@ -84,6 +84,8 @@ function set_colors(p)
     elseif p==2 then
         pal(11,4)
     elseif p==3 then
+        pal(11,5)
+        pal(3,4)
     elseif p==4 then
     elseif p==5 then
     elseif p==6 then

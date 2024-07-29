@@ -55,6 +55,7 @@ function update_player()
     set_warp()
     check_warp()
     check_combat()
+    check_climbing()
 end
 
 function player_controls()
@@ -90,6 +91,15 @@ function player_controls()
         end
         if btnp(5) then
             show_menu()
+        end
+    elseif player.state==2 then
+        if btn(2) then
+            player.dir=2
+            player.y-=player.movement/1.5
+        end
+        if btn(3) then
+            player.dir=3
+            player.y+=player.movement/1.5
         end
     elseif player.state==4 then
         if btnp(4) then
@@ -143,6 +153,12 @@ function animate_player()
     elseif player.state==1 and frame-player.anim>9 then
         do_walk_anim()
         player.anim=frame
+    elseif player.state==2 then
+        player.sp=84
+        if (btn(2) or btn(3)) and frame-player.anim>9 then
+            player.flp=not player.flp
+            player.anim=frame
+        end
     elseif player.state==4 or player.state==7 or player.state==8 then
         player.sp=83
         player.flp=false
@@ -208,6 +224,14 @@ function check_warp()
     connected_map_warp()
 end
 
+function check_climbing()
+    if collide(player,player.dir,2) then
+        player.state=2
+    elseif player.state==2 then
+        player.state=0
+    end
+end
+
 function warp_player(w)
     player.x=w.x
     player.y=w.y
@@ -215,7 +239,7 @@ function warp_player(w)
 end
 
 function check_combat()
-    if collide(player,player.dir,2) then
+    if collide(player,player.dir,7) then
         engage_combat(player.map)
     end
 end
