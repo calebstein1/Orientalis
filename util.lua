@@ -82,6 +82,7 @@ function set_colors(p)
         pal(4,5)
         pal(11,1)
     elseif p==2 then
+        pal(3,6)
         pal(11,4)
     elseif p==3 then
         pal(11,5)
@@ -107,35 +108,6 @@ function main_menu()
     player.y=ttop(6)
     player.chapter=0
     player.a_over=117
-end
-
-function draw_main_menu()
-    draw_map4_border()
-    spr(69,ttop(57),ttop(2)+6,2,3)
-    spr(player.a_over,ttop(58),ttop(3)+5)
-    print("terradestined",ttop(54)+6,ttop(2),1)
-    print("NEW GAME",ttop(56)+4,ttop(6),1)
-    print("CONTINUE",ttop(56)+4,ttop(7),1)
-end
-
-function draw_game_over()
-    draw_map4_border()
-    spr(96,ttop(57),ttop(4),3,1)
-    spr(player.a_over,ttop(59),ttop(4))
-    print("game over!",ttop(55)+6,ttop(2),1)
-    print("CONTINUE",ttop(56)+4,ttop(6),1)
-    print("QUIT",ttop(56)+4,ttop(7),1)
-end
-
-function draw_map4_border()
-    spr(13,ttop(55),0)
-    spr(13,ttop(54),ttop(1))
-    spr(13,ttop(53),ttop(2))
-    spr(13,ttop(52),ttop(3))
-    spr(13,ttop(60),0,1,1,true)
-    spr(13,ttop(61),ttop(1),1,1,true)
-    spr(13,ttop(62),ttop(2),1,1,true)
-    spr(13,ttop(63),ttop(3),1,1,true)
 end
 
 function knockback(f)
