@@ -35,19 +35,22 @@ function print_combat_string(s)
             print(str,ttop(4),ttop(2+(i-1)),7)
         end
     elseif s==3 then
-        print(enemies[e_id].name.." is", ttop(4),ttop(1),7)
-        print("defeated!",ttop(4),ttop(2),7)
+        print(enemies[e_id].name.." is",ttop(4),ttop(1),7)
+        print("defeated!",ttop(4),ttop(2),11)
+        print(player.name.." gains "..enemies[e_id].xp.."xp!",ttop(4),ttop(4),7)
     elseif s==4 then
         print(player.name.." collapses from", ttop(4),ttop(1),7)
-        print(enemies[e_id].name.."'s", ttop(4),ttop(2),7)
+        print(enemies[e_id].name.."'s",ttop(4),ttop(2),7)
         print("attack!", ttop(4),ttop(3),7)
-        print(player.name.." is defeated!", ttop(4),ttop(5),8)
+        print(player.name.." is defeated!",ttop(4),ttop(5),8)
     elseif s==5 then
         print(player.name.." strikes",ttop(4),ttop(1),7)
         print(enemies[e_id].name.."!",ttop(4),ttop(2),7)
     elseif s==6 then
         print(player.name.." readies her",ttop(4),ttop(1),7)
         print("stance!",ttop(4),ttop(2),7)
+    elseif s==7 then
+        print(player.name.." levels up!",ttop(4),ttop(1),7)
     end
 end
 
@@ -119,6 +122,36 @@ end
 
 function player_victory()
     player.xp+=enemies[e_id].xp
+    if player.xp>=player.level_up then
+        level_up()
+        c_str=7
+        c_state=3
+    else
+        end_combat()
+    end
+end
+
+function level_up()
+    player.level_up+=(player.level_up*.5+8*player.level)
+    player.level+=1
+    player.max_hp+=5
+    player.max_pp+=3
+    if player.level%2==0 then
+        player.atk+=1
+    else
+        player.mag+=1
+    end
+    if player.level%5==0 then
+        player.def+=1
+    end
+    if player.level%3==0 then
+        player.speed+=1
+    end
+    player.hp=player.max_hp
+    player.pp=player.max_pp
+end
+
+function end_combat()
     player.state=0
     warp_player(player.warp)
 end

@@ -27,14 +27,16 @@ function init_player()
         state=8,
         money=100,
         max_hp=10,
+        max_pp=10,
         hp=10,
         pp=10,
         atk=2,
         def=1,
         speed=5,
         mag=1,
+        level=1,
         xp=0,
-        level_up=10,
+        level_up=8,
         warp={
             x=0,
             y=0,
@@ -259,7 +261,7 @@ function check_combat()
 end
 
 function show_menu()
-    dia="hp: "..player.hp.." pp: "..player.pp.." money: "..player.money
+    dia="hp: "..player.hp.."/"..player.max_hp.." pp: "..player.pp.."/"..player.max_pp.." xp: "..player.xp.."/"..player.level_up
     add(dialog_strs,dia)
     advance_dialog()
 end

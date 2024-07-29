@@ -150,6 +150,7 @@ function draw_sprites()
 
     if m==0 then
         cls()
+        set_colors(0)
         print_combat_string(c_str)
         print("hp: "..player.hp,ttop(7),ttop(14),7)
         print("pp: "..player.pp,ttop(7),ttop(15),7)
@@ -181,6 +182,7 @@ function draw_sprites()
             draw_main_menu()
         end
     elseif m==5 then
+        set_colors(0)
         if player.x<ttop(16) or player.x>ttop(22) then
             map_fog()
         end
