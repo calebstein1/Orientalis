@@ -7,7 +7,11 @@ function _init()
 end
 
 function _update()
-    frame+=1
+    if frame==32000 then
+        reset_timer()
+    else
+        frame+=1
+    end
     set_map()
     set_camera()
     update_player()

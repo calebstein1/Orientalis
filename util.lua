@@ -106,30 +106,23 @@ function main_menu()
     player.x=ttop(55)+4
     player.y=ttop(6)
     player.chapter=0
+    player.a_over=117
 end
 
 function draw_main_menu()
     draw_map4_border()
-    if player.game_over then
-        spr(96,ttop(57),ttop(4),3,1)
-        spr(player.a_over,ttop(59),ttop(4))
-        print("game over!",ttop(55)+6,ttop(2),1)
-    else
-        spr(69,ttop(57),ttop(2)+6,2,3)
-        spr(player.a_over,ttop(58),ttop(3)+5)
-        print("terradestined",ttop(54)+6,ttop(2),1)
-    end
+    spr(69,ttop(57),ttop(2)+6,2,3)
+    spr(player.a_over,ttop(58),ttop(3)+5)
+    print("terradestined",ttop(54)+6,ttop(2),1)
     print("NEW GAME",ttop(56)+4,ttop(6),1)
     print("CONTINUE",ttop(56)+4,ttop(7),1)
 end
 
 function draw_game_over()
     draw_map4_border()
-    spr(71,ttop(57),ttop(8)-1,2,2)
-    spr(player.a_over,ttop(57),ttop(8)-2)
-    print("get up, "..player.name..",",ttop(54)+2,ttop(2),1)
-    print("the world is",ttop(54)+2,ttop(3),1)
-    print("counting on you!",ttop(54)+2,ttop(4),1)
+    spr(96,ttop(57),ttop(4),3,1)
+    spr(player.a_over,ttop(59),ttop(4))
+    print("game over!",ttop(55)+6,ttop(2),1)
     print("CONTINUE",ttop(56)+4,ttop(6),1)
     print("QUIT",ttop(56)+4,ttop(7),1)
 end
@@ -155,4 +148,11 @@ function knockback(f)
     elseif player.dir==3 then
         player.y-=f
     end
+end
+
+function reset_timer()
+    frame=0
+    overworld_timer=0
+    player.anim=0
+    player.cooldown=0
 end
