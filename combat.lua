@@ -132,7 +132,7 @@ function player_victory()
 end
 
 function level_up()
-    player.level_up+=(player.level_up*.5+8*player.level)
+    player.level_up+=flr(player.level_up*.5+8*player.level)
     player.level+=1
     player.max_hp+=5
     player.max_pp+=3

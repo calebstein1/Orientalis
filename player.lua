@@ -260,14 +260,15 @@ function check_overworld_hazard()
     if collide(player,player.dir,3) and frame-player.cooldown>3 then
         player.hazard_damage=true
         do_overworld_hazard()
-        player.cooldown=frame
     else
         player.hazard_damage=false
+        return
     end
+    player.cooldown=frame
 end
 
 function show_menu()
-    dia="hp: "..player.hp.."/"..player.max_hp.." pp: "..player.pp.."/"..player.max_pp.." xp: "..player.xp.."/"..player.level_up
+    dia="HP:"..player.hp.."/"..player.max_hp.." PP:"..player.pp.."/"..player.max_pp.." XP:"..player.xp.."/"..player.level_up
     add(dialog_strs,dia)
     advance_dialog()
 end

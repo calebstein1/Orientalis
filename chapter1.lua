@@ -27,7 +27,7 @@ function init_c1_enemies()
             atk=4,
             def=0,
             speed=6,
-            xp=4,
+            xp=8,
             atk_str={"throws a rock at",player.name.."'s head"}
         },
         {},
@@ -38,7 +38,7 @@ function init_c1_enemies()
             atk=8,
             def=0,
             speed=8,
-            xp=6,
+            xp=11,
             atk_str={"charges "..player.name.." with","its stinger"}
         }
     }
