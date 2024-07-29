@@ -18,7 +18,6 @@ function engage_combat(e)
     c_state=0
     c_str=0
     e_id=e
-    e_def=0
 end
 
 function print_combat_string(s)
@@ -28,7 +27,7 @@ function print_combat_string(s)
     elseif s==1 then
         print("what will you do?",ttop(4),ttop(1),7)
         print("attack",ttop(3),ttop(12),7)
-        print("defend",ttop(9),ttop(12),7)
+        print("+ kit X"..player.heal_packs,ttop(9),ttop(12),7)
     elseif s==2 then
         print(enemies[e_id].name,ttop(4),ttop(1),7)
         for i, str in pairs(enemies[e_id].atk_str) do
@@ -47,8 +46,9 @@ function print_combat_string(s)
         print(player.name.." strikes",ttop(4),ttop(1),7)
         print(enemies[e_id].name.."!",ttop(4),ttop(2),7)
     elseif s==6 then
-        print(player.name.." readies her",ttop(4),ttop(1),7)
-        print("stance!",ttop(4),ttop(2),7)
+        print(player.name.." patches her",ttop(4),ttop(1),7)
+        print("wounds with a",ttop(4),ttop(2),7)
+        print("first aid kit!",ttop(4),ttop(3),7)
     elseif s==7 then
         print(player.name.." levels up!",ttop(4),ttop(1),7)
     end
@@ -95,8 +95,16 @@ function player_result()
         enemies[e_id].hp-=(player.atk-enemies[e_id].def)
         c_str=5
     elseif player.x==ttop(8) then
-        e_def+=1
-        c_str=6
+        if player.heal_packs==0 then
+            return
+        else
+            c_str=6
+            player.hp+=player.heal_rate
+            if player.hp>player.max_hp then
+                player.hp=player.max_hp
+            end
+            player.heal_packs-=1
+        end
     end
     if enemies[e_id].hp<=0 then
         c_str=3
@@ -107,10 +115,7 @@ function player_result()
 end
 
 function enemy_turn()
-    player.hp-=(enemies[e_id].atk-player.def-e_def)
-    if e_def>0 then
-        e_def=0
-    end
+    player.hp-=(enemies[e_id].atk-player.def)
     if player.hp<=0 then
         c_str=2
         c_state=6
@@ -134,12 +139,9 @@ end
 function level_up()
     player.level_up+=flr(player.level_up*.5+8*player.level)
     player.level+=1
-    player.max_hp+=5
-    player.max_pp+=3
+    player.max_hp+=2+flr(rnd(5))
     if player.level%2==0 then
         player.atk+=1
-    else
-        player.mag+=1
     end
     if player.level%5==0 then
         player.def+=1
@@ -148,7 +150,6 @@ function level_up()
         player.speed+=1
     end
     player.hp=player.max_hp
-    player.pp=player.max_pp
 end
 
 function end_combat()

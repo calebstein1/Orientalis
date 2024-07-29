@@ -153,7 +153,6 @@ function draw_sprites()
         set_colors(0)
         print_combat_string(c_str)
         print("hp: "..player.hp,ttop(7),ttop(14),7)
-        print("pp: "..player.pp,ttop(7),ttop(15),7)
     elseif m==1 then
         set_colors(2)
         draw_map1_interior(sm)

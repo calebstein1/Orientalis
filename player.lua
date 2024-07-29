@@ -25,16 +25,14 @@ function init_player()
         8 main menu
         ]]
         state=8,
-        money=100,
         hazard_damage=false,
         max_hp=10,
-        max_pp=10,
         hp=10,
-        pp=10,
+        heal_packs=3,
+        heal_rate=7,
         atk=2,
         def=1,
         speed=5,
-        mag=1,
         level=1,
         xp=0,
         level_up=8,
@@ -268,7 +266,7 @@ function check_overworld_hazard()
 end
 
 function show_menu()
-    dia="HP:"..player.hp.."/"..player.max_hp.." PP:"..player.pp.."/"..player.max_pp.." XP:"..player.xp.."/"..player.level_up
+    dia="hp:"..player.hp.."/"..player.max_hp.." +kits:"..player.heal_packs.." xp:"..player.xp.."/"..player.level_up
     add(dialog_strs,dia)
     advance_dialog()
 end
