@@ -218,6 +218,9 @@ function draw_sprites()
         end
     elseif m==8 then
         set_colors(5)
+        if player.y>ttop(29) then
+            map_fog()
+        end
     end
     if player.hazard_damage then
         pal(15,8)
@@ -235,7 +238,7 @@ function do_overworld_hazard()
             knockback(4)
         end
     elseif m==8 then
-        player.hp-=2
+        player.hp-=4
         if player.hp<=0 then
             player.event_flags[5]=true
             player.state=9
