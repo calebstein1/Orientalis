@@ -7,6 +7,7 @@
 5 southern woods
 6 west cave
 7 hilltop
+8 snow forest
 ]]
 
 function set_map()
@@ -68,6 +69,13 @@ function set_map()
             y_start=ttop(48),
             y_end=ttop(64)
         }
+    elseif m==8 then
+        map_d={
+            x_start=ttop(50),
+            x_end=ttop(66),
+            y_start=ttop(16),
+            y_end=ttop(50)
+        }
     end
 end
 
@@ -76,6 +84,10 @@ function connected_map_warp()
         player.map=5
     elseif player.map==5 and player.y<ttop(27) then
         player.map=2
+    elseif player.map==7 and player.y<ttop(48) then
+        player.map=8
+    elseif player.map==8 and player.y>ttop(50) then
+        player.map=7
     end
 end
 
@@ -204,6 +216,8 @@ function draw_sprites()
         if not player.event_flags[3] then
             spr(poi_sp,ttop(58),ttop(54))
         end
+    elseif m==8 then
+        set_colors(5)
     end
     if player.hazard_damage then
         pal(15,8)
@@ -220,6 +234,12 @@ function do_overworld_hazard()
         else
             knockback(4)
         end
+    elseif m==8 then
+        player.hp-=2
+        if player.hp<=0 then
+            player.event_flags[5]=true
+            player.state=9
+        end
     end
 end
 
@@ -232,8 +252,13 @@ function draw_main_menu()
 end
 
 function draw_game_over()
+    if player.event_flags[5] then
+        set_colors(8)
+    end
     spr(96,ttop(57),ttop(4),3,1)
-    spr(player.a_over,ttop(59),ttop(4))
+    if not player.event_flags[5] then
+        spr(player.a_over,ttop(59),ttop(4))
+    end
     print("game over!",ttop(55)+6,ttop(2),1)
     print("CONTINUE",ttop(56)+4,ttop(6),1)
     print("QUIT",ttop(56)+4,ttop(7),1)

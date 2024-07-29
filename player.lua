@@ -51,6 +51,7 @@ function init_player()
         2 spoken to brother
         3 hilltop event
         4 first morning
+        5 frozen
         ]]
         event_flags={}
     }
@@ -268,7 +269,8 @@ function check_combat()
 end
 
 function check_overworld_hazard()
-    if (player.state==0 or player.state==1) and collide(player,player.dir,3) and frame-player.cooldown>3 then
+    if (player.map==8 and frame-player.cooldown>60)
+    or ((player.state==0 or player.state==1) and collide(player,player.dir,3) and frame-player.cooldown>3) then
         player.hazard_damage=true
         do_overworld_hazard()
     else
