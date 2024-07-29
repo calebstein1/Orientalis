@@ -153,6 +153,7 @@ function level_up()
 end
 
 function end_combat()
+    player.cooldown=frame+90
     player.state=0
     warp_player(player.warp)
 end
