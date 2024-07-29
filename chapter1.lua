@@ -67,6 +67,14 @@ function chapter1_dialog()
         dia=strings[5]
     elseif in_range(player.x,ttop(42),ttop(45)) and in_range(player.y,ttop(17),ttop(20)) then
         dia=strings[6]
+    elseif player.submap==1 and in_range(player.x,ttop(43),ttop(46)) and in_range(player.y,ttop(3),ttop(6)) then
+        if not player.event_flags[1] then
+            player.event_flags[1]=true
+            dia=strings[7]
+            player.heal_packs+=3
+        else
+            dia=strings[8]
+        end
     end
     if dia==nil then
         return
