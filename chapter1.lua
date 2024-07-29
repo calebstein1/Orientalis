@@ -61,6 +61,8 @@ function chapter1_dialog()
         dia=strings[2]
     elseif in_range(player.x,ttop(26),ttop(29)) and in_range(player.y,ttop(13),ttop(16)) then
         dia=strings[3]
+    elseif in_range(player.x,ttop(3),ttop(6)) and in_range(player.y,ttop(18),ttop(21)) then
+        dia=strings[5]
     end
     if dia==nil then
         return

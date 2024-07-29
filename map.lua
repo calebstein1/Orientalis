@@ -148,6 +148,7 @@ function draw_sprites()
             spr(113,ttop(2),ttop(16))
         end
         spr(114,ttop(27),ttop(14))
+        spr(116,ttop(4),ttop(19))
     elseif m==3 then
     elseif m==4 then
         cls()
