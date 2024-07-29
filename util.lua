@@ -91,6 +91,13 @@ function set_colors(p)
     end
 end
 
+function map_fog()
+    rectfill(cam_x,cam_y,player.x-12,cam_y+ttop(16),6)
+    rectfill(player.x+player.w+12,cam_y,player.x+ttop(16),cam_y+ttop(16),6)
+    rectfill(cam_x,cam_y,cam_x+ttop(16),player.y-12,6)
+    rectfill(cam_x,player.y+player.h+12,cam_x+ttop(16),cam_y+ttop(16),6)
+end
+
 function main_menu()
     player.state=8
     player.map=4

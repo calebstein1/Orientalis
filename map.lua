@@ -161,6 +161,8 @@ function draw_sprites()
         elseif player.state==8 then
             draw_main_menu()
         end
+    elseif m==5 then
+        map_fog()
     end
     spr(player.sp,player.x,player.y,1,1,player.flp)
 end
