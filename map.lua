@@ -181,7 +181,9 @@ function draw_sprites()
             draw_main_menu()
         end
     elseif m==5 then
-        map_fog()
+        if player.x<ttop(16) or player.x>ttop(22) then
+            map_fog()
+        end
     end
     spr(player.sp,player.x,player.y,1,1,player.flp)
 end

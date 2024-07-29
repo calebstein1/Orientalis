@@ -19,6 +19,27 @@ function init_c1_enemies()
             speed=6,
             xp=3,
             atk_str={"scratches at "..player.name,"with its sharp claws"}
+        },
+        {
+            name="the cave mole",
+            max_hp=7,
+            hp=7,
+            atk=4,
+            def=0,
+            speed=6,
+            xp=4,
+            atk_str={"throws a rock at",player.name.."'s head"}
+        },
+        {},
+        {
+            name="the giant killer wasp",
+            max_hp=4,
+            hp=4,
+            atk=8,
+            def=0,
+            speed=8,
+            xp=6,
+            atk_str={"charges "..player.name.." with","its stinger"}
         }
     }
 end

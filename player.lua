@@ -7,6 +7,7 @@ function init_player()
         movement=1,
         w=8,
         h=8,
+        cooldown=0,
         anim=0,
         a_over=117,
         flp=false,
@@ -239,8 +240,21 @@ function warp_player(w)
 end
 
 function check_combat()
-    if collide(player,player.dir,7) then
-        engage_combat(player.map)
+    roll_combat=false
+    m=player.map
+    if (m==2 and player.x>ttop(20) and player.state==1 and frame-player.cooldown>21)
+    or (m==3 and player.y>ttop(24) and player.state==1 and frame-player.cooldown>15)
+    or (m==5 and player.state==1 and frame-player.cooldown>18)
+    then
+        player.cooldown=frame
+        roll_combat=true
+    end
+
+    if roll_combat then
+        roll_combat=false
+        if rnd()<0.2 then
+            engage_combat(m)
+        end
     end
 end
 

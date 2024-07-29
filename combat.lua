@@ -9,7 +9,7 @@ function engage_combat(e)
     5: player turn result
     6: game over message
     ]]
-    player.warp={x=player.x-16,y=player.y-16,map=player.map}
+    player.warp={x=player.x,y=player.y,map=player.map}
     player.state=4
     player.x=ttop(2)
     player.y=ttop(12)
