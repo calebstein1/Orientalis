@@ -43,7 +43,7 @@ function set_map()
             x_start=0,
             x_end=ttop(34),
             y_start=ttop(28),
-            y_end=ttop(47)
+            y_end=ttop(44)
         }
     end
 end
