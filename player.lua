@@ -27,7 +27,6 @@ function init_player()
         state=8,
         money=100,
         hazard_damage=false,
-        cod=0,
         max_hp=10,
         max_pp=10,
         hp=10,

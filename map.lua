@@ -171,6 +171,7 @@ function draw_sprites()
         end
     elseif m==4 then
         cls()
+        set_colors(0)
         rectfill(ttop(56),0,ttop(59)+8,8,6)
         rectfill(ttop(55),ttop(1),ttop(60)+8,ttop(1)+8,6)
         rectfill(ttop(54),ttop(2),ttop(61)+8,ttop(2)+8,6)
@@ -198,7 +199,6 @@ function do_overworld_hazard()
     if m==3 then
         player.hp-=2
         if player.hp<=0 then
-            player.cod=1
             game_over()
         else
             knockback(4)
