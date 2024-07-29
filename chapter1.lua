@@ -69,18 +69,25 @@ function chapter1_dialog()
     end
 
     local dia={}
+    -- Mayor
     if player.submap==2 and in_range(player.x,ttop(45),ttop(48)) and in_range(player.y,ttop(1),ttop(4)) then
         dia=strings[1]
-    elseif in_range(player.x,ttop(1),ttop(4)) and in_range(player.y,ttop(15),ttop(18)) then
+    -- Guy by west cave
+    elseif not player.event_flags[3] and in_range(player.x,ttop(1),ttop(4)) and in_range(player.y,ttop(15),ttop(18)) then
         dia=strings[2]
-    elseif in_range(player.x,ttop(26),ttop(29)) and in_range(player.y,ttop(13),ttop(16)) then
+    -- Girl by fisherman hut
+    elseif player.event_flags[4] and in_range(player.x,ttop(26),ttop(29)) and in_range(player.y,ttop(13),ttop(16)) then
         dia=strings[3]
+    -- Hank the angry fisherman
     elseif player.submap==3 and in_range(player.x,ttop(41),ttop(44)) and in_range(player.y,ttop(10),ttop(13)) then
         dia=strings[4]
-    elseif in_range(player.x,ttop(3),ttop(6)) and in_range(player.y,ttop(18),ttop(21)) then
+    -- Woods warning
+    elseif player.event_flags[4] and in_range(player.x,ttop(3),ttop(6)) and in_range(player.y,ttop(18),ttop(21)) then
         dia=strings[5]
+    -- Cave warning
     elseif in_range(player.x,ttop(42),ttop(45)) and in_range(player.y,ttop(17),ttop(20)) then
         dia=strings[6]
+    -- Brother
     elseif player.submap==1 and in_range(player.x,ttop(43),ttop(46)) and in_range(player.y,ttop(3),ttop(6)) then
         if not player.event_flags[2] then
             player.event_flags[2]=true
@@ -89,9 +96,20 @@ function chapter1_dialog()
         else
             dia=strings[8]
         end
+    -- Future traveler
     elseif not player.event_flags[3] and in_range(player.x,ttop(57),ttop(60)) and in_range(player.y,ttop(54),ttop(57)) then
         player.event_flags[3]=true
         dia=strings[9]
+    -- Mom
+    elseif not player.event_flags[4] and in_range(player.x,ttop(35),ttop(38)) and in_range(player.y,ttop(11),ttop(14)) then
+        if not player.event_flags[3] then
+            dia=strings[10]
+        else
+            player.event_flags[4]=true
+            dia=strings[11]
+        end
+    elseif player.event_flags[4] and in_range(player.x,ttop(44),ttop(47)) and in_range(player.y,ttop(11),ttop(14)) then
+        dia=strings[12]
     end
     if dia==nil then
         return
@@ -107,7 +125,11 @@ function draw_map1_interior(sm)
         spr(42,ttop(48),ttop(1),1,2)
         spr(42,ttop(35),ttop(10),1,2)
         spr(115,ttop(45),ttop(4))
-        spr(73,ttop(36),ttop(12))
+        if not player.event_flags[4] then
+            spr(73,ttop(36),ttop(12))
+        else
+            spr(73,ttop(45),ttop(12))
+        end
     elseif sm==2 then
         spr(112,ttop(46),ttop(2))
     elseif sm==3 then
