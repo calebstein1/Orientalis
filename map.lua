@@ -4,6 +4,7 @@
 2 outdoor chapter 1
 3 chapter 1 cave
 4 game over/main menu
+5 southern woods
 ]]
 
 function set_map()
@@ -37,6 +38,21 @@ function set_map()
             y_start=0,
             y_end=ttop(16)
         }
+    elseif m==5 then
+        map_d={
+            x_start=0,
+            x_end=ttop(34),
+            y_start=ttop(28),
+            y_end=ttop(47)
+        }
+    end
+end
+
+function connected_map_warp()
+    if player.map==2 and player.y>ttop(28) then
+        player.map=5
+    elseif player.map==5 and player.y<ttop(27) then
+        player.map=2
     end
 end
 
@@ -134,7 +150,12 @@ function draw_sprites()
         spr(242,ttop(27),ttop(14))
     elseif m==3 then
     elseif m==4 then
-        set_colors(6)
+        cls()
+        rectfill(ttop(56),0,ttop(59)+8,6)
+        rectfill(ttop(55),ttop(1),ttop(60)+8,ttop(1)+8,6)
+        rectfill(ttop(54),ttop(2),ttop(61)+8,ttop(2)+8,6)
+        rectfill(ttop(53),ttop(3),ttop(62)+8,ttop(3)+8,6)
+        rectfill(ttop(52),ttop(4),ttop(63)+8,ttop(9)+8,6)
         if player.state==7 then
             draw_game_over()
         elseif player.state==8 then

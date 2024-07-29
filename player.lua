@@ -203,7 +203,9 @@ end
 function check_warp()
     if collide(player,player.dir,1) then
         warp_player(player.warp)
+        return
     end
+    connected_map_warp()
 end
 
 function warp_player(w)
