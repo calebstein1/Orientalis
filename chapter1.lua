@@ -48,6 +48,7 @@ function start_chapter1()
     player.x=ttop(36)
     player.y=ttop(4)
     player.money=100
+    player.cod=0
     player.max_hp=10
     player.hp=player.max_hp
     player.map=1

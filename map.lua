@@ -187,5 +187,21 @@ function draw_sprites()
             map_fog()
         end
     end
+    if player.hazard_damage then
+        pal(15,8)
+    end
     spr(player.sp,player.x,player.y,1,1,player.flp)
+end
+
+function do_overworld_hazard()
+    m=player.map
+    if m==3 then
+        player.hp-=2
+        if player.hp<=0 then
+            player.cod=1
+            game_over()
+        else
+            knockback(4)
+        end
+    end
 end

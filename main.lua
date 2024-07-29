@@ -1,5 +1,6 @@
 function _init()
     frame=0
+    overworld_timer=0
     init_dialog()
     init_player()
     load_strings()

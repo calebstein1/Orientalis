@@ -26,6 +26,8 @@ function init_player()
         ]]
         state=8,
         money=100,
+        hazard_damage=false,
+        cod=0,
         max_hp=10,
         max_pp=10,
         hp=10,
@@ -59,6 +61,7 @@ function update_player()
     check_warp()
     check_combat()
     check_climbing()
+    check_overworld_hazard()
 end
 
 function player_controls()
@@ -257,6 +260,16 @@ function check_combat()
         if rnd()<0.2 then
             engage_combat(m)
         end
+    end
+end
+
+function check_overworld_hazard()
+    if collide(player,player.dir,3) and frame-player.cooldown>3 then
+        player.hazard_damage=true
+        do_overworld_hazard()
+        player.cooldown=frame
+    else
+        player.hazard_damage=false
     end
 end
 

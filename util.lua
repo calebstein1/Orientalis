@@ -75,6 +75,8 @@ function set_colors(p)
     4 island
     5 snow
     6 menu
+    7 cooked
+    8 frozen
     ]]
     if p==0 then
         return
@@ -90,6 +92,14 @@ function set_colors(p)
     elseif p==5 then
     elseif p==6 then
         pal(11,6)
+    elseif p==7 then
+        pal(9,5)
+        pal(12,8)
+        pal(15,8)
+    elseif p==8 then
+        pal(8,14)
+        pal(9,12)
+        pal(15,7)
     end
 end
 
@@ -111,8 +121,13 @@ end
 function draw_main_menu()
     draw_map4_border()
     if player.game_over then
+        if player.cod==1 then
+            set_colors(7)
+        end
         spr(96,ttop(57),ttop(4),3,1)
-        spr(player.a_over,ttop(59),ttop(4))
+        if player.cod==0 then
+            spr(player.a_over,ttop(59),ttop(4))
+        end
         print("game over!",ttop(55)+6,ttop(2),1)
     else
         spr(69,ttop(57),ttop(2)+6,2,3)
@@ -125,8 +140,13 @@ end
 
 function draw_game_over()
     draw_map4_border()
-    spr(71,ttop(57),ttop(8)-1,2,2)
-    spr(player.a_over,ttop(57),ttop(8)-2)
+    if player.cod==1 then
+        set_colors(7)
+        spr(96,ttop(57),ttop(8),3,1)
+    else
+        spr(71,ttop(57),ttop(8)-1,2,2)
+        spr(player.a_over,ttop(57),ttop(8)-2)
+    end
     print("get up, "..player.name..",",ttop(54)+2,ttop(2),1)
     print("the world is",ttop(54)+2,ttop(3),1)
     print("counting on you!",ttop(54)+2,ttop(4),1)
@@ -143,4 +163,16 @@ function draw_map4_border()
     spr(13,ttop(61),ttop(1),1,1,true)
     spr(13,ttop(62),ttop(2),1,1,true)
     spr(13,ttop(63),ttop(3),1,1,true)
+end
+
+function knockback(f)
+    if player.dir==0 then
+        player.x+=f
+    elseif player.dir==1 then
+        player.x-=f
+    elseif player.dir==2 then
+        player.y+=f
+    elseif player.dir==3 then
+        player.y-=f
+    end
 end
