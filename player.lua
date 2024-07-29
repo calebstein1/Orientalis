@@ -23,6 +23,7 @@ function init_player()
         6 select
         7 game over
         8 main menu
+        9 overworld game over
         ]]
         state=8,
         hazard_damage=false,
@@ -43,8 +44,7 @@ function init_player()
         },
         chapter=0,
         map=4,
-        submap=1,
-        game_over=false
+        submap=1
     }
 end
 
@@ -129,10 +129,11 @@ function player_controls()
         end
         if btnp(4) then
             if player.y==ttop(6) then
+                init_player()
                 start_chapter1()
             else
                 if player.state==7 then
-                    player.game_over=true
+                    init_player()
                     main_menu()
                 end
             end          
@@ -165,7 +166,7 @@ function animate_player()
     elseif player.state==4 or player.state==7 or player.state==8 then
         player.sp=83
         player.flp=false
-        if (player.state==7 or (player.state==8 and player.game_over)) and frame-player.anim>15 then
+        if player.state==7 and frame-player.anim>15 then
             if player.a_over==99 then
                 player.a_over=100
             else
@@ -180,6 +181,15 @@ function animate_player()
             end
             player.anim=frame
         end
+    elseif player.state==9 and frame-player.anim>30 then
+        if player.sp==66 then
+            player.sp=82
+        elseif player.sp==82 then
+            game_over()
+        else
+            player.sp=66
+        end
+        player.anim=frame
     end
 end
 
@@ -199,17 +209,11 @@ function do_walk_anim()
             player.sp=68
         end
     elseif player.dir==2 then
-        if player.sp==81 then
-            player.sp=82
-        else
-            player.sp=81
-        end
+        player.sp=81
+        player.flp=not player.flp
     elseif player.dir==3 then
-        if player.sp==65 then
-            player.sp=66
-        else
-            player.sp=65
-        end
+        player.sp=65
+        player.flp=not player.flp
     end
 end
 
@@ -255,7 +259,7 @@ function check_combat()
 end
 
 function check_overworld_hazard()
-    if collide(player,player.dir,3) and frame-player.cooldown>3 then
+    if (player.state==0 or player.state==1) and collide(player,player.dir,3) and frame-player.cooldown>3 then
         player.hazard_damage=true
         do_overworld_hazard()
     else
