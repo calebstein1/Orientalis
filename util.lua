@@ -12,13 +12,13 @@ function collide(obj,dir,flag)
     if dir==0 then
         x1=x-1
         x2=x
-        y1=y
-        y2=y+h-1
+        y1=y+2
+        y2=y+h-2
     elseif dir==1 then
         x1=x+w
         x2=x+w+1
-        y1=y
-        y2=y+h-1
+        y1=y+2
+        y2=y+h-2
     elseif dir==2 then
         x1=x+2
         x2=x+w-2
