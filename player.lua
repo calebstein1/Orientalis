@@ -29,7 +29,7 @@ function init_player()
         hazard_damage=false,
         max_hp=10,
         hp=10,
-        heal_packs=3,
+        heal_packs=0,
         heal_rate=7,
         atk=2,
         def=1,
@@ -44,7 +44,12 @@ function init_player()
         },
         chapter=0,
         map=4,
-        submap=1
+        submap=1,
+        --[[
+        event flags:
+        1 spoken to brother
+        ]]
+        event_flags={}
     }
 end
 
