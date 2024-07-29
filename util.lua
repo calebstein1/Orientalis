@@ -102,11 +102,11 @@ end
 function draw_main_menu()
     draw_map4_border()
     if player.game_over then
-        spr(224,ttop(57),ttop(4),3,1)
+        spr(96,ttop(57),ttop(4),3,1)
         spr(player.a_over,ttop(59),ttop(4))
         print("game over!",ttop(55)+6,ttop(2),1)
     else
-        spr(197,ttop(57),ttop(2)+6,2,3)
+        spr(69,ttop(57),ttop(2)+6,2,3)
         spr(player.a_over,ttop(58),ttop(3)+5)
         print("terradestined",ttop(54)+6,ttop(2),1)
     end
@@ -116,7 +116,7 @@ end
 
 function draw_game_over()
     draw_map4_border()
-    spr(199,ttop(57),ttop(8)-1,2,2)
+    spr(71,ttop(57),ttop(8)-1,2,2)
     spr(player.a_over,ttop(57),ttop(8)-2)
     print("get up, "..player.name..",",ttop(54)+2,ttop(2),1)
     print("the world is",ttop(54)+2,ttop(3),1)

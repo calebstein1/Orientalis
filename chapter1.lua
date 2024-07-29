@@ -80,9 +80,9 @@ function draw_map1_interior(sm)
         spr(54,ttop(35),ttop(2))
         spr(55,ttop(35),ttop(1))
     elseif sm==4 then
-        spr(240,ttop(46),ttop(2))
+        spr(112,ttop(46),ttop(2))
     elseif sm==7 then
-        spr(240,ttop(42),ttop(11))
+        spr(112,ttop(42),ttop(11))
     end
 end
 

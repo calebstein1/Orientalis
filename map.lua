@@ -145,9 +145,9 @@ function draw_sprites()
     elseif m==2 then
         set_colors(0)
         if player.chapter==1 then
-            spr(241,ttop(2),ttop(16))
+            spr(113,ttop(2),ttop(16))
         end
-        spr(242,ttop(27),ttop(14))
+        spr(114,ttop(27),ttop(14))
     elseif m==3 then
     elseif m==4 then
         cls()

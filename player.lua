@@ -1,14 +1,14 @@
 function init_player() 
     player={
         name="terra",
-        sp=211,
+        sp=83,
         x=ttop(55)+4,
         y=ttop(6),
         movement=1,
         w=8,
         h=8,
         anim=0,
-        a_over=245,
+        a_over=117,
         flp=false,
         dir=0,
         --[[
@@ -130,34 +130,34 @@ end
 function animate_player()
     if player.state==0 then
         if player.dir==0 then
-            player.sp=195
+            player.sp=67
             player.flp=true
         elseif player.dir==1 then
-            player.sp=195
+            player.sp=67
             player.flp=false
         elseif player.dir==2 then
-            player.sp=208
+            player.sp=80
         elseif player.dir==3 then
-            player.sp=192
+            player.sp=64
         end
     elseif player.state==1 and frame-player.anim>9 then
         do_walk_anim()
         player.anim=frame
     elseif player.state==4 or player.state==7 or player.state==8 then
-        player.sp=211
+        player.sp=83
         player.flp=false
         if (player.state==7 or (player.state==8 and player.game_over)) and frame-player.anim>15 then
-            if player.a_over==227 then
-                player.a_over=228
+            if player.a_over==99 then
+                player.a_over=100
             else
-                player.a_over=227
+                player.a_over=99
             end
             player.anim=frame
         elseif player.state==8 and frame-player.anim>24 then
-            if player.a_over==245 or player.a_over==246 or player.a_over==247 then
+            if player.a_over==117 or player.a_over==118 or player.a_over==119 then
                 player.a_over+=1
             else
-                player.a_over=245
+                player.a_over=117
             end
             player.anim=frame
         end
@@ -167,29 +167,29 @@ end
 function do_walk_anim()
     if player.dir==0 then
         player.flp=true
-        if player.sp==196 then
-            player.sp=195
+        if player.sp==68 then
+            player.sp=67
         else
-            player.sp=196
+            player.sp=68
         end
     elseif player.dir==1 then
         player.flp=false
-        if player.sp==196 then
-            player.sp=195
+        if player.sp==68 then
+            player.sp=67
         else
-            player.sp=196
+            player.sp=68
         end
     elseif player.dir==2 then
-        if player.sp==209 then
-            player.sp=210
+        if player.sp==81 then
+            player.sp=82
         else
-            player.sp=209
+            player.sp=81
         end
     elseif player.dir==3 then
-        if player.sp==193 then
-            player.sp=194
+        if player.sp==65 then
+            player.sp=66
         else
-            player.sp=193
+            player.sp=65
         end
     end
 end
@@ -227,7 +227,7 @@ function show_menu()
 end
 
 function game_over()
-    player.a_over=227
+    player.a_over=99
     player.state=7
     player.map=4
     player.x=ttop(55)+4
