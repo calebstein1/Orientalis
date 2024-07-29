@@ -197,7 +197,7 @@ end
 function do_overworld_hazard()
     m=player.map
     if m==3 then
-        player.hp-=2
+        player.hp-=1
         if player.hp<=0 then
             game_over()
         else
