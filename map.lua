@@ -225,7 +225,11 @@ function draw_sprites()
     if player.hazard_damage then
         pal(15,8)
     end
-    spr(player.sp,player.x,player.y,1,1,player.flp)
+    if player.event_flags[6] and m==8 then
+        spr(player.sp+10,player.x,player.y,1,1,player.flp)
+    else
+        spr(player.sp,player.x,player.y,1,1,player.flp)
+    end
 end
 
 function do_overworld_hazard()
@@ -258,7 +262,11 @@ function draw_game_over()
     if player.event_flags[5] then
         set_colors(8)
     end
-    spr(96,ttop(57),ttop(4),3,1)
+    if player.event_flags[6] and player.map==8 then
+        spr(121,ttop(57),ttop(4),3,1)
+    else
+        spr(96,ttop(57),ttop(4),3,1)
+    end
     if not player.event_flags[5] then
         spr(player.a_over,ttop(59),ttop(4))
     end
