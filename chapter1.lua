@@ -96,12 +96,12 @@ end
 
 function draw_map1_interior(sm)
     if sm==1 then
-        spr(44,ttop(39),ttop(1))
-        spr(44,ttop(39),ttop(2))
-        spr(44,ttop(39),ttop(4))
-        spr(44,ttop(39),ttop(5))
-        spr(54,ttop(35),ttop(2))
-        spr(55,ttop(35),ttop(1))
+        spr(42,ttop(35),ttop(1),1,2)
+        spr(42,ttop(48),ttop(1),1,2)
+        spr(42,ttop(35),ttop(10),1,2)
+        spr(41,ttop(45),ttop(1))
+        spr(115,ttop(45),ttop(4))
+        spr(73,ttop(44),ttop(12))
     elseif sm==4 then
         spr(112,ttop(46),ttop(2))
     elseif sm==7 then
