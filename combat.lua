@@ -29,10 +29,13 @@ function print_combat_string(s)
         print("attack",ttop(3),ttop(12),7)
         print("+ kit X"..player.heal_packs,ttop(9),ttop(12),7)
     elseif s==2 then
+        local i=2
         print(enemies[e_id].name,ttop(4),ttop(1),7)
-        for i, str in pairs(enemies[e_id].atk_str) do
-            print(str,ttop(4),ttop(2+(i-1)),7)
+        for str in all(enemies[e_id].atk_str) do
+            print(str,ttop(4),ttop(i),7)
+            i+=1
         end
+        print(player.name.." takes "..enemies[e_id].atk-player.def.." damage!",ttop(4),ttop(i+1),7)
     elseif s==3 then
         print(enemies[e_id].name.." is",ttop(4),ttop(1),7)
         print("defeated!",ttop(4),ttop(2),11)
@@ -44,7 +47,8 @@ function print_combat_string(s)
         print(player.name.." is defeated!",ttop(4),ttop(5),8)
     elseif s==5 then
         print(player.name.." strikes",ttop(4),ttop(1),7)
-        print(enemies[e_id].name.."!",ttop(4),ttop(2),7)
+        print(enemies[e_id].name.." for "..player.atk-enemies[e_id].def,ttop(4),ttop(2),7)
+        print("damage!",ttop(4),ttop(3),7)
     elseif s==6 then
         print(player.name.." patches her",ttop(4),ttop(1),7)
         print("wounds with a",ttop(4),ttop(2),7)
