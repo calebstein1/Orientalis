@@ -151,7 +151,7 @@ function draw_sprites()
     elseif m==3 then
     elseif m==4 then
         cls()
-        rectfill(ttop(56),0,ttop(59)+8,6)
+        rectfill(ttop(56),0,ttop(59)+8,8,6)
         rectfill(ttop(55),ttop(1),ttop(60)+8,ttop(1)+8,6)
         rectfill(ttop(54),ttop(2),ttop(61)+8,ttop(2)+8,6)
         rectfill(ttop(53),ttop(3),ttop(62)+8,ttop(3)+8,6)
