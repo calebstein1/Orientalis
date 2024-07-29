@@ -5,6 +5,8 @@
 3 chapter 1 cave
 4 game over/main menu
 5 southern woods
+6 west cave
+7 hilltop
 ]]
 
 function set_map()
@@ -52,6 +54,20 @@ function set_map()
             y_start=ttop(28),
             y_end=ttop(44)
         }
+    elseif m==6 then
+        map_d={
+            x_start=ttop(34),
+            x_end=ttop(50),
+            y_start=ttop(44),
+            y_end=ttop(60)
+        }
+    elseif m==7 then
+        map_d={
+            x_start=ttop(50),
+            x_end=ttop(66),
+            y_start=ttop(48),
+            y_end=ttop(64)
+        }
     end
 end
 
@@ -96,6 +112,9 @@ function set_warp()
         wy=13
         wm=1
         if player.x<ttop(2) then
+            wx=48
+            wy=57
+            wm=6
         elseif player.x<ttop(6) then
             player.submap=0
         elseif player.x<ttop(10) then
@@ -113,6 +132,20 @@ function set_warp()
         wx=32
         wy=15
         wm=2
+    elseif m==6 then
+        if player.x>ttop(42) then
+            wx=1
+            wy=15
+            wm=2
+        else
+            wx=64
+            wy=60
+            wm=7
+        end
+    elseif m==7 then
+        wx=35
+        wy=46
+        wm=6
     end
     player.warp={x=ttop(wx),y=ttop(wy),map=wm}
 end
@@ -130,15 +163,19 @@ function draw_sprites()
         set_colors(2)
         draw_map1_interior(sm)
     elseif m==2 then
-        set_colors(0)
-        if player.chapter==1 then
+        if not player.event_flags[4] then
+            set_colors(1)
+        else
+            set_colors(0)
+            spr(114,ttop(27),ttop(14))
+            spr(116,ttop(4),ttop(19))
+        end
+        if not player.event_flags[3] then
             spr(113,ttop(2),ttop(16))
         end
-        spr(114,ttop(27),ttop(14))
-        spr(116,ttop(4),ttop(19))
     elseif m==3 then
         set_colors(3)
-        spr(113,ttop(43),ttop(18))
+        spr(112,ttop(43),ttop(18))
         if player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
             map_fog()
         end
@@ -155,6 +192,17 @@ function draw_sprites()
         set_colors(0)
         if player.x<ttop(16) or player.x>ttop(22) then
             map_fog()
+        end
+    elseif m==6 then
+        set_colors(7)
+    elseif m==7 then
+        if not player.event_flags[4] then
+            set_colors(1)
+        else
+            set_colors(0)
+        end
+        if not player.event_flags[3] then
+            spr(poi_sp,ttop(58),ttop(54))
         end
     end
     if player.hazard_damage then

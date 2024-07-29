@@ -32,7 +32,7 @@ function init_player()
         heal_packs=0,
         heal_rate=7,
         atk=2,
-        def=1,
+        def=0,
         speed=5,
         level=1,
         xp=0,
@@ -47,7 +47,10 @@ function init_player()
         submap=1,
         --[[
         event flags:
-        1 spoken to brother
+        1 intro cutscene done
+        2 spoken to brother
+        3 hilltop event
+        4 first morning
         ]]
         event_flags={}
     }
@@ -255,6 +258,7 @@ function check_combat()
     if (m==2 and player.x>ttop(20) and player.state==1 and frame-player.cooldown>21)
     or (m==3 and player.y>ttop(24) and player.state==1 and frame-player.cooldown>15)
     or (m==5 and player.state==1 and frame-player.cooldown>18)
+    or (m==6 and player.state==1 and frame-player.cooldown>12)
     then
         player.cooldown=frame
         if rnd()<0.2 then

@@ -75,6 +75,7 @@ function set_colors(p)
     4 island
     5 snow
     6 menu
+    7 lush cave
     ]]
     if p==0 then
         return
@@ -91,6 +92,8 @@ function set_colors(p)
     elseif p==5 then
     elseif p==6 then
         pal(11,6)
+    elseif p==7 then
+        pal(11,5)
     end
 end
 
