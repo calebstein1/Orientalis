@@ -50,6 +50,7 @@ function init_player()
         2 spoken to brother
         3 hilltop event
         4 first morning
+        5 chapter 1 complete
         6 has parka
         7 hazard damage
         ]]

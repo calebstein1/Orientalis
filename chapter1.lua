@@ -1,6 +1,14 @@
 function init_c1_enemies()
     enemies={
-        {},
+        {
+            name="the giant mole",
+            max_hp=15,
+            hp=15,
+            atk=5,
+            def=1,
+            speed=4,
+            atk_str={"tears into "..player.name,"with its brutal claws"}
+        },
         {
             name="the feral cat",
             max_hp=5,
@@ -55,11 +63,17 @@ function start_chapter1()
     player.sp=89
     init_c1_enemies()
     overworld_timer=frame
+    engage_boss=false
 end
 
 function check_chapter1_events()
     if not player.event_flags[1] and frame-overworld_timer>120 then
         intro_cutscene()
+    end
+    if engage_boss and dialog_finished then
+        engage_boss=false
+        player.event_flags[5]=true
+        engage_combat(1)
     end
 end
 
@@ -111,6 +125,10 @@ function chapter1_dialog()
         end
     elseif player.event_flags[4] and in_range(player.x,ttop(44),ttop(47)) and in_range(player.y,ttop(11),ttop(14)) then
         dia=strings[12]
+    -- Chapter 1 boss
+    elseif player.event_flags[4] and not player.event_flags[5] and in_range(player.x,ttop(43),ttop(46)) and in_range(player.y,ttop(39),ttop(42)) then
+        engage_boss=true
+        dia=strings[13]
     end
     if dia==nil then
         return

@@ -191,6 +191,9 @@ function draw_sprites()
         if player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
             map_fog()
         end
+        if player.event_flags[4] and not player.event_flags[5] then
+            spr(poi_sp,ttop(44),ttop(40))
+        end
     elseif m==4 then
         cls()
         set_colors(0)
