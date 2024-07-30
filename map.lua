@@ -222,7 +222,7 @@ function draw_sprites()
             map_fog()
         end
     end
-    if player.hazard_damage then
+    if player.event_flags[7] then
         pal(15,8)
     end
     if player.event_flags[6] and m==8 then
@@ -235,18 +235,13 @@ end
 function do_overworld_hazard()
     m=player.map
     if m==3 then
+        knockback(4)
         player.hp-=1
-        if player.hp<=0 then
-            player.state=9
-        else
-            knockback(4)
-        end
     elseif m==8 then
         player.hp-=4
-        if player.hp<=0 then
-            player.event_flags[5]=true
-            player.state=9
-        end
+    end
+    if player.hp<=0 then
+        player.state=9
     end
 end
 
@@ -259,17 +254,8 @@ function draw_main_menu()
 end
 
 function draw_game_over()
-    if player.event_flags[5] then
-        set_colors(8)
-    end
-    if player.event_flags[6] and player.map==8 then
-        spr(121,ttop(57),ttop(4),3,1)
-    else
-        spr(96,ttop(57),ttop(4),3,1)
-    end
-    if not player.event_flags[5] then
-        spr(player.a_over,ttop(59),ttop(4))
-    end
+    spr(96,ttop(57),ttop(4),3,1)
+    spr(player.a_over,ttop(59),ttop(4))
     print("game over!",ttop(55)+6,ttop(2),1)
     print("CONTINUE",ttop(56)+4,ttop(6),1)
     print("QUIT",ttop(56)+4,ttop(7),1)

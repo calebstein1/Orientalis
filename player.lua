@@ -26,7 +26,6 @@ function init_player()
         9 overworld game over
         ]]
         state=8,
-        hazard_damage=false,
         max_hp=10,
         hp=10,
         heal_packs=0,
@@ -51,8 +50,8 @@ function init_player()
         2 spoken to brother
         3 hilltop event
         4 first morning
-        5 frozen
         6 has parka
+        7 hazard damage
         ]]
         event_flags={}
     }
@@ -270,12 +269,12 @@ function check_combat()
 end
 
 function check_overworld_hazard()
-    if (player.map==8 and player.y>ttop(29) and frame-player.cooldown>60 and not player.event_flags[6])
+    if (player.map==8 and frame-player.cooldown>60 and not player.event_flags[6])
     or ((player.state==0 or player.state==1) and collide(player,player.dir,3) and frame-player.cooldown>3) then
-        player.hazard_damage=true
+        player.event_flags[7]=true
         do_overworld_hazard()
     else
-        player.hazard_damage=false
+        player.event_flags[7]=false
         return
     end
     player.cooldown=frame

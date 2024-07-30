@@ -76,7 +76,6 @@ function set_colors(p)
     5 snow
     6 menu
     7 lush cave
-    8 frozen
     ]]
     if p==0 then
         return
@@ -97,9 +96,6 @@ function set_colors(p)
         pal(11,6)
     elseif p==7 then
         pal(11,5)
-    elseif p==8 then
-        pal(9,12)
-        pal(15,7)
     end
 end
 
