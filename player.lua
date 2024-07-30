@@ -291,7 +291,7 @@ end
 function check_combat()
     m=player.map
     if (m==2 and player.x>ttop(20) and player.state==1 and frame-player.cooldown>21)
-    or (m==3 and player.y>ttop(24) and player.state==1 and frame-player.cooldown>15)
+    or (m==3 and player.y>ttop(24) and player.state==1 and frame-player.cooldown>15 and not player.event_flags[5])
     or (m==5 and player.state==1 and frame-player.cooldown>18)
     or (m==6 and player.state==1 and frame-player.cooldown>12)
     then

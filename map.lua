@@ -188,7 +188,7 @@ function draw_sprites()
     elseif m==3 then
         set_colors(3)
         spr(112,ttop(43),ttop(18))
-        if player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
+        if not player.event_flags[5] and player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
             map_fog()
         end
         if player.event_flags[4] and not player.event_flags[5] then
