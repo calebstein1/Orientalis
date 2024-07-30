@@ -154,6 +154,8 @@ function save_game()
     for f in all(player.event_flags) do
         if f then
             dset(i,1)
+        else
+            dset(i,0)
         end
         i+=1
     end

@@ -57,6 +57,10 @@ function init_player()
         ]]
         event_flags={}
     }
+
+    for i=1,8 do
+        player.event_flags[i]=false
+    end
 end
 
 function update_player()
