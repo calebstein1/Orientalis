@@ -2,11 +2,12 @@ function init_c1_enemies()
     enemies={
         {
             name="the giant mole",
-            max_hp=15,
-            hp=15,
+            max_hp=20,
+            hp=20,
             atk=5,
             def=1,
             speed=4,
+            xp=25,
             atk_str={"tears into "..player.name,"with its brutal claws"}
         },
         {

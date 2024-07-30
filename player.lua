@@ -53,12 +53,17 @@ function init_player()
         5 chapter 1 complete
         6 has parka
         7 hazard damage
+        8 sleeping
         ]]
         event_flags={}
     }
 end
 
 function update_player()
+    if player.event_flags[8] and frame-overworld_timer>90 then
+        player.event_flags[8]=false
+        intro_cutscene()
+    end
     if player.chapter==1 then
         check_chapter1_events()
     end
@@ -238,9 +243,23 @@ function do_walk_anim()
 end
 
 function check_dialog()
-    if player.chapter==1 then
+    if player.submap==1 and in_range(player.x,ttop(35),ttop(37)) and in_range(player.y,0,ttop(4)) then
+        overworld_timer=frame
+        bed_save()
+    elseif player.chapter==1 then
         chapter1_dialog()
     end
+end
+
+function bed_save()
+    player.hp=player.max_hp
+    save_game()
+    player.event_flags[8]=true
+    player.x=ttop(35)
+    player.y=ttop(1)
+    player.sp=89
+    dialog_strs={"saving game..."}
+    advance_dialog()
 end
 
 function check_warp()
