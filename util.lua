@@ -133,3 +133,56 @@ function reset_timer()
     player.anim=0
     player.cooldown=0
 end
+
+function save_game()
+    local i=16
+    dset(0,player.x)
+    dset(1,player.y)
+    dset(2,player.max_hp)
+    dset(3,player.hp)
+    dset(4,player.heal_packs)
+    dset(5,player.heal_rate)
+    dset(6,player.atk)
+    dset(7,player.def)
+    dset(8,player.speed)
+    dset(9,player.level)
+    dset(10,player.xp)
+    dset(11,player.level_up)
+    dset(12,player.map)
+    dset(13,player.submap)
+    dset(14,player.chapter)
+    for f in all(player.event_flags) do
+        if f then
+            dset(i,1)
+        end
+        i+=1
+    end
+    dset(15,i-16)
+end
+
+function load_game()
+    local c=15
+    for i=1,dget(c) do
+        c+=1
+        if dget(c)==1 then
+            player.event_flags[i]=true
+        end
+    end
+    player.x=dget(0)
+    player.y=dget(1)
+    player.max_hp=dget(2)
+    player.hp=dget(3)
+    player.heal_packs=dget(4)
+    player.heal_rate=dget(5)
+    player.atk=dget(6)
+    player.def=dget(7)
+    player.speed=dget(8)
+    player.level=dget(9)
+    player.xp=dget(10)
+    player.level_up=dget(11)
+    player.map=dget(12)
+    player.submap=dget(13)
+    player.chapter=dget(14)
+    player.sp=64
+    player.state=0
+end

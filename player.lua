@@ -138,12 +138,20 @@ function player_controls()
         end
         if btnp(4) then
             if player.y==ttop(6) then
-                init_player()
-                start_chapter1()
+                if player.state==7 then
+                    load_game()
+                else
+                    init_player()
+                    start_chapter1()
+                end
             else
                 if player.state==7 then
-                    init_player()
                     main_menu()
+                else
+                    load_game()
+                    if player.chapter==1 then
+                        init_c1_enemies()
+                    end
                 end
             end          
         end

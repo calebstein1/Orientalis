@@ -1,4 +1,5 @@
 function _init()
+    cartdata("calebstein1_terradestined_1")
     frame=0
     overworld_timer=0
     poi_sp=105
