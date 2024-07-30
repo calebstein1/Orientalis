@@ -70,7 +70,7 @@ function check_chapter1_events()
     if not player.event_flags[1] and frame-overworld_timer>120 then
         intro_cutscene()
     end
-    if engage_boss and dialog_finished then
+    if engage_boss and not dialog_scene then
         engage_boss=false
         player.event_flags[5]=true
         engage_combat(1)
