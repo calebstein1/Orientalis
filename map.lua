@@ -210,10 +210,9 @@ function draw_sprites()
     elseif p_map==5 then
         if not event_flags[4] then
             set_colors(1)
+            map_fog(0)
         else
             set_colors(0)
-        end
-        if p_x<ttop(16) or p_x>ttop(22) then
             map_fog(6)
         end
     elseif p_map==6 then
@@ -246,7 +245,7 @@ function draw_sprites()
 end
 
 function do_overworld_hazard()
-    if p_map==3 then
+    if p_map==3 or p_map==6 then
         knockback(4)
         p_hp-=1
     elseif p_map==8 then
