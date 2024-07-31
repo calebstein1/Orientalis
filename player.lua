@@ -57,8 +57,9 @@ function init_player()
         ]]
     }
 
+    num_event_flags=8
     event_flags={}
-    for i=1,8 do
+    for i=1,num_event_flags do
         event_flags[i]=false
     end
 end

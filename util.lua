@@ -135,7 +135,7 @@ function reset_timer()
 end
 
 function save_game()
-    local i=16
+    local i=15
     dset(0,player.x)
     dset(1,player.y)
     dset(2,player.max_hp)
@@ -151,7 +151,7 @@ function save_game()
     dset(12,player.map)
     dset(13,player.submap)
     dset(14,player.chapter)
-    for f in all(pevent_flags) do
+    for f in all(event_flags) do
         if f then
             dset(i,1)
         else
@@ -159,14 +159,11 @@ function save_game()
         end
         i+=1
     end
-    dset(15,i-16)
 end
 
 function load_game()
-    local c=15
-    for i=1,dget(c) do
-        c+=1
-        if dget(c)==1 then
+    for i=1,num_event_flags do
+        if dget(i+14)==1 then
             event_flags[i]=true
         end
     end
