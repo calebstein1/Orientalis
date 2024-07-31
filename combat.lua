@@ -37,7 +37,7 @@ function print_combat_string(s)
             print(str,ttop(4),ttop(i),7)
             i+=1
         end
-        print(p_name.." takes "..enemies[e_id].atk-p_def.." damage!",ttop(4),ttop(i+1),7)
+        print(p_name.." takes "..damage.." damage!",ttop(4),ttop(i+1),7)
     elseif s==3 then
         print(enemies[e_id].name.." is",ttop(4),ttop(1),7)
         print("defeated!",ttop(4),ttop(2),11)
@@ -49,7 +49,7 @@ function print_combat_string(s)
         print(p_name.." is defeated!",ttop(4),ttop(5),8)
     elseif s==5 then
         print(p_name.." strikes",ttop(4),ttop(1),7)
-        print(enemies[e_id].name.." for "..p_atk-enemies[e_id].def,ttop(4),ttop(2),7)
+        print(enemies[e_id].name.." for "..damage,ttop(4),ttop(2),7)
         print("damage!",ttop(4),ttop(3),7)
     elseif s==6 then
         print(p_name.." patches her",ttop(4),ttop(1),7)
@@ -61,6 +61,8 @@ function print_combat_string(s)
 end
 
 function advance_combat()
+    local mod=.85+rnd(.15)
+
     if c_state==0 then
         if enemies[e_id].speed > p_speed then
             c_state=2
@@ -70,8 +72,10 @@ function advance_combat()
     end
 
     if c_state==1 then
+        damage=flr(((p_atk-enemies[e_id].def)*mod)+.5)
         player_turn()
     elseif c_state==2 then
+        damage=flr(((enemies[e_id].atk-p_def)*mod)+.5)
         enemy_turn()
     elseif c_state==3 then
         enemies[e_id].hp=enemies[e_id].max_hp
@@ -98,7 +102,7 @@ end
 
 function player_result()
     if p_x==ttop(2) then
-        enemies[e_id].hp-=(p_atk-enemies[e_id].def)
+        enemies[e_id].hp-=damage
         c_str=5
     elseif p_x==ttop(8) then
         if p_heal_packs==0 then
@@ -121,7 +125,7 @@ function player_result()
 end
 
 function enemy_turn()
-    p_hp-=(enemies[e_id].atk-p_def)
+    p_hp-=damage
     if p_hp<=0 then
         c_str=2
         c_state=6
