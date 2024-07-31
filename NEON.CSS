@@ -1,0 +1,76 @@
+a:link
+{
+	color: rgb(204,255,0); 
+}
+a:visited
+{
+	color: rgb(102,204,0); 
+} 
+a:active 
+{
+	color: rgb(255,255,0);
+}
+body
+{
+	font-family: Verdana, Arial, Helvetica;
+	background-image: url("IMAGES/BG.GIF");
+	color: rgb(102,255,51);
+}
+table
+{
+	table-border-color-light: rgb(255,255,153);
+	table-border-color-dark: rgb(255,255,51);
+	width: 70%;
+}
+td
+{
+	vertical-align: top;
+}
+td>p
+{
+	padding-top: 32px;
+}
+h1, h2, h3, h4, h5, h6
+{
+	font-family: Verdana, Arial, Helvetica;
+}
+h1
+{
+	color: rgb(204,255,0);
+}
+h2
+{
+	color: rgb(153,504,255); 
+}
+h3
+{
+	color: rgb(255,51,153); 
+}
+h4
+{
+	color: rgb(255,51,153);
+}
+h5
+{
+	color: rgb(153,504,255);
+}
+h6
+{
+	color: rgb(204,255,0);
+}
+h3:hover>img
+{
+	animation: spin 1s 1 linear;
+}
+
+@keyframes spin
+{
+	50%
+	{
+		rotate: 160deg;
+	}
+	100%
+	{
+		rotate: 360deg;
+	}
+}
