@@ -173,7 +173,11 @@ function set_bg()
     if p_map==1 then
         bg=4
     elseif p_map==2 or p_map==5 or p_map==7 or p_map==9 then
-        bg=11
+        if not event_flags[4] then
+            bg=1
+        else
+            bg=11
+        end
     elseif p_map==3 then
         bg=5
     elseif p_map==6 then
