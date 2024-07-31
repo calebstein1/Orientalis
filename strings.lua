@@ -29,6 +29,8 @@ function load_strings()
 
         {"welcome home, "..p_name..",","i know it's nearly daybreak,","but you've had a long night,","you might want to head to","your room and have a quick","nap before you head off again"},
 
-        {"you look a bit tired, honey","your bed's always made up","for you in case you need it"}
+        {"you look a bit tired, honey","your bed's always made up","for you in case you need it"},
+
+        {"this place is mine","you cannot take it from me","you're on an adventure to","save the world?","haw haw haw...","i shall enjoy snacking on you"}
     }
 end
