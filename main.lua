@@ -1,7 +1,8 @@
 function _init()
     cartdata("calebstein1_terradestined_1")
     poke(0x5f2e, 1)
-    color_palette={[0]=0,1,2,131,4,5,6,7,136,137,10,139,140,13,142,143}
+    color_palette={[0]=0,129,2,131,4,5,6,7,136,137,10,139,140,13,142,143}
+    bg=0
     frame=0
     overworld_timer=0
     poi_sp=105
@@ -26,10 +27,11 @@ function _update()
     set_map()
     set_camera()
     update_player()
+    set_bg()
 end
 
 function _draw()
-    cls()
+    cls(bg)
     map(0,0)
     draw_sprites()
     draw_dialog()

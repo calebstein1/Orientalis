@@ -129,7 +129,7 @@ function set_warp()
         Individual warps will override values as needed
         ]]
         p_wx=42
-        p_wy=13
+        p_wy=14
         p_wm=1
         if p_x<ttop(2) then
             p_wx=48
@@ -166,6 +166,20 @@ function set_warp()
         p_wx=35
         p_wy=46
         p_wm=6
+    end
+end
+
+function set_bg()
+    if p_map==1 then
+        bg=4
+    elseif p_map==2 or p_map==5 or p_map==7 or p_map==9 then
+        bg=11
+    elseif p_map==3 then
+        bg=5
+    elseif p_map==6 then
+        bg=5
+    elseif p_map==8 then
+        bg=7
     end
 end
 
