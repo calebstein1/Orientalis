@@ -245,7 +245,7 @@ function draw_sprites()
 end
 
 function do_overworld_hazard()
-    if p_map==3 or p_map==6 then
+    if p_map==3 or p_map==5 or p_map==6 then
         knockback(4)
         p_hp-=1
     elseif p_map==8 then
