@@ -59,9 +59,8 @@ function in_range(n,l,h)
 end
 
 function set_colors(p)
-    for i=0,15 do
-        pal(i,i)
-    end
+    pal()
+    pal(color_palette,1)
     --[[
     0 default
     1 outdoor night
@@ -76,7 +75,7 @@ function set_colors(p)
         return
     elseif p==1 then
         pal(4,5)
-        pal(11,1)
+        pal(11,129,1)
     elseif p==2 then
         pal(3,6)
         pal(11,4)

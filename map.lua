@@ -213,7 +213,7 @@ function draw_sprites()
             map_fog(0)
         else
             set_colors(0)
-            map_fog(6)
+            map_fog(5)
         end
     elseif p_map==6 then
         set_colors(7)
@@ -229,7 +229,7 @@ function draw_sprites()
     elseif p_map==8 then
         set_colors(5)
         if p_y>ttop(29) then
-            map_fog(6)
+            map_fog(5)
         end
     elseif p_map==9 then
         set_colors(0)
