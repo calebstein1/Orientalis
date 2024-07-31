@@ -122,7 +122,6 @@ function chapter1_dialog()
         else
             event_flags[4]=true
             dia=strings[11]
-            save_game()
         end
     elseif event_flags[4] and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then
         dia=strings[12]
