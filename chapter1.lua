@@ -8,7 +8,7 @@ function init_c1_enemies()
             def=1,
             speed=4,
             xp=25,
-            atk_str={"tears into "..player.name,"with its brutal claws"}
+            atk_str={"tears into "..p_name,"with its brutal claws"}
         },
         {
             name="the feral cat",
@@ -18,7 +18,7 @@ function init_c1_enemies()
             def=0,
             speed=6,
             xp=3,
-            atk_str={"scratches at "..player.name,"with its sharp claws"}
+            atk_str={"scratches at "..p_name,"with its sharp claws"}
         },
         {
             name="the cave mole",
@@ -28,7 +28,7 @@ function init_c1_enemies()
             def=0,
             speed=6,
             xp=8,
-            atk_str={"throws a rock at",player.name.."'s head"}
+            atk_str={"throws a rock at",p_name.."'s head"}
         },
         {},
         {
@@ -39,7 +39,7 @@ function init_c1_enemies()
             def=0,
             speed=8,
             xp=11,
-            atk_str={"charges "..player.name.." with","its stinger"}
+            atk_str={"charges "..p_name.." with","its stinger"}
         },
         {
             name="the cave rat",
@@ -49,19 +49,19 @@ function init_c1_enemies()
             def=0,
             speed=4,
             xp=2,
-            atk_str={"tries to bite at",player.name}
+            atk_str={"tries to bite at",p_name}
         }
     }
 end
 
 function start_chapter1()
-    player.x=ttop(35)
-    player.y=ttop(1)
-    player.map=1
-    player.submap=1
-    player.state=3
-    player.chapter=1
-    player.sp=89
+    p_x=ttop(35)
+    p_y=ttop(1)
+    p_map=1
+    p_submap=1
+    p_state=3
+    p_chapter=1
+    p_sp=89
     init_c1_enemies()
     overworld_timer=frame
     engage_boss=false
@@ -85,38 +85,38 @@ function chapter1_dialog()
 
     local dia={}
     -- Mayor
-    if player.submap==2 and in_range(player.x,ttop(45),ttop(48)) and in_range(player.y,ttop(1),ttop(4)) then
+    if p_submap==2 and in_range(p_x,ttop(45),ttop(48)) and in_range(p_y,ttop(1),ttop(4)) then
         dia=strings[1]
     -- Guy by west cave
-    elseif not event_flags[3] and in_range(player.x,ttop(1),ttop(4)) and in_range(player.y,ttop(15),ttop(18)) then
+    elseif not event_flags[3] and in_range(p_x,ttop(1),ttop(4)) and in_range(p_y,ttop(15),ttop(18)) then
         dia=strings[2]
     -- Girl by fisherman hut
-    elseif event_flags[4] and in_range(player.x,ttop(26),ttop(29)) and in_range(player.y,ttop(13),ttop(16)) then
+    elseif event_flags[4] and in_range(p_x,ttop(26),ttop(29)) and in_range(p_y,ttop(13),ttop(16)) then
         dia=strings[3]
     -- Hank the angry fisherman
-    elseif player.submap==3 and in_range(player.x,ttop(41),ttop(44)) and in_range(player.y,ttop(10),ttop(13)) then
+    elseif p_submap==3 and in_range(p_x,ttop(41),ttop(44)) and in_range(p_y,ttop(10),ttop(13)) then
         dia=strings[4]
     -- Woods warning
-    elseif event_flags[4] and in_range(player.x,ttop(3),ttop(6)) and in_range(player.y,ttop(18),ttop(21)) then
+    elseif event_flags[4] and in_range(p_x,ttop(3),ttop(6)) and in_range(p_y,ttop(18),ttop(21)) then
         dia=strings[5]
     -- Cave warning
-    elseif in_range(player.x,ttop(42),ttop(45)) and in_range(player.y,ttop(17),ttop(20)) then
+    elseif in_range(p_x,ttop(42),ttop(45)) and in_range(p_y,ttop(17),ttop(20)) then
         dia=strings[6]
     -- Brother
-    elseif player.submap==1 and in_range(player.x,ttop(43),ttop(46)) and in_range(player.y,ttop(3),ttop(6)) then
+    elseif p_submap==1 and in_range(p_x,ttop(43),ttop(46)) and in_range(p_y,ttop(3),ttop(6)) then
         if not event_flags[2] then
             event_flags[2]=true
             dia=strings[7]
-            player.heal_packs+=3
+            p_heal_packs+=3
         else
             dia=strings[8]
         end
     -- Future traveler
-    elseif not event_flags[3] and in_range(player.x,ttop(57),ttop(60)) and in_range(player.y,ttop(54),ttop(57)) then
+    elseif not event_flags[3] and in_range(p_x,ttop(57),ttop(60)) and in_range(p_y,ttop(54),ttop(57)) then
         event_flags[3]=true
         dia=strings[9]
     -- Mom
-    elseif not event_flags[4] and in_range(player.x,ttop(35),ttop(38)) and in_range(player.y,ttop(11),ttop(14)) then
+    elseif not event_flags[4] and in_range(p_x,ttop(35),ttop(38)) and in_range(p_y,ttop(11),ttop(14)) then
         if not event_flags[3] then
             dia=strings[10]
         else
@@ -124,10 +124,10 @@ function chapter1_dialog()
             dia=strings[11]
             save_game()
         end
-    elseif event_flags[4] and in_range(player.x,ttop(44),ttop(47)) and in_range(player.y,ttop(11),ttop(14)) then
+    elseif event_flags[4] and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then
         dia=strings[12]
     -- Chapter 1 boss
-    elseif event_flags[4] and not event_flags[5] and in_range(player.x,ttop(43),ttop(46)) and in_range(player.y,ttop(39),ttop(42)) then
+    elseif event_flags[4] and not event_flags[5] and in_range(p_x,ttop(43),ttop(46)) and in_range(p_y,ttop(39),ttop(42)) then
         engage_boss=true
         dia=strings[13]
     end
@@ -140,8 +140,8 @@ function chapter1_dialog()
     advance_dialog()
 end
 
-function draw_map1_interior(sm)
-    if sm==1 then
+function draw_map1_interior()
+    if p_submap==1 then
         spr(42,ttop(48),ttop(1),1,2)
         spr(42,ttop(35),ttop(10),1,2)
         spr(115,ttop(45),ttop(4))
@@ -150,17 +150,17 @@ function draw_map1_interior(sm)
         else
             spr(73,ttop(45),ttop(12))
         end
-    elseif sm==2 then
+    elseif p_submap==2 then
         spr(112,ttop(46),ttop(2))
-    elseif sm==3 then
+    elseif p_submap==3 then
         spr(112,ttop(42),ttop(11))
     end
 end
 
 function intro_cutscene()
-    player.x=ttop(36)
-    player.y=ttop(2)
-    player.state=0
-    player.dir=1
+    p_x=ttop(36)
+    p_y=ttop(2)
+    p_state=0
+    p_dir=1
     event_flags[1]=true
 end

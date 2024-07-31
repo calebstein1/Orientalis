@@ -1,5 +1,5 @@
 function set_camera()
-    cam_x=player.x-64+(player.w/2)
+    cam_x=p_x-64+(p_w/2)
     if cam_x<map_d.x_start then
         cam_x=map_d.x_start
     end
@@ -7,7 +7,7 @@ function set_camera()
         cam_x=map_d.x_end-128
     end
 
-    cam_y=player.y-64+(player.h/2)
+    cam_y=p_y-64+(p_h/2)
     if cam_y<map_d.y_start then
         cam_y=map_d.y_start
     end

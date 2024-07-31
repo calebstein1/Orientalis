@@ -1,62 +1,59 @@
 function init_player() 
-    player={
-        name="tara",
-        sp=83,
-        x=ttop(55)+4,
-        y=ttop(6),
-        movement=1,
-        w=8,
-        h=8,
-        cooldown=0,
-        anim=0,
-        a_over=117,
-        flp=false,
-        dir=0,
-        --[[
-        state:
-        0 idle
-        1 walking
-        2 climbing
-        3 cutscene
-        4 combat
-        5 dialog
-        6 select
-        7 game over
-        8 main menu
-        9 overworld game over
-        ]]
-        state=8,
-        max_hp=10,
-        hp=10,
-        heal_packs=0,
-        heal_rate=7,
-        atk=2,
-        def=0,
-        speed=5,
-        level=1,
-        xp=0,
-        level_up=8,
-        warp={
-            x=0,
-            y=0,
-            map=2
-        },
-        chapter=0,
-        map=4,
-        submap=1,
-        --[[
-        event flags:
-        1 intro cutscene done
-        2 spoken to brother
-        3 hilltop event
-        4 first morning
-        5 chapter 1 complete
+    p_name="tara"
+    p_sp=83
+    p_x=ttop(55)+4
+    p_y=ttop(6)
+    p_movement=1
+    p_w=8
+    p_h=8
+    p_cooldown=0
+    p_anim=0
+    p_a_over=117
+    p_flp=false
+    p_dir=0
+    --[[
+    state:
+    0 idle
+    1 walking
+    2 climbing
+    3 cutscene
+    4 combat
+    5 dialog
+    6 select
+    7 game over
+    8 main menu
+    9 overworld game over
+    ]]
+    p_state=8
+    p_max_hp=10
+    p_hp=10
+    p_heal_packs=0
+    p_heal_rate=7
+    p_atk=2
+    p_def=0
+    p_speed=5
+    p_level=1
+    p_xp=0
+    p_level_up=8
+    p_warp={
+        x=0,
+        y=0,
+        map=2
+    }
+    p_chapter=0
+    p_map=4
+    p_submap=1
+    --[[
+    event flags:
+    1 intro cutscene done
+    2 spoken to brother
+    3 hilltop event
+    4 first morning
+    5 chapter 1 complete
         6 has parka
         7 hazard damage
         8 sleeping
         ]]
-    }
-
     num_event_flags=8
     event_flags={}
     for i=1,num_event_flags do
@@ -69,7 +66,7 @@ function update_player()
        event_flags[8]=false
         intro_cutscene()
     end
-    if player.chapter==1 then
+    if p_chapter==1 then
         check_chapter1_events()
     end
     player_controls()
@@ -82,32 +79,32 @@ function update_player()
 end
 
 function player_controls()
-    if player.state==0 or player.state==1 then
+    if p_state==0 or p_state==1 then
         if not btn(0)
         and not btn(1)
         and not btn(2)
         and not btn(3) then
-            player.state=0
+            p_state=0
         end
-        if btn(0) and not collide(player,0,0) then
-            player.dir=0
-            player.state=1
-            player.x-=player.movement
+        if btn(0) and not collide(0,0) then
+            p_dir=0
+            p_state=1
+            p_x-=p_movement
         end
-        if btn(1) and not collide(player,1,0) then
-            player.dir=1
-            player.state=1
-            player.x+=player.movement
+        if btn(1) and not collide(1,0) then
+            p_dir=1
+            p_state=1
+            p_x+=p_movement
         end
-        if btn(2) and not collide(player,2,0) then
-            player.dir=2
-            player.state=1
-            player.y-=player.movement
+        if btn(2) and not collide(2,0) then
+            p_dir=2
+            p_state=1
+            p_y-=p_movement
         end
-        if btn(3) and not collide(player,3,0) then
-            player.dir=3
-            player.state=1
-            player.y+=player.movement
+        if btn(3) and not collide(3,0) then
+            p_dir=3
+            p_state=1
+            p_y+=p_movement
         end
         if btnp(4) then
             check_dialog()
@@ -115,41 +112,41 @@ function player_controls()
         if btnp(5) then
             show_menu()
         end
-    elseif player.state==2 then
+    elseif p_state==2 then
         if btn(2) then
-            player.dir=2
-            player.y-=player.movement/1.5
+            p_dir=2
+            p_y-=p_movement/1.5
         end
         if btn(3) then
-            player.dir=3
-            player.y+=player.movement/1.5
+            p_dir=3
+            p_y+=p_movement/1.5
         end
-    elseif player.state==4 then
+    elseif p_state==4 then
         if btnp(4) then
             advance_combat()
         end
         if btnp(0) or btnp(1) then
-            if player.x==ttop(2) then
-                player.x=ttop(8)
+            if p_x==ttop(2) then
+                p_x=ttop(8)
             else
-                player.x=ttop(2)
+                p_x=ttop(2)
             end
         end
-    elseif player.state==5 then
+    elseif p_state==5 then
         if btnp(4) or btnp(5) then
             advance_dialog()
         end
-    elseif player.state==7 or player.state==8 then
-        if not player.quit and (btnp(2) or btnp(3)) then
-            if player.y==ttop(6) then
-                player.y=ttop(7)
+    elseif p_state==7 or p_state==8 then
+        if not p_quit and (btnp(2) or btnp(3)) then
+            if p_y==ttop(6) then
+                p_y=ttop(7)
             else
-                player.y=ttop(6)
+                p_y=ttop(6)
             end
         end
         if btnp(4) then
-            if player.y==ttop(6) then
-                if player.state==7 then
+            if p_y==ttop(6) then
+                if p_state==7 then
                     init_player()
                     load_game()
                 else
@@ -157,12 +154,12 @@ function player_controls()
                     start_chapter1()
                 end
             else
-                if player.state==7 then
+                if p_state==7 then
                     main_menu()
                 else
                     init_player()
                     load_game()
-                    if player.chapter==1 then
+                    if p_chapter==1 then
                         init_c1_enemies()
                     end
                 end
@@ -172,159 +169,158 @@ function player_controls()
 end
 
 function animate_player()
-    if player.state==0 then
-        if player.dir==0 then
-            player.sp=67
-            player.flp=true
-        elseif player.dir==1 then
-            player.sp=67
-            player.flp=false
-        elseif player.dir==2 then
-            player.sp=80
-        elseif player.dir==3 then
-            player.sp=64
+    if p_state==0 then
+        if p_dir==0 then
+            p_sp=67
+            p_flp=true
+        elseif p_dir==1 then
+            p_sp=67
+            p_flp=false
+        elseif p_dir==2 then
+            p_sp=80
+        elseif p_dir==3 then
+            p_sp=64
         end
-    elseif player.state==1 and frame-player.anim>9 then
+    elseif p_state==1 and frame-p_anim>9 then
         do_walk_anim()
-        player.anim=frame
-    elseif player.state==2 then
-        player.sp=84
-        if (btn(2) or btn(3)) and frame-player.anim>9 then
-            player.flp=not player.flp
-            player.anim=frame
+        p_anim=frame
+    elseif p_state==2 then
+        p_sp=84
+        if (btn(2) or btn(3)) and frame-p_anim>9 then
+            p_flp=not p_flp
+            p_anim=frame
         end
-    elseif player.state==4 or player.state==7 or player.state==8 then
-        player.sp=83
-        player.flp=false
-        if player.state==7 and frame-player.anim>15 then
-            if player.a_over==99 then
-                player.a_over=100
+    elseif p_state==4 or p_state==7 or p_state==8 then
+        p_sp=83
+        p_flp=false
+        if p_state==7 and frame-p_anim>15 then
+            if p_a_over==99 then
+                p_a_over=100
             else
-                player.a_over=99
+                p_a_over=99
             end
-            player.anim=frame
-        elseif player.state==8 and frame-player.anim>24 then
-            if player.a_over==117 or player.a_over==118 or player.a_over==119 then
-                player.a_over+=1
+            p_anim=frame
+        elseif p_state==8 and frame-p_anim>24 then
+            if p_a_over==117 or p_a_over==118 or p_a_over==119 then
+                p_a_over+=1
             else
-                player.a_over=117
+                p_a_over=117
             end
-            player.anim=frame
+            p_anim=frame
         end
-    elseif player.state==9 and frame-player.anim>30 then
-        if player.sp==66 then
-            player.sp=82
-        elseif player.sp==82 then
+    elseif p_state==9 and frame-p_anim>30 then
+        if p_sp==66 then
+            p_sp=82
+        elseif p_sp==82 then
             game_over()
         else
-            player.sp=66
+            p_sp=66
         end
-        player.anim=frame
+        p_anim=frame
     end
 end
 
 function do_walk_anim()
-    if player.dir==0 then
-        player.flp=true
-        if player.sp==68 then
-            player.sp=67
+    if p_dir==0 then
+        p_flp=true
+        if p_sp==68 then
+            p_sp=67
         else
-            player.sp=68
+            p_sp=68
         end
-    elseif player.dir==1 then
-        player.flp=false
-        if player.sp==68 then
-            player.sp=67
+    elseif p_dir==1 then
+        p_flp=false
+        if p_sp==68 then
+            p_sp=67
         else
-            player.sp=68
+            p_sp=68
         end
-    elseif player.dir==2 then
-        player.sp=81
-        player.flp=not player.flp
-    elseif player.dir==3 then
-        player.sp=65
-        player.flp=not player.flp
+    elseif p_dir==2 then
+        p_sp=81
+        p_flp=not p_flp
+    elseif p_dir==3 then
+        p_sp=65
+        p_flp=not p_flp
     end
 end
 
 function check_dialog()
-    if player.submap==1 and in_range(player.x,ttop(35),ttop(37)) and in_range(player.y,0,ttop(4)) then
+    if p_submap==1 and in_range(p_x,ttop(35),ttop(37)) and in_range(p_y,0,ttop(4)) then
         overworld_timer=frame
         bed_save()
-    elseif player.chapter==1 then
+    elseif p_chapter==1 then
         chapter1_dialog()
     end
 end
 
 function bed_save()
-    player.hp=player.max_hp
+    p_hp=p_max_hp
     save_game()
     event_flags[8]=true
-    player.x=ttop(35)
-    player.y=ttop(1)
-    player.sp=89
+    p_x=ttop(35)
+    p_y=ttop(1)
+    p_sp=89
     dialog_strs={"saving game..."}
     advance_dialog()
 end
 
 function check_warp()
-    if collide(player,player.dir,1) then
-        warp_player(player.warp)
+    if collide(p_dir,1) then
+        warp_player(p_warp)
         return
     end
     connected_map_warp()
 end
 
 function check_climbing()
-    if collide(player,player.dir,2) then
-        player.state=2
-    elseif player.state==2 then
-        player.state=0
+    if collide(p_dir,2) then
+        p_state=2
+    elseif p_state==2 then
+        p_state=0
     end
 end
 
 function warp_player(w)
-    player.x=w.x
-    player.y=w.y
-    player.map=w.map
+    p_x=w.x
+    p_y=w.y
+    p_map=w.map
 end
 
 function check_combat()
-    m=player.map
-    if (m==2 and player.x>ttop(20) and player.state==1 and frame-player.cooldown>21)
-    or (m==3 and player.y>ttop(24) and player.state==1 and frame-player.cooldown>15 and not event_flags[5])
-    or (m==5 and player.state==1 and frame-player.cooldown>18)
-    or (m==6 and player.state==1 and frame-player.cooldown>12)
+    if (p_map==2 and p_x>ttop(20) and p_state==1 and frame-p_cooldown>21)
+    or (p_map==3 and p_y>ttop(24) and p_state==1 and frame-p_cooldown>15 and not event_flags[5])
+    or (p_map==5 and p_state==1 and frame-p_cooldown>18)
+    or (p_map==6 and p_state==1 and frame-p_cooldown>12)
     then
-        player.cooldown=frame
+        p_cooldown=frame
         if rnd()<0.2 then
-            engage_combat(m)
+            engage_combat(p_map)
         end
     end
 end
 
 function check_overworld_hazard()
-    if (player.map==8 and frame-player.cooldown>60 and not event_flags[6])
-    or ((player.state==0 or player.state==1) and collide(player,player.dir,3) and frame-player.cooldown>3) then
+    if (p_map==8 and frame-p_cooldown>60 and not event_flags[6])
+    or ((p_state==0 or p_state==1) and collide(p_dir,3) and frame-p_cooldown>3) then
         event_flags[7]=true
         do_overworld_hazard()
     else
         event_flags[7]=false
         return
     end
-    player.cooldown=frame
+    p_cooldown=frame
 end
 
 function show_menu()
-    dia="hp:"..player.hp.."/"..player.max_hp.." +kits:"..player.heal_packs.." xp:"..player.xp.."/"..player.level_up
+    dia="hp:"..p_hp.."/"..p_max_hp.." +kits:"..p_heal_packs.." xp:"..p_xp.."/"..p_level_up
     add(dialog_strs,dia)
     advance_dialog()
 end
 
 function game_over()
-    player.a_over=99
-    player.state=7
-    player.map=4
-    player.x=ttop(55)+4
-    player.y=ttop(6)
+    p_a_over=99
+    p_state=7
+    p_map=4
+    p_x=ttop(55)+4
+    p_y=ttop(6)
 end
