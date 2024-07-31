@@ -1,13 +1,14 @@
 --[[
 0 combat
 1 indoor house
-2 outdoor chapter 1
-3 chapter 1 cave
+2 first town
+3 east cave
 4 game over/main menu
 5 southern woods
 6 west cave
 7 hilltop
 8 snow forest
+9 forest village
 ]]
 
 function set_map()
@@ -74,18 +75,33 @@ function set_map()
             y_start=ttop(16),
             y_end=ttop(50)
         }
+    elseif p_map==9 then
+        map_d={
+            x_start=ttop(18),
+            x_end=ttop(34),
+            y_start=ttop(42),
+            y_end=ttop(64)
+        }
     end
 end
 
 function connected_map_warp()
     if p_map==2 and p_y>ttop(28) then
         p_map=5
-    elseif p_map==5 and p_y<ttop(27) then
-        p_map=2
+    elseif p_map==5 then
+        if p_y<ttop(27) then
+            p_map=2
+        elseif p_y>ttop(44) then
+            p_map=9
+        end
     elseif p_map==7 and p_y<ttop(48) then
         p_map=8
     elseif p_map==8 and p_y>ttop(50) then
         p_map=7
+    elseif p_map==9 then
+        if p_y<ttop(43) then
+            p_map=5
+        end
     end
 end
 
@@ -177,7 +193,7 @@ function draw_sprites()
         set_colors(3)
         spr(112,ttop(43),ttop(18))
         if not event_flags[5] and p_y>ttop(24) and (p_x<ttop(43) or p_y<ttop(39)) then
-            map_fog()
+            map_fog(0)
         end
         if event_flags[4] and not event_flags[5] then
             spr(poi_sp,ttop(44),ttop(40))
@@ -192,9 +208,13 @@ function draw_sprites()
             draw_main_menu()
         end
     elseif p_map==5 then
-        set_colors(0)
+        if not event_flags[4] then
+            set_colors(1)
+        else
+            set_colors(0)
+        end
         if p_x<ttop(16) or p_x>ttop(22) then
-            map_fog()
+            map_fog(6)
         end
     elseif p_map==6 then
         set_colors(7)
@@ -210,8 +230,10 @@ function draw_sprites()
     elseif p_map==8 then
         set_colors(5)
         if p_y>ttop(29) then
-            map_fog()
+            map_fog(6)
         end
+    elseif p_map==9 then
+        set_colors(0)
     end
     if event_flags[7] then
         pal(15,8)
@@ -233,6 +255,13 @@ function do_overworld_hazard()
     if p_hp<=0 then
         p_state=9
     end
+end
+
+function map_fog(c)
+    rectfill(cam_x,cam_y,p_x-12,cam_y+ttop(16),c)
+    rectfill(p_x+p_w+12,cam_y,p_x+ttop(16),cam_y+ttop(16),c)
+    rectfill(cam_x,cam_y,cam_x+ttop(16),p_y-12,c)
+    rectfill(cam_x,p_y+p_h+12,cam_x+ttop(16),cam_y+ttop(16),c)
 end
 
 function draw_main_menu()

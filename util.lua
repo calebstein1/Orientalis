@@ -94,13 +94,6 @@ function set_colors(p)
     end
 end
 
-function map_fog()
-    rectfill(cam_x,cam_y,p_x-12,cam_y+ttop(16),6)
-    rectfill(p_x+p_w+12,cam_y,p_x+ttop(16),cam_y+ttop(16),6)
-    rectfill(cam_x,cam_y,cam_x+ttop(16),p_y-12,6)
-    rectfill(cam_x,p_y+p_h+12,cam_x+ttop(16),cam_y+ttop(16),6)
-end
-
 function main_menu()
     p_state=8
     p_map=4
