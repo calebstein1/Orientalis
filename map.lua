@@ -59,7 +59,7 @@ function set_map()
             x_start=ttop(34),
             x_end=ttop(50),
             y_start=ttop(44),
-            y_end=ttop(60)
+            y_end=ttop(64)
         }
     elseif p_map==7 then
         map_d={
