@@ -32,7 +32,7 @@ function init_c1_enemies()
         },
         {},
         {
-            name="the giant killer wasp",
+            name="the killer wasp",
             max_hp=4,
             hp=4,
             atk=8,
