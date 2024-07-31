@@ -47,7 +47,7 @@ function init_c1_enemies()
             hp=3,
             atk=1,
             def=0,
-            speed=4,
+            speed=6,
             xp=2,
             atk_str={"tries to bite at",p_name}
         }

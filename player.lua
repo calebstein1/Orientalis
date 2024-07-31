@@ -285,6 +285,8 @@ function check_climbing()
 end
 
 function check_combat()
+    local dia={}
+
     if (p_map==2 and p_x>ttop(20) and p_state==1 and frame-p_cooldown>21)
     or (p_map==3 and p_y>ttop(24) and p_state==1 and frame-p_cooldown>15 and not event_flags[5])
     or (p_map==5 and p_state==1 and frame-p_cooldown>18)
@@ -292,7 +294,20 @@ function check_combat()
     then
         p_cooldown=frame
         if rnd()<0.2 then
-            engage_combat(p_map)
+            if p_speed>=enemies[p_map].speed and p_atk-enemies[p_map].def>=enemies[p_map].max_hp then
+                p_xp+=flr(enemies[p_map].xp/2)
+                dia={p_name.." defeats "..enemies[p_map].name.."!"}
+                if p_xp>=p_level_up then
+                    level_up()
+                    add(dia, p_name.." levels up!")
+                end
+                for d in all(dia) do
+                    add(dialog_strs,d)
+                end
+                advance_dialog()
+            else
+                engage_combat(p_map)
+            end
         end
     end
 end

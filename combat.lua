@@ -64,7 +64,7 @@ function advance_combat()
     local mod=.85+rnd(.15)
 
     if c_state==0 then
-        if enemies[e_id].speed > p_speed then
+        if enemies[e_id].speed>p_speed then
             c_state=2
         else
             c_state=1
