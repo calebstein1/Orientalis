@@ -116,15 +116,15 @@ function chapter1_dialog()
         event_flags[3]=true
         dia=strings[9]
     -- Mom
-    elseif not event_flags[4] and in_range(p_x,ttop(35),ttop(38)) and in_range(p_y,ttop(11),ttop(14)) then
-        if not event_flags[3] then
-            dia=strings[10]
-        else
+    elseif p_submap==1 and not event_flags[3] and in_range(p_x,ttop(35),ttop(38)) and in_range(p_y,ttop(11),ttop(14)) then
+        dia=strings[10]
+    elseif p_submap==1 and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then
+        if not event_flags[4] then
             event_flags[4]=true
             dia=strings[11]
+        else
+            dia=strings[12]
         end
-    elseif event_flags[4] and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then
-        dia=strings[12]
     -- Chapter 1 boss
     elseif event_flags[4] and not event_flags[5] and in_range(p_x,ttop(43),ttop(46)) and in_range(p_y,ttop(39),ttop(42)) then
         engage_boss=true
@@ -144,7 +144,7 @@ function draw_map1_interior()
         spr(42,ttop(48),ttop(1),1,2)
         spr(42,ttop(35),ttop(10),1,2)
         spr(115,ttop(45),ttop(4))
-        if not event_flags[4] then
+        if not event_flags[3] then
             spr(73,ttop(36),ttop(12))
         else
             spr(73,ttop(45),ttop(12))
