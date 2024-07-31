@@ -9,7 +9,9 @@ function engage_combat(e)
     5: player turn result
     6: game over message
     ]]
-    p_warp={x=p_x,y=p_y,map=p_map}
+    p_wx=ptot(p_x)
+    p_wy=ptot(p_y)
+    p_wm=p_map
     p_state=4
     p_x=ttop(2)
     p_y=ttop(12)
@@ -159,5 +161,5 @@ end
 function end_combat()
     p_cooldown=frame+90
     p_state=0
-    warp_player(p_warp)
+    warp_player()
 end

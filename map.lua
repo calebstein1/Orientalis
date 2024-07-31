@@ -90,39 +90,35 @@ function connected_map_warp()
 end
 
 function set_warp()
-    local wx=0
-    local wy=0
-    local wm=0
-
     if p_map==0 then
         return
     elseif p_map==1 then
-        wm=2
+        p_wm=2
         if p_submap==0 then
-            wx=4
-            wy=2
+            p_wx=4
+            p_wy=2
         elseif p_submap==1 then
-            wx=8
-            wy=2
+            p_wx=8
+            p_wy=2
         elseif p_submap==2 then
-            wx=12
-            wy=17
+            p_wx=12
+            p_wy=17
         elseif p_submap==3 then
-            wx=28
-            wy=9
+            p_wx=28
+            p_wy=9
         end
     elseif p_map==2 then
         --[[
         Default to house interior
         Individual warps will override values as needed
         ]]
-        wx=42
-        wy=13
-        wm=1
+        p_wx=42
+        p_wy=13
+        p_wm=1
         if p_x<ttop(2) then
-            wx=48
-            wy=57
-            wm=6
+            p_wx=48
+            p_wy=57
+            p_wm=6
         elseif p_x<ttop(6) then
             p_submap=0
         elseif p_x<ttop(10) then
@@ -132,30 +128,29 @@ function set_warp()
         elseif p_x<ttop(30) then
             p_submap=3
         else
-            wx=35
-            wy=19
-            wm=3
+            p_wx=35
+            p_wy=19
+            p_wm=3
         end
     elseif p_map==3 then
-        wx=32
-        wy=15
-        wm=2
+        p_wx=32
+        p_wy=15
+        p_wm=2
     elseif p_map==6 then
         if p_x>ttop(42) then
-            wx=1
-            wy=15
-            wm=2
+            p_wx=1
+            p_wy=15
+            p_wm=2
         else
-            wx=64
-            wy=60
-            wm=7
+            p_wx=64
+            p_wy=60
+            p_wm=7
         end
     elseif p_map==7 then
-        wx=35
-        wy=46
-        wm=6
+        p_wx=35
+        p_wy=46
+        p_wm=6
     end
-    p_warp={x=ttop(wx),y=ttop(wy),map=wm}
 end
 
 function draw_sprites()
@@ -203,7 +198,7 @@ function draw_sprites()
         end
     elseif p_map==6 then
         set_colors(7)
-    elseif m==7 then
+    elseif p_map==7 then
         if not event_flags[4] then
             set_colors(1)
         else

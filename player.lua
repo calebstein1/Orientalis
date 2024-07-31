@@ -35,11 +35,9 @@ function init_player()
     p_level=1
     p_xp=0
     p_level_up=8
-    p_warp={
-        x=0,
-        y=0,
-        map=2
-    }
+    p_wx=0
+    p_wy=0
+    p_wm=2
     p_chapter=0
     p_map=4
     p_submap=1
@@ -266,10 +264,16 @@ end
 
 function check_warp()
     if collide(p_dir,1) then
-        warp_player(p_warp)
-        return
+        warp_player()
+    else
+        connected_map_warp()
     end
-    connected_map_warp()
+end
+
+function warp_player()
+    p_x=ttop(p_wx)
+    p_y=ttop(p_wy)
+    p_map=p_wm
 end
 
 function check_climbing()
@@ -278,12 +282,6 @@ function check_climbing()
     elseif p_state==2 then
         p_state=0
     end
-end
-
-function warp_player(w)
-    p_x=w.x
-    p_y=w.y
-    p_map=w.map
 end
 
 function check_combat()
