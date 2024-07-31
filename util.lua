@@ -151,7 +151,7 @@ function save_game()
     dset(12,player.map)
     dset(13,player.submap)
     dset(14,player.chapter)
-    for f in all(player.event_flags) do
+    for f in all(pevent_flags) do
         if f then
             dset(i,1)
         else
@@ -167,7 +167,7 @@ function load_game()
     for i=1,dget(c) do
         c+=1
         if dget(c)==1 then
-            player.event_flags[i]=true
+            event_flags[i]=true
         end
     end
     player.x=dget(0)

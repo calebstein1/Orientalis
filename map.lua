@@ -175,23 +175,23 @@ function draw_sprites()
         set_colors(2)
         draw_map1_interior(sm)
     elseif m==2 then
-        if not player.event_flags[4] then
+        if not event_flags[4] then
             set_colors(1)
         else
             set_colors(0)
             spr(114,ttop(27),ttop(14))
             spr(116,ttop(4),ttop(19))
         end
-        if not player.event_flags[3] then
+        if not event_flags[3] then
             spr(113,ttop(2),ttop(16))
         end
     elseif m==3 then
         set_colors(3)
         spr(112,ttop(43),ttop(18))
-        if not player.event_flags[5] and player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
+        if not event_flags[5] and player.y>ttop(24) and (player.x<ttop(43) or player.y<ttop(39)) then
             map_fog()
         end
-        if player.event_flags[4] and not player.event_flags[5] then
+        if event_flags[4] and not event_flags[5] then
             spr(poi_sp,ttop(44),ttop(40))
         end
     elseif m==4 then
@@ -211,12 +211,12 @@ function draw_sprites()
     elseif m==6 then
         set_colors(7)
     elseif m==7 then
-        if not player.event_flags[4] then
+        if not event_flags[4] then
             set_colors(1)
         else
             set_colors(0)
         end
-        if not player.event_flags[3] then
+        if not event_flags[3] then
             spr(poi_sp,ttop(58),ttop(54))
         end
     elseif m==8 then
@@ -225,10 +225,10 @@ function draw_sprites()
             map_fog()
         end
     end
-    if player.event_flags[7] then
+    if event_flags[7] then
         pal(15,8)
     end
-    if player.event_flags[6] and m==8 then
+    if event_flags[6] and m==8 then
         spr(player.sp+10,player.x,player.y,1,1,player.flp)
     else
         spr(player.sp,player.x,player.y,1,1,player.flp)

@@ -1,6 +1,6 @@
 function init_player() 
     player={
-        name="terra",
+        name="tara",
         sp=83,
         x=ttop(55)+4,
         y=ttop(6),
@@ -55,17 +55,17 @@ function init_player()
         7 hazard damage
         8 sleeping
         ]]
-        event_flags={}
     }
 
+    event_flags={}
     for i=1,8 do
-        player.event_flags[i]=false
+        event_flags[i]=false
     end
 end
 
 function update_player()
-    if player.event_flags[8] and frame-overworld_timer>90 then
-        player.event_flags[8]=false
+    if event_flags[8] and frame-overworld_timer>90 then
+       event_flags[8]=false
         intro_cutscene()
     end
     if player.chapter==1 then
@@ -258,7 +258,7 @@ end
 function bed_save()
     player.hp=player.max_hp
     save_game()
-    player.event_flags[8]=true
+    event_flags[8]=true
     player.x=ttop(35)
     player.y=ttop(1)
     player.sp=89
@@ -291,7 +291,7 @@ end
 function check_combat()
     m=player.map
     if (m==2 and player.x>ttop(20) and player.state==1 and frame-player.cooldown>21)
-    or (m==3 and player.y>ttop(24) and player.state==1 and frame-player.cooldown>15 and not player.event_flags[5])
+    or (m==3 and player.y>ttop(24) and player.state==1 and frame-player.cooldown>15 and not event_flags[5])
     or (m==5 and player.state==1 and frame-player.cooldown>18)
     or (m==6 and player.state==1 and frame-player.cooldown>12)
     then
@@ -303,12 +303,12 @@ function check_combat()
 end
 
 function check_overworld_hazard()
-    if (player.map==8 and frame-player.cooldown>60 and not player.event_flags[6])
+    if (player.map==8 and frame-player.cooldown>60 and not event_flags[6])
     or ((player.state==0 or player.state==1) and collide(player,player.dir,3) and frame-player.cooldown>3) then
-        player.event_flags[7]=true
+        event_flags[7]=true
         do_overworld_hazard()
     else
-        player.event_flags[7]=false
+        event_flags[7]=false
         return
     end
     player.cooldown=frame
