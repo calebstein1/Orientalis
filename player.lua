@@ -308,6 +308,7 @@ function check_combat()
                     add(dialog_strs,d)
                 end
                 advance_dialog()
+                p_cooldown=frame+90
             else
                 engage_combat(p_map)
             end
