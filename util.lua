@@ -105,11 +105,25 @@ function knockback(f)
     end
 end
 
-function reset_timer()
-    frame=0
-    overworld_timer=0
-    p_anim=0
-    p_cooldown=0
+function update_poi_sprite()
+    if frame%20==0 then
+        if poi_sp==105 then
+            poi_sp=106
+        else
+            poi_sp=105
+        end
+    end
+end
+
+function increment_or_reset_timer()
+    if frame==32000 then
+        frame=0
+        overworld_timer=0
+        p_anim=0
+        p_cooldown=0
+    else
+        frame+=1
+    end
 end
 
 function save_game()

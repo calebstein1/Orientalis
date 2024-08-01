@@ -14,20 +14,10 @@ function _init()
 end
 
 function _update()
-    if frame==32000 then
-        reset_timer()
-    else
-        frame+=1
-        if frame%20==0 then
-            if poi_sp==105 then
-                poi_sp=106
-            else
-                poi_sp=105
-            end
-        end
-    end
+    increment_or_reset_timer()
     set_camera()
     update_player()
+    update_poi_sprite()
     set_bg()
     play_music_for_location()
 end
