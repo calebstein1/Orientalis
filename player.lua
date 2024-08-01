@@ -298,6 +298,7 @@ function check_combat()
         p_cooldown=frame
         if rnd()<0.2 then
             if p_speed>=e_speed[p_map] and p_atk-e_def[p_map]>=e_max_hp[p_map] then
+                sfx(0)
                 p_xp+=flr(e_xp[p_map]/2)
                 dia={p_name.." defeats "..e_name[p_map].."!"}
                 if p_xp>=p_level_up then
@@ -352,6 +353,7 @@ function update_homesick()
 end
 
 function show_menu()
+    sfx(0)
     local dia="hp:"..p_hp.."/"..p_max_hp.." +kits:"..p_heal_packs.." xp:"..p_xp.."/"..p_level_up
     add(dialog_strs,dia)
     advance_dialog()

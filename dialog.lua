@@ -9,7 +9,6 @@ function advance_dialog()
     p_state=5
     dialog_str=dialog_strs[1]
     deli(dialog_strs, 1)
-    sfx(0)
 end
 
 function draw_dialog()
@@ -92,12 +91,14 @@ function engage_dialog()
     elseif event_flags[4] and not event_flags[5] and in_range(p_x,ttop(43),ttop(46)) and in_range(p_y,ttop(39),ttop(42)) then
         engage_boss=true
         dia=strings[13]
-    end
-    if dia==nil then
+    -- No dialog
+    else
         return
     end
+
     for d in all(dia) do
         add(dialog_strs,d)
     end
+    sfx(0)
     advance_dialog()
 end
