@@ -18,54 +18,63 @@ map_d={
         y_start=0,
         y_end=ttop(16)
     },
+    -- 1
     {
         x_start=ttop(34),
         x_end=ttop(50),
         y_start=0,
         y_end=ttop(16)
     },
+    -- 2
     {
         x_start=0,
         x_end=ttop(34),
         y_start=0,
         y_end=ttop(28)
     },
+    -- 3
     {
         x_start=ttop(34),
         x_end=ttop(50),
         y_start=ttop(16),
         y_end=ttop(44)
     },
+    -- 4
     {
         x_start=ttop(50),
         x_end=ttop(66),
         y_start=0,
         y_end=ttop(16)
     },
+    -- 5
     {
         x_start=0,
         x_end=ttop(34),
         y_start=ttop(28),
         y_end=ttop(44)
     },
+    -- 6
     {
         x_start=ttop(34),
         x_end=ttop(50),
         y_start=ttop(44),
         y_end=ttop(64)
     },
+    -- 7
     {
         x_start=ttop(50),
         x_end=ttop(66),
         y_start=ttop(48),
         y_end=ttop(64)
     },
+    -- 8
     {
         x_start=ttop(50),
         x_end=ttop(66),
         y_start=ttop(16),
         y_end=ttop(50)
     },
+    -- 9
     {
         x_start=ttop(18),
         x_end=ttop(34),
