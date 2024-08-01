@@ -89,7 +89,6 @@ function main_menu()
     p_map=4
     p_x=ttop(55)+4
     p_y=ttop(6)
-    p_chapter=0
     p_a_over=117
 end
 
@@ -142,7 +141,6 @@ function save_game()
     dset(11,p_level_up)
     dset(12,p_map)
     dset(13,p_submap)
-    dset(14,p_chapter)
     dset(15,p_homesick)
     for f in all(event_flags) do
         if f then
@@ -174,7 +172,6 @@ function load_game()
     p_level_up=dget(11)
     p_map=dget(12)
     p_submap=dget(13)
-    p_chapter=dget(14)
     p_homesick=dget(15)
     p_sp=64
     p_state=0

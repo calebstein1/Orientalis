@@ -40,7 +40,6 @@ function init_player()
     p_wx=0
     p_wy=0
     p_wm=2
-    p_chapter=0
     p_map=4
     p_submap=1
     --[[
@@ -66,9 +65,7 @@ function update_player()
        event_flags[8]=false
         intro_cutscene()
     end
-    if p_chapter==1 then
-        check_chapter1_events()
-    end
+    check_events()
     player_controls()
     animate_player()
     set_warp()
@@ -154,7 +151,7 @@ function player_controls()
                     load_game()
                 else
                     init_player()
-                    start_chapter1()
+                    start_new_game()
                 end
             else
                 if p_state==7 then
