@@ -9,6 +9,7 @@ function advance_dialog()
     p_state=5
     dialog_str=dialog_strs[1]
     deli(dialog_strs, 1)
+    sfx(0)
 end
 
 function draw_dialog()

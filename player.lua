@@ -143,6 +143,8 @@ function player_controls()
             end
         end
         if btnp(4) then
+            stop_music()
+            sfx(0)
             if p_y==ttop(6) then
                 if p_state==7 then
                     init_player()
@@ -271,6 +273,7 @@ function check_warp()
 end
 
 function warp_player()
+    stop_music()
     p_x=ttop(p_wx)
     p_y=ttop(p_wy)
     p_map=p_wm
