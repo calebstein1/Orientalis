@@ -334,6 +334,7 @@ function show_menu()
 end
 
 function game_over()
+    stop_music()
     p_a_over=99
     p_state=7
     p_map=4
