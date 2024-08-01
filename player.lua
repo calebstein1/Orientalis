@@ -49,10 +49,10 @@ function init_player()
     3 hilltop event
     4 first morning
     5 chapter 1 complete
-        6 has parka
-        7 hazard damage
-        8 sleeping
-        ]]
+    6 has parka
+    7 hazard damage
+    8 sleeping
+    ]]
     num_event_flags=8
     event_flags={}
     for i=1,num_event_flags do
@@ -62,8 +62,8 @@ end
 
 function update_player()
     if event_flags[8] and frame-overworld_timer>90 then
-       event_flags[8]=false
-        intro_cutscene()
+        event_flags[8]=false
+        end_sleep()
     end
     check_events()
     player_controls()
@@ -131,7 +131,7 @@ function player_controls()
             end
         end
     elseif p_state==5 then
-        if btnp(4) or btnp(5) then
+        if (btnp(4) or btnp(5)) and not event_flags[8] then
             advance_dialog()
         end
     elseif p_state==7 or p_state==8 then
@@ -347,6 +347,13 @@ function update_homesick()
         add(dialog_strs,dia)
         advance_dialog()
     end
+end
+
+function end_sleep()
+    p_x=ttop(36)
+    p_y=ttop(2)
+    p_state=0
+    p_dir=1
 end
 
 function show_menu()

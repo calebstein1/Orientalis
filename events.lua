@@ -1,7 +1,6 @@
 function start_new_game()
     p_x=ttop(35)
     p_y=ttop(1)
-    p_map=1
     p_submap=1
     p_state=3
     p_sp=89
@@ -31,15 +30,8 @@ function intro_cutscene()
     elseif not scene_list[3] then
         pan_cam(ttop(5),ttop(12),0,0,2,1,3,90,90)
     elseif frame-overworld_timer>630 then
-        end_intro_cutscene()
+        end_sleep()
+        event_flags[1]=true
         reset_cinematic()
     end
-end
-
-function end_intro_cutscene()
-    p_x=ttop(36)
-    p_y=ttop(2)
-    p_state=0
-    p_dir=1
-    event_flags[1]=true
 end
