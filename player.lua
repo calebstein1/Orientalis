@@ -162,9 +162,6 @@ function player_controls()
                 else
                     init_player()
                     load_game()
-                    if p_chapter==1 then
-                        init_c1_enemies()
-                    end
                 end
             end          
         end
@@ -251,8 +248,8 @@ function check_dialog()
     if p_submap==1 and in_range(p_x,ttop(35),ttop(37)) and in_range(p_y,0,ttop(4)) then
         overworld_timer=frame
         bed_save()
-    elseif p_chapter==1 then
-        chapter1_dialog()
+    else
+        engage_dialog()
     end
 end
 

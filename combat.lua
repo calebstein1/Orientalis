@@ -1,3 +1,21 @@
+function init_enemies()
+    e_name={"the giant mole","the feral cat","the cave mole","","the killer wasp","the cave rat"}
+    e_max_hp={20,5,7,0,4,3}
+    e_hp={20,5,7,0,4,3}
+    e_atk={5,2,3,0,8,1}
+    e_def={1,0,0,0,0,0}
+    e_speed={4,6,6,0,8,6}
+    e_xp={25,3,8,0,11,2}
+    e_atk_str={
+        {"tears into "..p_name,"with its brutal claws"},
+        {"scratches at "..p_name,"with its sharp claws"},
+        {"throws a rock at",p_name.."'s head"},
+        {},
+        {"charges "..p_name.." with","its stinger"},
+        {"tries to bite at",p_name},
+    }
+end
+
 function engage_combat(e)
     --[[
     c_state values:

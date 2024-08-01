@@ -243,6 +243,23 @@ function draw_sprites()
     end
 end
 
+function draw_map1_interior()
+    if p_submap==1 then
+        spr(42,ttop(48),ttop(1),1,2)
+        spr(42,ttop(35),ttop(10),1,2)
+        spr(115,ttop(45),ttop(4))
+        if not event_flags[3] then
+            spr(73,ttop(36),ttop(12))
+        else
+            spr(73,ttop(45),ttop(12))
+        end
+    elseif p_submap==2 then
+        spr(112,ttop(46),ttop(2))
+    elseif p_submap==3 then
+        spr(112,ttop(42),ttop(11))
+    end
+end
+
 function do_overworld_hazard()
     if p_map==3 or p_map==5 or p_map==6 then
         knockback(4)

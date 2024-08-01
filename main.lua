@@ -9,6 +9,7 @@ function _init()
     poi_sp=105
     init_dialog()
     init_player()
+    init_enemies()
     load_strings()
 end
 
