@@ -121,7 +121,7 @@ function reset_timer()
 end
 
 function save_game()
-    local i=15
+    local i=16
     dset(0,p_x)
     dset(1,p_y)
     dset(2,p_max_hp)
@@ -137,6 +137,7 @@ function save_game()
     dset(12,p_map)
     dset(13,p_submap)
     dset(14,p_chapter)
+    dset(15,p_homesick)
     for f in all(event_flags) do
         if f then
             dset(i,1)
@@ -149,7 +150,7 @@ end
 
 function load_game()
     for i=1,num_event_flags do
-        if dget(i+14)==1 then
+        if dget(i+15)==1 then
             event_flags[i]=true
         end
     end
@@ -168,6 +169,7 @@ function load_game()
     p_map=dget(12)
     p_submap=dget(13)
     p_chapter=dget(14)
+    p_homesick=dget(15)
     p_sp=64
     p_state=0
 end

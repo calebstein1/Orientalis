@@ -72,7 +72,7 @@ function advance_combat()
     end
 
     if c_state==1 then
-        damage=flr(((p_atk-enemies[e_id].def)*mod)+.5)
+        damage=flr(flr(((p_atk-enemies[e_id].def)*mod)+.5)/(p_homesick+1)+.5)
         player_turn()
     elseif c_state==2 then
         damage=flr(((enemies[e_id].atk-p_def)*mod)+.5)

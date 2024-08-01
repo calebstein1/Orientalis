@@ -123,8 +123,14 @@ function chapter1_dialog()
             event_flags[4]=true
             dia=strings[11]
         else
-            dia=strings[12]
+            if p_homesick>0 then
+                dia=strings[14]
+            else
+                dia=strings[12]
+            end
         end
+        p_homesick=0
+        p_homesick_timer=0
     -- Chapter 1 boss
     elseif event_flags[4] and not event_flags[5] and in_range(p_x,ttop(43),ttop(46)) and in_range(p_y,ttop(39),ttop(42)) then
         engage_boss=true

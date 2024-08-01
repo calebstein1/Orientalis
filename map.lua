@@ -86,8 +86,6 @@ function set_map()
 end
 
 function connected_map_warp()
-    local l_map=p_map
-
     if p_map==2 and p_y>ttop(28) then
         p_map=5
     elseif p_map==5 then
@@ -97,17 +95,15 @@ function connected_map_warp()
             p_map=9
         end
     elseif p_map==7 and p_y<ttop(48) then
+        stop_music()
         p_map=8
     elseif p_map==8 and p_y>ttop(50) then
+        stop_music()
         p_map=7
     elseif p_map==9 then
         if p_y<ttop(43) then
             p_map=5
         end
-    end
-
-    if not l_map==p_map then
-        stop_music()
     end
 end
 

@@ -35,6 +35,8 @@ function init_player()
     p_level=1
     p_xp=0
     p_level_up=8
+    p_homesick=0
+    p_homesick_timer=0
     p_wx=0
     p_wy=0
     p_wm=2
@@ -74,6 +76,7 @@ function update_player()
     check_combat()
     check_climbing()
     check_overworld_hazard()
+    update_homesick()
 end
 
 function player_controls()
@@ -328,8 +331,31 @@ function check_overworld_hazard()
     p_cooldown=frame
 end
 
+function update_homesick()
+    local dia
+    if (p_state==0 or p_state==1 or p_state==2) and not (p_map==1 or p_map==2) then
+        p_homesick_timer+=1
+    end
+    if p_homesick_timer==18000 and p_homesick<4 then
+        p_homesick_timer=0
+        p_homesick+=1
+        if p_homesick==1 then
+            dia=p_name.." feels lonely"
+        elseif p_homesick==2 then
+            dia=p_name.." misses home"
+        elseif p_homesick==3 then
+            dia=p_name.." wants to hug her mom"
+        else
+            dia=p_name.." is beginning to tear up"
+        end
+
+        add(dialog_strs,dia)
+        advance_dialog()
+    end
+end
+
 function show_menu()
-    dia="hp:"..p_hp.."/"..p_max_hp.." +kits:"..p_heal_packs.." xp:"..p_xp.."/"..p_level_up
+    local dia="hp:"..p_hp.."/"..p_max_hp.." +kits:"..p_heal_packs.." xp:"..p_xp.."/"..p_level_up
     add(dialog_strs,dia)
     advance_dialog()
 end
