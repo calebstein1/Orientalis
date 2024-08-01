@@ -11,79 +11,69 @@
 9 forest village
 ]]
 
-function set_map()
-    if p_map==0 then
-        map_d={
-            x_start=0,
-            x_end=ttop(16),
-            y_start=0,
-            y_end=ttop(16)
-        }
-    elseif p_map==1 then
-        map_d={
-            x_start=ttop(34),
-            x_end=ttop(50),
-            y_start=0,
-            y_end=ttop(16)
-        }
-    elseif p_map==2 then
-        map_d={
-            x_start=0,
-            x_end=ttop(34),
-            y_start=0,
-            y_end=ttop(28)
-        }
-    elseif p_map==3 then
-        map_d={
-            x_start=ttop(34),
-            x_end=ttop(50),
-            y_start=ttop(16),
-            y_end=ttop(44)
-        }
-    elseif p_map==4 then
-        map_d={
-            x_start=ttop(50),
-            x_end=ttop(66),
-            y_start=0,
-            y_end=ttop(16)
-        }
-    elseif p_map==5 then
-        map_d={
-            x_start=0,
-            x_end=ttop(34),
-            y_start=ttop(28),
-            y_end=ttop(44)
-        }
-    elseif p_map==6 then
-        map_d={
-            x_start=ttop(34),
-            x_end=ttop(50),
-            y_start=ttop(44),
-            y_end=ttop(64)
-        }
-    elseif p_map==7 then
-        map_d={
-            x_start=ttop(50),
-            x_end=ttop(66),
-            y_start=ttop(48),
-            y_end=ttop(64)
-        }
-    elseif p_map==8 then
-        map_d={
-            x_start=ttop(50),
-            x_end=ttop(66),
-            y_start=ttop(16),
-            y_end=ttop(50)
-        }
-    elseif p_map==9 then
-        map_d={
-            x_start=ttop(18),
-            x_end=ttop(34),
-            y_start=ttop(42),
-            y_end=ttop(64)
-        }
-    end
-end
+map_d={
+    [0]={
+        x_start=0,
+        x_end=ttop(16),
+        y_start=0,
+        y_end=ttop(16)
+    },
+    {
+        x_start=ttop(34),
+        x_end=ttop(50),
+        y_start=0,
+        y_end=ttop(16)
+    },
+    {
+        x_start=0,
+        x_end=ttop(34),
+        y_start=0,
+        y_end=ttop(28)
+    },
+    {
+        x_start=ttop(34),
+        x_end=ttop(50),
+        y_start=ttop(16),
+        y_end=ttop(44)
+    },
+    {
+        x_start=ttop(50),
+        x_end=ttop(66),
+        y_start=0,
+        y_end=ttop(16)
+    },
+    {
+        x_start=0,
+        x_end=ttop(34),
+        y_start=ttop(28),
+        y_end=ttop(44)
+    },
+    {
+        x_start=ttop(34),
+        x_end=ttop(50),
+        y_start=ttop(44),
+        y_end=ttop(64)
+    },
+    {
+        x_start=ttop(50),
+        x_end=ttop(66),
+        y_start=ttop(48),
+        y_end=ttop(64)
+    },
+    {
+        x_start=ttop(50),
+        x_end=ttop(66),
+        y_start=ttop(16),
+        y_end=ttop(50)
+    },
+    {
+        x_start=ttop(18),
+        x_end=ttop(34),
+        y_start=ttop(42),
+        y_end=ttop(64)
+    }
+}
+map_bg={4,11,5,0,11,5,11,7,11}
 
 function connected_map_warp()
     if p_map==2 and p_y>ttop(28) then
@@ -172,20 +162,9 @@ function set_warp()
 end
 
 function set_bg()
-    if p_map==1 then
-        bg=4
-    elseif p_map==2 or p_map==5 or p_map==7 or p_map==9 then
-        if not event_flags[4] then
-            bg=1
-        else
-            bg=11
-        end
-    elseif p_map==3 then
-        bg=5
-    elseif p_map==6 then
-        bg=5
-    elseif p_map==8 then
-        bg=7
+    bg=map_bg[p_map]
+    if bg==11 and not event_flags[4] then
+        bg=1
     end
 end
 

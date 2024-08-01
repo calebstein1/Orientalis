@@ -300,9 +300,9 @@ function check_combat()
     then
         p_cooldown=frame
         if rnd()<0.2 then
-            if p_speed>=enemies[p_map].speed and p_atk-enemies[p_map].def>=enemies[p_map].max_hp then
-                p_xp+=flr(enemies[p_map].xp/2)
-                dia={p_name.." defeats "..enemies[p_map].name.."!"}
+            if p_speed>=e_speed[p_map] and p_atk-e_def[p_map]>=e_max_hp[p_map] then
+                p_xp+=flr(e_xp[p_map]/2)
+                dia={p_name.." defeats "..e_name[p_map].."!"}
                 if p_xp>=p_level_up then
                     level_up()
                     add(dia, p_name.." levels up!")

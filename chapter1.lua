@@ -1,56 +1,18 @@
 function init_c1_enemies()
-    enemies={
-        {
-            name="the giant mole",
-            max_hp=20,
-            hp=20,
-            atk=5,
-            def=1,
-            speed=4,
-            xp=25,
-            atk_str={"tears into "..p_name,"with its brutal claws"}
-        },
-        {
-            name="the feral cat",
-            max_hp=5,
-            hp=5,
-            atk=2,
-            def=0,
-            speed=6,
-            xp=3,
-            atk_str={"scratches at "..p_name,"with its sharp claws"}
-        },
-        {
-            name="the cave mole",
-            max_hp=7,
-            hp=7,
-            atk=3,
-            def=0,
-            speed=6,
-            xp=8,
-            atk_str={"throws a rock at",p_name.."'s head"}
-        },
+    e_name={"the giant mole","the feral cat","the cave mole","","the killer wasp","the cave rat"}
+    e_max_hp={20,5,7,0,4,3}
+    e_hp={20,5,7,0,4,3}
+    e_atk={5,2,3,0,8,1}
+    e_def={1,0,0,0,0,0}
+    e_speed={4,6,6,0,8,6}
+    e_xp={25,3,8,0,11,2}
+    e_atk_str={
+        {"tears into "..p_name,"with its brutal claws"},
+        {"scratches at "..p_name,"with its sharp claws"},
+        {"throws a rock at",p_name.."'s head"},
         {},
-        {
-            name="the killer wasp",
-            max_hp=4,
-            hp=4,
-            atk=8,
-            def=0,
-            speed=8,
-            xp=11,
-            atk_str={"charges "..p_name.." with","its stinger"}
-        },
-        {
-            name="the cave rat",
-            max_hp=3,
-            hp=3,
-            atk=1,
-            def=0,
-            speed=6,
-            xp=2,
-            atk_str={"tries to bite at",p_name}
-        }
+        {"charges "..p_name.." with","its stinger"},
+        {"tries to bite at",p_name},
     }
 end
 

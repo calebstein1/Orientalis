@@ -1,37 +1,18 @@
+music_tracks={[0]=-1,-1,2,4,0,-1,4,0,-1,-1}
+
 function play_music_for_location()
+    if event_flags[3] then
+        music_tracks[7]=-1
+    end
+    if p_state==7 then
+        music_tracks[4]=-1
+    else
+        music_tracks[4]=0
+    end
+
     if not music_playing and frame-overworld_timer>=15 then
         music_playing=true
-        local m
-
-        if p_map==0 then
-            m=-1
-        elseif p_map==1 then
-            m=-1
-        elseif p_map==2 then
-            m=2
-        elseif p_map==3 or p_map==6 then
-            m=4
-        elseif p_map==4 then
-            if p_state==7 then
-                m=-1
-            else
-                m=0
-            end
-        elseif p_map==5 then
-            m=-1
-        elseif p_map==7 then
-            if not event_flags[3] then
-                m=0
-            else
-                m=-1
-            end
-        elseif p_map==8 then
-            m=-1
-        elseif p_map==9 then
-            m=-1
-        end
-
-        music(m,500)
+        music(music_tracks[p_map],500)
     end
 end
 

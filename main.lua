@@ -25,7 +25,6 @@ function _update()
             end
         end
     end
-    set_map()
     set_camera()
     update_player()
     set_bg()

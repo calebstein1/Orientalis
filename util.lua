@@ -74,21 +74,13 @@ function set_colors(p)
     if p==0 then
         return
     elseif p==1 then
-        bg=1
         pal(4,5)
     elseif p==2 then
-        bg=4
         pal(3,6)
     elseif p==3 then
-        bg=5
         pal(3,4)
-    elseif p==4 then
     elseif p==5 then
-        bg=7
         pal(3,6)
-    elseif p==6 then
-    elseif p==7 then
-        bg=5
     end
 end
 

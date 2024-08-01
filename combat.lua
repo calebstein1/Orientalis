@@ -25,31 +25,31 @@ end
 function print_combat_string(s)
     if s==0 then
         print(p_name.." is attacked by",ttop(4),ttop(1),7)
-        print(enemies[e_id].name.."!",ttop(4),ttop(2),7)
+        print(e_name[e_id].."!",ttop(4),ttop(2),7)
     elseif s==1 then
         print("what will you do?",ttop(4),ttop(1),7)
         print("attack",ttop(3),ttop(12),7)
         print("+ kit X"..p_heal_packs,ttop(9),ttop(12),7)
     elseif s==2 then
         local i=2
-        print(enemies[e_id].name,ttop(4),ttop(1),7)
-        for str in all(enemies[e_id].atk_str) do
+        print(e_name[e_id],ttop(4),ttop(1),7)
+        for str in all(e_atk_str[e_id]) do
             print(str,ttop(4),ttop(i),7)
             i+=1
         end
         print(p_name.." takes "..damage.." damage!",ttop(4),ttop(i+1),7)
     elseif s==3 then
-        print(enemies[e_id].name.." is",ttop(4),ttop(1),7)
+        print(e_name[e_id].." is",ttop(4),ttop(1),7)
         print("defeated!",ttop(4),ttop(2),11)
-        print(p_name.." gains "..enemies[e_id].xp.."xp!",ttop(4),ttop(4),7)
+        print(p_name.." gains "..e_xp[e_id].."xp!",ttop(4),ttop(4),7)
     elseif s==4 then
         print(p_name.." collapses from", ttop(4),ttop(1),7)
-        print(enemies[e_id].name.."'s",ttop(4),ttop(2),7)
+        print(e_name[e_id].."'s",ttop(4),ttop(2),7)
         print("attack!", ttop(4),ttop(3),7)
         print(p_name.." is defeated!",ttop(4),ttop(5),8)
     elseif s==5 then
         print(p_name.." strikes",ttop(4),ttop(1),7)
-        print(enemies[e_id].name.." for "..damage,ttop(4),ttop(2),7)
+        print(e_name[e_id].." for "..damage,ttop(4),ttop(2),7)
         print("damage!",ttop(4),ttop(3),7)
     elseif s==6 then
         print(p_name.." patches her",ttop(4),ttop(1),7)
@@ -64,7 +64,7 @@ function advance_combat()
     local mod=.85+rnd(.15)
 
     if c_state==0 then
-        if enemies[e_id].speed>p_speed then
+        if e_speed[e_id]>p_speed then
             c_state=2
         else
             c_state=1
@@ -72,16 +72,16 @@ function advance_combat()
     end
 
     if c_state==1 then
-        damage=flr(flr(((p_atk-enemies[e_id].def)*mod)+.5)/(p_homesick+1)+.5)
+        damage=flr(flr(((p_atk-e_def[e_id])*mod)+.5)/(p_homesick+1)+.5)
         player_turn()
     elseif c_state==2 then
-        damage=flr(((enemies[e_id].atk-p_def)*mod)+.5)
+        damage=flr(((e_atk[e_id]-p_def)*mod)+.5)
         enemy_turn()
     elseif c_state==3 then
-        enemies[e_id].hp=enemies[e_id].max_hp
+        e_hp[e_id]=e_max_hp[e_id]
         player_victory()
     elseif c_state==4 then
-        enemies[e_id].hp=enemies[e_id].max_hp
+        e_hp[e_id]=e_max_hp[e_id]
         game_over()
     elseif c_state==5 then
         player_result()
@@ -102,7 +102,7 @@ end
 
 function player_result()
     if p_x==ttop(2) then
-        enemies[e_id].hp-=damage
+        e_hp[e_id]-=damage
         c_str=5
     elseif p_x==ttop(8) then
         if p_heal_packs==0 then
@@ -116,7 +116,7 @@ function player_result()
             p_heal_packs-=1
         end
     end
-    if enemies[e_id].hp<=0 then
+    if e_hp[e_id]<=0 then
         c_str=3
         c_state=3
     else
@@ -136,7 +136,7 @@ function enemy_turn()
 end
 
 function player_victory()
-    p_xp+=enemies[e_id].xp
+    p_xp+=e_xp[e_id]
     if p_xp>=p_level_up then
         level_up()
         c_str=7
