@@ -85,6 +85,9 @@ map_d={
 map_bg={4,11,5,0,11,5,11,7,11}
 
 function connected_map_warp()
+    if p_state==3 then
+        return
+    end
     if p_map==2 and p_y>ttop(28) then
         p_map=5
     elseif p_map==5 then
@@ -282,6 +285,9 @@ function do_overworld_hazard()
 end
 
 function map_fog(c)
+    if p_state==3 then
+        return
+    end
     rectfill(cam_x,cam_y,p_x-12,cam_y+ttop(16),c)
     rectfill(p_x+p_w+12,cam_y,p_x+ttop(16),cam_y+ttop(16),c)
     rectfill(cam_x,cam_y,cam_x+ttop(16),p_y-12,c)
