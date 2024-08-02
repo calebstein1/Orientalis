@@ -99,7 +99,7 @@ function engage_dialog()
     elseif p_submap==4 and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then
         dia=strings[16]
     -- Forest village inn customer
-    elseif p_submap==4 and in_range(p_x,ttop(35),ttop(38)) and in_range(p_y,ttop(11),ttop(14)) then
+    elseif p_submap==4 and not event_flags[11] and in_range(p_x,ttop(35),ttop(38)) and in_range(p_y,ttop(11),ttop(14)) then
         dia=strings[17]
     -- Clothing maker
     elseif p_submap==5 and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then

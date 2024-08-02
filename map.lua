@@ -317,7 +317,9 @@ function draw_map1_interior()
         spr(42,ttop(48),ttop(1),1,2)
         spr(42,ttop(35),ttop(10),1,2)
         spr(112,ttop(45),ttop(12))
-        spr(71,ttop(36),ttop(12))
+        if not event_flags[11] then
+            spr(71,ttop(36),ttop(12))
+        end
     elseif p_submap==5 then
         spr(42,ttop(48),ttop(1),1,2)
         spr(88,ttop(45),ttop(12))
