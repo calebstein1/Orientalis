@@ -140,8 +140,8 @@ function set_warp()
     if p_map==0 then
         return
     elseif p_map==1 then
-        local sm_x={8,12,28}
-        local sm_y={2,17,9}
+        local sm_x={8,12,28,22,30}
+        local sm_y={2,17,9,55,55}
         p_wm=2
         p_wx=sm_x[p_submap]
         p_wy=sm_y[p_submap]
@@ -186,6 +186,15 @@ function set_warp()
         p_wx=35
         p_wy=46
         p_wm=6
+    elseif p_map==9 then
+        p_wx=42
+        p_wy=14
+        p_wm=1
+        if p_x<ttop(25) then
+            p_submap=4
+        else
+            p_submap=5
+        end
     elseif p_map==10 then
         p_wx=64
         p_wy=11
@@ -295,6 +304,11 @@ function draw_map1_interior()
         if not event_flags[9] then
             spr(121,ttop(48),ttop(1))
         end
+    elseif p_submap==4 then
+        spr(42,ttop(48),ttop(1),1,2)
+        spr(42,ttop(35),ttop(10),1,2)
+        spr(112,ttop(45),ttop(12))
+        spr(71,ttop(36),ttop(12))
     end
 end
 

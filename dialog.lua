@@ -51,7 +51,7 @@ function engage_dialog()
     elseif not event_flags[3] and in_range(p_x,ttop(1),ttop(4)) and in_range(p_y,ttop(15),ttop(18)) then
         dia=strings[2]
     -- Girl by fisherman hut
-    elseif event_flags[4] and in_range(p_x,ttop(26),ttop(29)) and in_range(p_y,ttop(13),ttop(16)) then
+    elseif event_flags[4] and not event_flags[5] and in_range(p_x,ttop(26),ttop(29)) and in_range(p_y,ttop(13),ttop(16)) then
         dia=strings[3]
     -- Hank the angry fisherman
     elseif p_submap==3 and in_range(p_x,ttop(41),ttop(44)) and in_range(p_y,ttop(10),ttop(13)) then
@@ -95,6 +95,12 @@ function engage_dialog()
     elseif event_flags[4] and not event_flags[5] and in_range(p_x,ttop(43),ttop(46)) and in_range(p_y,ttop(39),ttop(42)) then
         engage_boss=true
         dia=strings[13]
+    -- Forest village innkeeper
+    elseif p_submap==4 and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then
+        dia=strings[16]
+    -- Forest village inn customer
+    elseif p_submap==4 and in_range(p_x,ttop(35),ttop(38)) and in_range(p_y,ttop(11),ttop(14)) then
+        dia=strings[17]
     -- No dialog
     else
         return

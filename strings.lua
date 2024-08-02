@@ -51,6 +51,12 @@ function load_strings()
         {"oh honey, you look so sad!","come here, now that's better,","isn't it?","we're all so proud of you but","remember, you can always come","home if you need, that's what","family is for"},
 
         -- 15
-        {"I wonder what that noise was"}
+        {"i wonder what that noise was"},
+
+        -- 16
+        {"welcome to the inn here","i'll bet you're exhausted","furthest room to your left is","open if you need to rest up"},
+
+        -- 17
+        {"hmmm...","i sense uncleanness on you...","begone from here"}
     }
 end
