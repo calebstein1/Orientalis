@@ -7,8 +7,9 @@ function load_strings()
         {"earthquake woke you too, huh?","sure sounded like it came","from back in the cave.","i'd go check it out myself","but... well you know..."},
 
         -- 3
-        {"hi "..p_name.."!","beautiful day, isn't it?","so listen, hank, the old","fisherman, sounded like he'd","been drinking again.",
-        "might be a good idea to steer","clear until he sobers up"},
+        {"hi "..p_name.."!","beautiful day, isn't it?","so hey, my dad was drinking","again last night.",
+        "might be a good idea to steer","clear until he sobers up.",
+        "*sigh* i wish he'd quit, if","not for himself, then for me"},
 
         -- 4
         {"get out *hic* of here!","i'm in no mood for guests"},

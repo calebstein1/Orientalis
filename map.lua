@@ -118,8 +118,8 @@ function set_warp()
     if p_map==0 then
         return
     elseif p_map==1 then
-        local sm_x={[0]=4,8,12,28}
-        local sm_y={[0]=2,2,17,9}
+        local sm_x={8,12,28}
+        local sm_y={2,17,9}
         p_wm=2
         p_wx=sm_x[p_submap]
         p_wy=sm_y[p_submap]
@@ -135,8 +135,6 @@ function set_warp()
             p_wx=48
             p_wy=57
             p_wm=6
-        elseif p_x<ttop(6) then
-            p_submap=0
         elseif p_x<ttop(10) then
             p_submap=1
         elseif p_x<ttop(14) then
@@ -171,7 +169,7 @@ end
 
 function set_bg()
     bg=map_bg[p_map]
-    if bg==11 and not event_flags[4] then
+    if bg==11 and not event_flags[9] then
         bg=1
     end
 end
@@ -183,15 +181,18 @@ function draw_sprites()
         print_combat_string(c_str)
         print("hp: "..p_hp,ttop(7),ttop(14),7)
     elseif p_map==1 then
-        set_colors(2)
+        set_colors(0)
         draw_map1_interior()
     elseif p_map==2 then
-        if not event_flags[4] then
+        if not event_flags[9] then
             set_colors(1)
         else
+            if not event_flags[5] then
+                spr(114,ttop(27),ttop(14))
+            end
             set_colors(0)
-            spr(114,ttop(27),ttop(14))
             spr(116,ttop(4),ttop(19))
+            spr(40,ttop(30),ttop(4))
         end
         if not event_flags[3] then
             spr(113,ttop(2),ttop(16))
@@ -264,7 +265,11 @@ function draw_map1_interior()
     elseif p_submap==2 then
         spr(112,ttop(46),ttop(2))
     elseif p_submap==3 then
+        spr(42,ttop(48),ttop(1),1,2)
         spr(112,ttop(42),ttop(11))
+        if not event_flags[9] then
+            spr(121,ttop(48),ttop(1))
+        end
     end
 end
 
