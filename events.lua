@@ -19,6 +19,8 @@ function check_events()
         engage_boss=false
         event_flags[5]=true
         engage_combat(1)
+    elseif p_map==7 and not event_flags[3] then
+        play_music(0,500)
     elseif p_map==2 and event_flags[4] and not event_flags[9] then
         p_state=3
         daybreak_scene()
@@ -27,12 +29,12 @@ end
 
 function intro_cutscene()
     if not scene_list[1] then
-        pan_cam(ttop(18),ttop(48),ttop(18),ttop(31),5,7,1,150,60)
+        pan_cam(ttop(18),ttop(48),ttop(18),ttop(40),5,7,1,90,45)
     elseif not scene_list[2] then
-        pan_cam(ttop(50),ttop(40),ttop(50),ttop(48),7,2,2,60,60)
+        pan_cam(ttop(50),ttop(40),ttop(50),ttop(48),7,2,2,60,45)
     elseif not scene_list[3] then
-        pan_cam(ttop(5),ttop(12),0,0,2,1,3,90,90)
-    elseif frame-overworld_timer>630 then
+        pan_cam(ttop(5),ttop(12),0,0,2,1,3,90,60)
+    elseif frame-overworld_timer>520 then
         end_sleep()
         event_flags[1]=true
         reset_cinematic()

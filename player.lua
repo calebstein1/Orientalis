@@ -48,7 +48,7 @@ function init_player()
     2 spoken to brother
     3 hilltop event
     4 first morning
-    5 chapter 1 complete
+    5 giant mole defeated
     6 has parka
     7 hazard damage
     8 sleeping
@@ -374,4 +374,5 @@ function game_over()
     p_map=4
     p_x=ttop(55)+4
     p_y=ttop(6)
+    play_music(6,150)
 end
