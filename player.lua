@@ -271,7 +271,9 @@ function check_warp()
 end
 
 function warp_player()
-    stop_music()
+    if p_map>0 then
+        stop_music()
+    end
     p_x=ttop(p_wx)
     p_y=ttop(p_wy)
     set_map(p_wm)
