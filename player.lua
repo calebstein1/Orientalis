@@ -55,6 +55,7 @@ function init_player()
     9 left house after first daybreak
     10 cross pendant recieved
     11 cult defeated
+    12 cult game over
     ]]
     num_event_flags=9
     event_flags={}

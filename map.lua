@@ -278,6 +278,12 @@ function draw_sprites()
         end
     elseif p_map==10 then
         map_fog(5)
+    elseif p_map==11 and not event_flags[11] then
+        spr(87,ttop(58),ttop(7))
+        spr(72,ttop(56),ttop(8))
+        spr(71,ttop(60),ttop(8))
+        spr(72,ttop(57),ttop(11))
+        spr(71,ttop(59),ttop(11))
     end
     if event_flags[7] then
         pal(15,8)

@@ -125,6 +125,12 @@ function engage_dialog()
         else
             return
         end
+    -- Cult high shaman
+    elseif not event_flags[11] and (in_range(p_x,ttop(57),ttop(60)) and in_range(p_y,ttop(6),ttop(9))) then
+        if not event_flags[10] then
+            dia=strings[25]
+            event_flags[12]=true
+        end
     -- No dialog
     else
         return

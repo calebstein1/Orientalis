@@ -83,6 +83,9 @@ function load_strings()
         {"i love to go exploring in","the woods!"},
 
         -- 24
-        {"you're the coolest!"}
+        {"you're the coolest!"},
+        
+        -- 25
+        {"the child is unclean","the world must be cleansed","of your kind","*a powerful magic is cast*"}
     }
 end
