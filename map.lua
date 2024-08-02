@@ -175,13 +175,12 @@ function set_bg()
 end
 
 function draw_sprites()
+    set_colors(0)
     if p_map==0 then
         cls()
-        set_colors(0)
         print_combat_string(c_str)
         print("hp: "..p_hp,ttop(7),ttop(14),7)
     elseif p_map==1 then
-        set_colors(0)
         draw_map1_interior()
     elseif p_map==2 then
         if not event_flags[9] then
@@ -190,7 +189,6 @@ function draw_sprites()
             if not event_flags[5] then
                 spr(114,ttop(27),ttop(14))
             end
-            set_colors(0)
             spr(116,ttop(4),ttop(19))
             spr(40,ttop(30),ttop(4))
         end
@@ -208,7 +206,6 @@ function draw_sprites()
         end
     elseif p_map==4 then
         cls()
-        set_colors(0)
         circfill(ttop(58),ttop(4)+4,48,6)
         if p_state==7 then
             draw_game_over()
@@ -220,7 +217,6 @@ function draw_sprites()
             set_colors(1)
             map_fog(0)
         else
-            set_colors(0)
             map_fog(5)
         end
     elseif p_map==6 then
@@ -228,8 +224,6 @@ function draw_sprites()
     elseif p_map==7 then
         if not event_flags[4] then
             set_colors(1)
-        else
-            set_colors(0)
         end
         if not event_flags[3] then
             spr(poi_sp,ttop(58),ttop(54))
@@ -240,7 +234,6 @@ function draw_sprites()
             map_fog(5)
         end
     elseif p_map==9 then
-        set_colors(0)
     end
     if event_flags[7] then
         pal(15,8)

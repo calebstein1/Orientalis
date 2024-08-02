@@ -64,7 +64,6 @@ function set_colors(p)
     --[[
     0 default
     1 outdoor night
-    2 indoor house
     3 cave
     4 island
     5 snow
@@ -75,8 +74,6 @@ function set_colors(p)
         return
     elseif p==1 then
         pal(4,5)
-    elseif p==2 then
-        pal(3,6)
     elseif p==3 then
         pal(3,4)
     elseif p==5 then
