@@ -106,6 +106,7 @@ function advance_combat()
     elseif c_state==6 then
         player_death()
     end
+    sfx(0)
 end
 
 function player_turn()
