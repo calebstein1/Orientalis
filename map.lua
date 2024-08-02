@@ -9,6 +9,7 @@
 7 hilltop
 8 snow forest
 9 forest village
+10 deep forest
 ]]
 
 map_d={
@@ -80,9 +81,16 @@ map_d={
         x_end=ttop(34),
         y_start=ttop(42),
         y_end=ttop(64)
+    },
+    -- 10
+    {
+        x_start=0,
+        x_end=ttop(18),
+        y_start=ttop(42),
+        y_end=ttop(64)
     }
 }
-map_bg={4,11,5,0,11,5,11,7,11}
+map_bg={4,11,5,0,11,5,11,7,11,11}
 
 function connected_map_warp()
     if p_state==3 then
@@ -105,7 +113,11 @@ function connected_map_warp()
     elseif p_map==9 then
         if p_y<ttop(43) then
             set_map(5)
+        elseif p_x<ttop(17) then
+            set_map(10)
         end
+    elseif p_map==10 then
+        if p_x>ttop(18)
     end
 end
 
@@ -234,6 +246,8 @@ function draw_sprites()
             map_fog(5)
         end
     elseif p_map==9 then
+    elseif p_map==10 then
+        map_fog(5)
     end
     if event_flags[7] then
         pal(15,8)
