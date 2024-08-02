@@ -53,6 +53,8 @@ function init_player()
     7 hazard damage
     8 sleeping
     9 left house after first daybreak
+    10 cross pendant recieved
+    11 cult defeated
     ]]
     num_event_flags=9
     event_flags={}

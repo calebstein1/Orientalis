@@ -101,6 +101,30 @@ function engage_dialog()
     -- Forest village inn customer
     elseif p_submap==4 and in_range(p_x,ttop(35),ttop(38)) and in_range(p_y,ttop(11),ttop(14)) then
         dia=strings[17]
+    -- Clothing maker
+    elseif p_submap==5 and in_range(p_x,ttop(44),ttop(47)) and in_range(p_y,ttop(11),ttop(14)) then
+        if not event_flags[5] then
+            dia=strings[18]
+        elseif not event_flags[10] then
+            dia=strings[19]
+            event_flags[10]=true
+        elseif not event_flags[11] then
+            dia=strings[20]
+        elseif not event_flags[6] then
+            dia=strings[21]
+            event_flags[6]=true
+        else
+            dia=strings[22]
+        end
+    -- Clothing maker's son
+    elseif in_range(p_x,ttop(26),ttop(29)) and in_range(p_y,ttop(56),ttop(59)) then
+        if not event_flags[5] then
+            dia=strings[23]
+        elseif event_flags[11] then
+            dia=strings[24]
+        else
+            return
+        end
     -- No dialog
     else
         return

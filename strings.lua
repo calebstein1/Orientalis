@@ -57,6 +57,32 @@ function load_strings()
         {"welcome to the inn here","i'll bet you're exhausted","furthest room to your left is","open if you need to rest up"},
 
         -- 17
-        {"hmmm...","i sense uncleanness on you...","begone from here"}
+        {"hmmm...","i sense uncleanness on you...","begone from here"},
+
+        -- 18
+        {"welcome to our quiet village","i design clothing, and this","is the perfect place for me","to get my inspiration.",
+        "my son loves it here too,","he's probably outside playing","right now"},
+
+        -- 19
+        {"oh what can i do?","as soon as those odd folks","dressed in all white showed","up, my son disappeared!",
+        "you think they might be","responsible? well, it would","make sense.","they came from the deep","woods to the west...",
+        "if you're planning on","investigating, please take this","cross pendant.","i'll pray for your success"},
+
+        -- 20
+        {"good luck"},
+
+        -- 21
+        {"oh wonderful news!","my son returned and those","odd people all left!","you defeated their leader?","i must thank you",
+        "please take this winter parka","i've been working on","it's not much, but it will","keep you warm in the coldest","of climates.",
+        "good luck on the rest","of your adventure!"},
+
+        -- 22
+        {"the heroine of our village,","you're welcome here anytime"},
+
+        -- 23
+        {"i love to go exploring in","the woods!"},
+
+        -- 24
+        {"you're the coolest!"}
     }
 end

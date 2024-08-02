@@ -273,6 +273,9 @@ function draw_sprites()
             map_fog(5)
         end
     elseif p_map==9 then
+        if event_flags[11] or not event_flags[5] then
+            spr(115,ttop(27),ttop(57))
+        end
     elseif p_map==10 then
         map_fog(5)
     end
@@ -309,6 +312,9 @@ function draw_map1_interior()
         spr(42,ttop(35),ttop(10),1,2)
         spr(112,ttop(45),ttop(12))
         spr(71,ttop(36),ttop(12))
+    elseif p_submap==5 then
+        spr(42,ttop(48),ttop(1),1,2)
+        spr(88,ttop(45),ttop(12))
     end
 end
 
