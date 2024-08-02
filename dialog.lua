@@ -42,7 +42,11 @@ function engage_dialog()
     local dia={}
     -- Mayor
     if p_submap==2 and in_range(p_x,ttop(45),ttop(48)) and in_range(p_y,ttop(1),ttop(4)) then
-        dia=strings[1]
+        if event_flags[9] then
+            dia=strings[1]
+        else
+            dia=strings[15]
+        end
     -- Guy by west cave
     elseif not event_flags[3] and in_range(p_x,ttop(1),ttop(4)) and in_range(p_y,ttop(15),ttop(18)) then
         dia=strings[2]

@@ -48,6 +48,9 @@ function load_strings()
         {"this place is mine","you cannot take it from me","you're on an adventure to","save the world?","haw haw haw...","i shall enjoy snacking on you"},
 
         -- 14
-        {"oh honey, you look so sad!","come here, now that's better,","isn't it?","we're all so proud of you but","remember, you can always come","home if you need, that's what","family is for"}
+        {"oh honey, you look so sad!","come here, now that's better,","isn't it?","we're all so proud of you but","remember, you can always come","home if you need, that's what","family is for"},
+
+        -- 15
+        {"I wonder what that noise was"}
     }
 end
