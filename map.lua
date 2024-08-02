@@ -113,20 +113,11 @@ function set_warp()
     if p_map==0 then
         return
     elseif p_map==1 then
+        local sm_x={[0]=4,8,12,28}
+        local sm_y={[0]=2,2,17,9}
         p_wm=2
-        if p_submap==0 then
-            p_wx=4
-            p_wy=2
-        elseif p_submap==1 then
-            p_wx=8
-            p_wy=2
-        elseif p_submap==2 then
-            p_wx=12
-            p_wy=17
-        elseif p_submap==3 then
-            p_wx=28
-            p_wy=9
-        end
+        p_wx=sm_x[p_submap]
+        p_wy=sm_y[p_submap]
     elseif p_map==2 then
         --[[
         Default to house interior
