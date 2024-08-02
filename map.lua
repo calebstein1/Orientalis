@@ -10,6 +10,7 @@
 8 snow forest
 9 forest village
 10 deep forest
+11 cult camp
 ]]
 
 map_d={
@@ -88,9 +89,16 @@ map_d={
         x_end=ttop(18),
         y_start=ttop(42),
         y_end=ttop(64)
+    },
+    -- 11
+    {
+        x_start=ttop(50),
+        x_end=ttop(66),
+        y_start=0,
+        y_end=ttop(16)
     }
 }
-map_bg={4,11,5,0,11,5,11,7,11,11}
+map_bg={4,11,5,0,11,5,11,7,11,11,11}
 
 function connected_map_warp()
     if p_state==3 then
@@ -117,7 +125,9 @@ function connected_map_warp()
             set_map(10)
         end
     elseif p_map==10 then
-        if p_x>ttop(18)
+        if p_x>ttop(18) then
+            set_map(9)
+        end
     end
 end
 
@@ -176,6 +186,14 @@ function set_warp()
         p_wx=35
         p_wy=46
         p_wm=6
+    elseif p_map==10 then
+        p_wx=64
+        p_wy=11
+        p_wm=11
+    elseif p_map==11 then
+        p_wx=1
+        p_wy=53
+        p_wm=10
     end
 end
 
@@ -281,7 +299,7 @@ function draw_map1_interior()
 end
 
 function do_overworld_hazard()
-    if p_map==3 or p_map==5 or p_map==6 then
+    if p_map==3 or p_map==5 or p_map==6 or p_map==10 then
         knockback(4)
         p_hp-=1
     elseif p_map==8 then
