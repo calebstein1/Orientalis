@@ -21,3 +21,10 @@ function stop_music()
     music_playing=false
     music(-1,500)
 end
+
+function play_music(t,f)
+    if not music_playing then
+        music_playing=true
+        music(t,f)
+    end
+end

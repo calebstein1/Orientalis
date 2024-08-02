@@ -52,8 +52,9 @@ function init_player()
     6 has parka
     7 hazard damage
     8 sleeping
+    9 left house after first daybreak
     ]]
-    num_event_flags=8
+    num_event_flags=9
     event_flags={}
     for i=1,num_event_flags do
         event_flags[i]=false
@@ -274,6 +275,7 @@ function warp_player()
     p_x=ttop(p_wx)
     p_y=ttop(p_wy)
     p_map=p_wm
+    map_changed=frame
 end
 
 function check_climbing()

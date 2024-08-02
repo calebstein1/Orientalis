@@ -19,6 +19,9 @@ function check_events()
         engage_boss=false
         event_flags[5]=true
         engage_combat(1)
+    elseif p_map==2 and event_flags[4] and not event_flags[9] then
+        p_state=3
+        daybreak_scene()
     end
 end
 
@@ -33,5 +36,14 @@ function intro_cutscene()
         end_sleep()
         event_flags[1]=true
         reset_cinematic()
+    end
+end
+
+function daybreak_scene()
+    play_music(5,300)
+    if frame-map_changed>240 then
+        music_playing=false
+        p_state=0
+        event_flags[9]=true
     end
 end
