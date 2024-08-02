@@ -11,6 +11,8 @@ music_tracks={[0]=-1,-1,2,4,0,-1,4,0,-1,-1}
 function play_music_for_location()
     if event_flags[3] then
         music_tracks[7]=-1
+    else
+        music_tracks[7]=0
     end
     if p_state==7 then
         music_tracks[4]=6
