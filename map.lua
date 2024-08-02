@@ -89,24 +89,29 @@ function connected_map_warp()
         return
     end
     if p_map==2 and p_y>ttop(28) then
-        p_map=5
+        set_map(5)
     elseif p_map==5 then
         if p_y<ttop(27) then
-            p_map=2
+            set_map(2)
         elseif p_y>ttop(44) then
-            p_map=9
+            set_map(9)
         end
     elseif p_map==7 and p_y<ttop(48) then
         stop_music()
-        p_map=8
+        set_map(8)
     elseif p_map==8 and p_y>ttop(50) then
         stop_music()
-        p_map=7
+        set_map(7)
     elseif p_map==9 then
         if p_y<ttop(43) then
-            p_map=5
+            set_map(5)
         end
     end
+end
+
+function set_map(n)
+    p_map=n
+    map_changed=frame
 end
 
 function set_warp()

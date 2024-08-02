@@ -274,8 +274,7 @@ function warp_player()
     stop_music()
     p_x=ttop(p_wx)
     p_y=ttop(p_wy)
-    p_map=p_wm
-    map_changed=frame
+    set_map(p_wm)
 end
 
 function check_climbing()
@@ -294,6 +293,9 @@ function check_combat()
     or (p_map==5 and p_state==1 and frame-p_cooldown>18)
     or (p_map==6 and p_state==1 and frame-p_cooldown>12)
     then
+        if frame-map_changed<30 then
+            return
+        end
         p_cooldown=frame
         if rnd()<0.2 then
             if p_speed>=e_speed[p_map] and p_atk-e_def[p_map]>=e_max_hp[p_map] then
