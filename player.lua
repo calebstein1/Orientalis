@@ -109,10 +109,10 @@ function player_controls()
             p_y+=p_movement
         end
         if btnp(4) then
-            check_dialog()
+            show_menu()
         end
         if btnp(5) then
-            show_menu()
+            check_dialog()
         end
     elseif p_state==2 then
         if btn(2) then
@@ -124,7 +124,7 @@ function player_controls()
             p_y+=p_movement/1.5
         end
     elseif p_state==4 then
-        if btnp(4) then
+        if btnp(5) then
             advance_combat()
         end
         if btnp(0) or btnp(1) then
@@ -146,7 +146,7 @@ function player_controls()
                 p_y=48
             end
         end
-        if btnp(4) then
+        if btnp(5) then
             stop_music()
             sfx(0)
             if p_y==48 then
