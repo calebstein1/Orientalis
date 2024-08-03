@@ -24,6 +24,10 @@ function check_events()
     elseif p_map==2 and event_flags[4] and not event_flags[9] then
         p_state=3
         daybreak_scene()
+    elseif not event_flags[11] and engage_boss and not dialog_scene then
+        engage_boss=false
+        event_flags[11]=true
+        engage_combat(p_map)
     elseif event_flags[12] and not dialog_scene then
         p_state=9
     end

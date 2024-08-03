@@ -1,11 +1,11 @@
 function init_enemies()
-    e_name={"the giant mole","the feral cat","the cave mole","","the killer wasp","the cave rat"}
-    e_max_hp={20,5,7,0,4,3}
-    e_hp={20,5,7,0,4,3}
-    e_atk={5,2,3,0,8,1}
-    e_def={1,0,0,0,0,0}
-    e_speed={4,6,6,0,8,6}
-    e_xp={25,3,8,0,11,2}
+    e_name={"the giant mole","the feral cat","the cave mole","","the killer wasp","the cave rat","","","","","the high shaman"}
+    e_max_hp={20,5,7,0,4,3,0,0,0,0,22}
+    e_hp={20,5,7,0,4,3,0,0,0,0,22}
+    e_atk={5,2,3,0,8,1,0,0,0,0,8}
+    e_def={1,0,0,0,0,0,0,0,0,0,0}
+    e_speed={4,6,6,0,8,6,0,0,0,0,7}
+    e_xp={25,3,8,0,11,2,0,0,0,0,50}
     e_atk_str={
         {"tears into "..p_name,"with its brutal claws"},
         {"scratches at "..p_name,"with its sharp claws"},
@@ -13,6 +13,11 @@ function init_enemies()
         {},
         {"charges "..p_name.." with","its stinger"},
         {"tries to bite at",p_name},
+        {},
+        {},
+        {},
+        {},
+        {"strikes "..p_name.." with","a magic bolt"}
     }
 end
 

@@ -91,7 +91,7 @@ function engage_dialog()
         end
         p_homesick=0
         p_homesick_timer=0
-    -- Chapter 1 boss
+    -- Giant mole
     elseif event_flags[4] and not event_flags[5] and in_range(344,368,312,336) then
         engage_boss=true
         dia=strings[13]
@@ -130,6 +130,9 @@ function engage_dialog()
         if not event_flags[10] then
             dia=strings[25]
             event_flags[12]=true
+        else
+            engage_boss=true
+            dia=strings[26]
         end
     -- No dialog
     else

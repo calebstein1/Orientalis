@@ -66,7 +66,7 @@ function load_strings()
         -- 19
         {"oh what can i do?","as soon as those odd folks","dressed in all white showed","up, my son disappeared!",
         "you think they might be","responsible? well, it would","make sense.","they came from the deep","woods to the west...",
-        "if you're planning on","investigating, please take this","cross pendant.","i'll pray for your success"},
+        "if you're planning on","investigating, please take","this cross pendant.","i'll pray for your success"},
 
         -- 20
         {"good luck"},
@@ -86,6 +86,9 @@ function load_strings()
         {"you're the coolest!"},
         
         -- 25
-        {"the child is unclean","the world must be cleansed","of your kind","*a powerful magic is cast*"}
+        {"the child is unclean","the world must be cleansed","of your kind","*a powerful magic is cast*"},
+
+        -- 26
+        {"you who carry that cross","you are not welcome here","i will cleanse the world","of your kind...","beginning with you now"}
     }
 end

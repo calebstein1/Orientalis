@@ -57,7 +57,7 @@ function init_player()
     11 cult defeated
     12 cult game over
     ]]
-    num_event_flags=9
+    num_event_flags=12
     event_flags={}
     for i=1,num_event_flags do
         event_flags[i]=false
