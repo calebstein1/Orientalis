@@ -27,12 +27,12 @@ function engage_combat(e)
     5: player turn result
     6: game over message
     ]]
-    p_wx=ptot(p_x)
-    p_wy=ptot(p_y)
+    p_wx=p_x/8
+    p_wy=p_y/8
     p_wm=p_map
     p_state=4
-    p_x=ttop(2)
-    p_y=ttop(12)
+    p_x=16
+    p_y=96
     p_flp=false
     p_map=0
     c_state=0
@@ -42,39 +42,39 @@ end
 
 function print_combat_string(s)
     if s==0 then
-        print(p_name.." is attacked by",ttop(4),ttop(1),7)
-        print(e_name[e_id].."!",ttop(4),ttop(2),7)
+        print(p_name.." is attacked by",32,8,7)
+        print(e_name[e_id].."!",32,16,7)
     elseif s==1 then
-        print("what will you do?",ttop(4),ttop(1),7)
-        print("attack",ttop(3),ttop(12),7)
-        print("+ kit X"..p_heal_packs,ttop(9),ttop(12),7)
+        print("what will you do?",32,8,7)
+        print("attack",24,96,7)
+        print("+ kit X"..p_heal_packs,72,96,7)
     elseif s==2 then
-        local i=2
-        print(e_name[e_id],ttop(4),ttop(1),7)
+        local i=16
+        print(e_name[e_id],32,8,7)
         for str in all(e_atk_str[e_id]) do
-            print(str,ttop(4),ttop(i),7)
-            i+=1
+            print(str,32,i,7)
+            i+=8
         end
-        print(p_name.." takes "..damage.." damage!",ttop(4),ttop(i+1),7)
+        print(p_name.." takes "..damage.." damage!",32,i+8,7)
     elseif s==3 then
-        print(e_name[e_id].." is",ttop(4),ttop(1),7)
-        print("defeated!",ttop(4),ttop(2),11)
-        print(p_name.." gains "..e_xp[e_id].."xp!",ttop(4),ttop(4),7)
+        print(e_name[e_id].." is",32,8,7)
+        print("defeated!",32,16,11)
+        print(p_name.." gains "..e_xp[e_id].."xp!",32,32,7)
     elseif s==4 then
-        print(p_name.." collapses from", ttop(4),ttop(1),7)
-        print(e_name[e_id].."'s",ttop(4),ttop(2),7)
-        print("attack!", ttop(4),ttop(3),7)
-        print(p_name.." is defeated!",ttop(4),ttop(5),8)
+        print(p_name.." collapses from", 32,8,7)
+        print(e_name[e_id].."'s",32,16,7)
+        print("attack!", 32,24,7)
+        print(p_name.." is defeated!",32,40,8)
     elseif s==5 then
-        print(p_name.." strikes",ttop(4),ttop(1),7)
-        print(e_name[e_id].." for "..damage,ttop(4),ttop(2),7)
-        print("damage!",ttop(4),ttop(3),7)
+        print(p_name.." strikes",32,8,7)
+        print(e_name[e_id].." for "..damage,32,16,7)
+        print("damage!",32,24,7)
     elseif s==6 then
-        print(p_name.." patches her",ttop(4),ttop(1),7)
-        print("wounds with a",ttop(4),ttop(2),7)
-        print("first aid kit!",ttop(4),ttop(3),7)
+        print(p_name.." patches her",32,8,7)
+        print("wounds with a",32,16,7)
+        print("first aid kit!",32,24,7)
     elseif s==7 then
-        print(p_name.." levels up!",ttop(4),ttop(1),7)
+        print(p_name.." levels up!",32,8,7)
     end
 end
 
@@ -120,10 +120,10 @@ function player_death()
 end
 
 function player_result()
-    if p_x==ttop(2) then
+    if p_x==16 then
         e_hp[e_id]-=damage
         c_str=5
-    elseif p_x==ttop(8) then
+    elseif p_x==64 then
         if p_heal_packs==0 then
             return
         else

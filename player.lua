@@ -1,8 +1,8 @@
 function init_player() 
     p_name="tara"
     p_sp=83
-    p_x=ttop(55)+4
-    p_y=ttop(6)
+    p_x=444
+    p_y=48
     p_movement=1
     p_w=8
     p_h=8
@@ -128,10 +128,10 @@ function player_controls()
             advance_combat()
         end
         if btnp(0) or btnp(1) then
-            if p_x==ttop(2) then
-                p_x=ttop(8)
+            if p_x==16 then
+                p_x=64
             else
-                p_x=ttop(2)
+                p_x=16
             end
         end
     elseif p_state==5 then
@@ -140,16 +140,16 @@ function player_controls()
         end
     elseif p_state==7 or p_state==8 then
         if not p_quit and (btnp(2) or btnp(3)) then
-            if p_y==ttop(6) then
-                p_y=ttop(7)
+            if p_y==48 then
+                p_y=56
             else
-                p_y=ttop(6)
+                p_y=48
             end
         end
         if btnp(4) then
             stop_music()
             sfx(0)
-            if p_y==ttop(6) then
+            if p_y==48 then
                 if p_state==7 then
                     init_player()
                     load_game()
@@ -246,7 +246,7 @@ function do_walk_anim()
 end
 
 function check_dialog()
-    if (p_submap==1 or p_submap==4) and in_range(p_x,ttop(35),ttop(37)) and in_range(p_y,0,ttop(4)) then
+    if (p_submap==1 or p_submap==4) and in_range(p_x,280,296) and in_range(p_y,0,32) then
         overworld_timer=frame
         bed_save()
     else
@@ -258,8 +258,8 @@ function bed_save()
     p_hp=p_max_hp
     save_game()
     event_flags[8]=true
-    p_x=ttop(35)
-    p_y=ttop(1)
+    p_x=280
+    p_y=8
     p_sp=89
     dialog_strs={"saving game..."}
     advance_dialog()
@@ -277,8 +277,8 @@ function warp_player()
     if p_map>0 then
         stop_music()
     end
-    p_x=ttop(p_wx)
-    p_y=ttop(p_wy)
+    p_x=p_wx*8
+    p_y=p_wy*8
     set_map(p_wm)
 end
 
@@ -293,8 +293,8 @@ end
 function check_combat()
     local dia={}
 
-    if (p_map==2 and p_x>ttop(20) and p_state==1 and frame-p_cooldown>21)
-    or (p_map==3 and p_y>ttop(24) and p_state==1 and frame-p_cooldown>15 and not event_flags[5])
+    if (p_map==2 and p_x>160 and p_state==1 and frame-p_cooldown>21)
+    or (p_map==3 and p_y>192 and p_state==1 and frame-p_cooldown>15 and not event_flags[5])
     or (p_map==5 and p_state==1 and frame-p_cooldown>18)
     or (p_map==6 and p_state==1 and frame-p_cooldown>12)
     then
@@ -359,8 +359,8 @@ function update_homesick()
 end
 
 function end_sleep()
-    p_x=ttop(36)
-    p_y=ttop(2)
+    p_x=288
+    p_y=16
     p_state=0
     p_dir=1
 end
@@ -377,7 +377,7 @@ function game_over()
     p_a_over=99
     p_state=7
     p_map=4
-    p_x=ttop(55)+4
-    p_y=ttop(6)
+    p_x=444
+    p_y=48
     play_music(6,150)
 end

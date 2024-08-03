@@ -26,10 +26,10 @@ function collide(dir,flag)
         y2=p_y+p_h+1
     end
 
-    x1=ptot(x1)
-    x2=ptot(x2)
-    y1=ptot(y1)
-    y2=ptot(y2)
+    x1/=8
+    x2/=8
+    y1/=8
+    y2/=8
 
     if fget(mget(x1,y1), flag)
     or fget(mget(x1,y2), flag)
@@ -39,16 +39,6 @@ function collide(dir,flag)
     else
         return false
     end
-end
-
--- Tile to Pixel
-function ttop(n)
-    return n*8
-end
-
--- Pixel to Tile
-function ptot(n)
-    return n/8
 end
 
 function in_range(n,l,h)
@@ -84,8 +74,8 @@ end
 function main_menu()
     p_state=8
     p_map=4
-    p_x=ttop(55)+4
-    p_y=ttop(6)
+    p_x=444
+    p_y=48
     p_a_over=117
 end
 

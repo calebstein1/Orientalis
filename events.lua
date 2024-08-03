@@ -1,6 +1,6 @@
 function start_new_game()
-    p_x=ttop(35)
-    p_y=ttop(1)
+    p_x=280
+    p_y=8
     p_submap=1
     p_state=3
     p_sp=89
@@ -31,11 +31,11 @@ end
 
 function intro_cutscene()
     if not scene_list[1] then
-        pan_cam(ttop(18),ttop(48),ttop(18),ttop(40),5,7,1,90,45)
+        pan_cam(144,384,144,320,5,7,1,90,45)
     elseif not scene_list[2] then
-        pan_cam(ttop(50),ttop(40),ttop(50),ttop(48),7,2,2,60,45)
+        pan_cam(400,320,400,384,7,2,2,60,45)
     elseif not scene_list[3] then
-        pan_cam(ttop(5),ttop(12),0,0,2,1,3,90,60)
+        pan_cam(40,96,0,0,2,1,3,90,60)
     elseif frame-overworld_timer>520 then
         end_sleep()
         event_flags[1]=true
