@@ -246,7 +246,7 @@ function do_walk_anim()
 end
 
 function check_dialog()
-    if (p_submap==1 or p_submap==4) and in_range(p_x,280,296) and in_range(p_y,0,32) then
+    if (p_submap==1 or p_submap==4) and in_range(280,296,0,32) then
         overworld_timer=frame
         bed_save()
     else

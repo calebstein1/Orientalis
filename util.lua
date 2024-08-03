@@ -41,8 +41,8 @@ function collide(dir,flag)
     end
 end
 
-function in_range(n,l,h)
-    if l<n and n<h then
+function in_range(xl,xh,yl,yh)
+    if xl<p_x and p_x<xh and yl<p_y and p_y<yh then
         return true
     end
     return false
