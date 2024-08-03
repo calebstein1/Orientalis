@@ -349,9 +349,9 @@ function map_fog(c)
 end
 
 function draw_main_menu()
-    spr(69,456,16+6,2,3)
+    spr(69,456,22,2,3)
     spr(p_a_over,464,29)
-    print("terradestined",438,16,1)
+    print("orientalis",444,16,1)
     print("NEW GAME",452,48,1)
     print("CONTINUE",452,56,1)
 end
