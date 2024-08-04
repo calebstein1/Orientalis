@@ -113,37 +113,17 @@ function increment_or_reset_timer()
 end
 
 function save_game()
-    local i=16
-    dset(0,p_x)
-    dset(1,p_y)
-    dset(2,p_max_hp)
-    dset(3,p_hp)
-    dset(4,p_heal_packs)
-    dset(5,p_heal_rate)
-    dset(6,p_atk)
-    dset(7,p_def)
-    dset(8,p_speed)
-    dset(9,p_level)
-    dset(10,p_xp)
-    dset(11,p_level_up)
-    dset(12,p_map)
-    dset(13,p_submap)
-    dset(15,p_homesick)
+    local i=1
+    poke4(0x5e00,p_x,p_y,p_max_hp,p_hp,p_heal_packs,p_heal_rate,p_atk,p_def,p_speed,p_level,p_xp,p_level_up,p_map,p_submap,p_homesick)
     for f in all(event_flags) do
-        if f then
-            dset(i,1)
-        else
-            dset(i,0)
-        end
+        poke(0x5e3f+i,tonum(f))
         i+=1
     end
 end
 
 function load_game()
     for i=1,num_event_flags do
-        if dget(i+15)==1 then
-            event_flags[i]=true
-        end
+        event_flags[i]=peek(0x5e3f+i)==1 and true or false
     end
     p_x=dget(0)
     p_y=dget(1)
@@ -159,7 +139,7 @@ function load_game()
     p_level_up=dget(11)
     p_map=dget(12)
     p_submap=dget(13)
-    p_homesick=dget(15)
+    p_homesick=dget(14)
     p_sp=64
     p_state=0
 end
