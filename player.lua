@@ -1,16 +1,5 @@
 function init_player() 
     p_name="tara"
-    p_sp=83
-    p_x=444
-    p_y=48
-    p_movement=1
-    p_w=8
-    p_h=8
-    p_cooldown=0
-    p_anim=0
-    p_a_over=117
-    p_flp=false
-    p_dir=0
     --[[
     state:
     0 idle
@@ -24,24 +13,9 @@ function init_player()
     8 main menu
     9 overworld game over
     ]]
-    p_state=8
-    p_max_hp=10
-    p_hp=10
-    p_heal_packs=0
-    p_heal_rate=7
-    p_atk=2
-    p_def=0
-    p_speed=5
-    p_level=1
-    p_xp=0
-    p_level_up=8
-    p_homesick=0
-    p_homesick_timer=0
-    p_wx=0
-    p_wy=0
-    p_wm=2
-    p_map=4
-    p_submap=1
+    p_sp,p_x,p_y,p_movement,p_w,p_h,p_cooldown,p_anim,p_a_over,p_flp,p_dir,p_state,
+    p_max_hp,p_hp,p_heal_packs,p_heal_rate,p_atk,p_def,p_speed,p_level,p_xp,p_level_up,p_homesick,p_homesick_timer,
+    p_wx,p_wy,p_wm,p_map,p_submap,num_event_flags=unpack(split("83,444,48,1,8,8,0,0,117,false,0,8,10,10,0,7,2,0,5,1,0,8,0,0,0,0,2,4,1,12"))
     --[[
     event flags:
     1 intro cutscene done
@@ -57,7 +31,6 @@ function init_player()
     11 cult defeated
     12 cult game over
     ]]
-    num_event_flags=12
     event_flags={}
     for i=1,num_event_flags do
         event_flags[i]=false
