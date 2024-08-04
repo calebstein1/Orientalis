@@ -122,24 +122,13 @@ function save_game()
 end
 
 function load_game()
+    local vals={}
     for i=1,num_event_flags do
         event_flags[i]=peek(0x5e3f+i)==1 and true or false
     end
-    p_x=dget(0)
-    p_y=dget(1)
-    p_max_hp=dget(2)
-    p_hp=dget(3)
-    p_heal_packs=dget(4)
-    p_heal_rate=dget(5)
-    p_atk=dget(6)
-    p_def=dget(7)
-    p_speed=dget(8)
-    p_level=dget(9)
-    p_xp=dget(10)
-    p_level_up=dget(11)
-    p_map=dget(12)
-    p_submap=dget(13)
-    p_homesick=dget(14)
-    p_sp=64
-    p_state=0
+    for i=0,14 do
+        vals[i]=peek4(0x5e00+i*4)
+    end
+    p_x,p_y,p_max_hp,p_hp,p_heal_packs,p_heal_rate,p_atk,p_def,p_speed,p_level,p_xp,p_level_up,p_map,p_submap,p_homesick,p_sp,p_state=unpack(vals,0)
+    p_sp,p_state=64,0
 end
