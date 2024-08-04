@@ -297,7 +297,7 @@ function check_combat()
 end
 
 function check_overworld_hazard()
-    if (p_map==8 and frame-p_cooldown>60 and not event_flags[6])
+    if ((p_map==8 or p_map==12) and frame-p_cooldown>60 and not event_flags[6])
     or ((p_state==0 or p_state==1) and collide(p_dir,3) and frame-p_cooldown>3) then
         event_flags[7]=true
         do_overworld_hazard()

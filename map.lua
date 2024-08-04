@@ -11,6 +11,7 @@
 9 forest village
 10 deep forest
 11 cult camp
+12 mountain
 ]]
 
 map_d={
@@ -96,9 +97,16 @@ map_d={
         x_end=528,
         y_start=0,
         y_end=128
+    },
+    -- 12
+    {
+        x_start=528,
+        x_end=776,
+        y_start=256,
+        y_end=512
     }
 }
-map_bg={4,11,5,0,11,5,11,7,11,11,11}
+map_bg={4,11,5,0,11,5,11,7,11,11,11,7}
 
 function connected_map_warp()
     if p_state==3 then
@@ -186,6 +194,10 @@ function set_warp()
         p_wx=35
         p_wy=46
         p_wm=6
+    elseif p_map==8 then
+        p_wx=67
+        p_wy=58
+        p_wm=12
     elseif p_map==9 then
         p_wx=42
         p_wy=14
@@ -203,6 +215,12 @@ function set_warp()
         p_wx=1
         p_wy=53
         p_wm=10
+    elseif p_map==12 then
+        if p_x<576 then
+            p_wx=64
+            p_wy=21
+            p_wm=8
+        end
     end
 end
 
@@ -284,11 +302,23 @@ function draw_sprites()
         spr(71,480,64)
         spr(72,456,88)
         spr(71,472,88)
+    elseif p_map==12 then
+        set_colors(5)
+        spr(26,528,368)
+        spr(26,536,368)
+        spr(26,544,368)
+        spr(26,552,368)
+        spr(26,752,368)
+        spr(26,760,368)
+        spr(26,768,368)
+        if p_y>376 then
+            map_fog(5)
+        end
     end
     if event_flags[7] then
         pal(15,8)
     end
-    if event_flags[6] and p_map==8 then
+    if event_flags[6] and (p_map==8 or p_map==12) then
         spr(p_sp+10,p_x,p_y,1,1,p_flp)
     else
         spr(p_sp,p_x,p_y,1,1,p_flp)
@@ -330,7 +360,7 @@ function do_overworld_hazard()
     if p_map==3 or p_map==5 or p_map==6 or p_map==10 then
         knockback(4)
         p_hp-=1
-    elseif p_map==8 then
+    elseif p_map==8 or p_map==12 then
         p_hp-=4
     end
     if p_hp<=0 then
