@@ -1,31 +1,13 @@
 function collide(dir,flag)
-    local x1
-    local x2
-    local y1
-    local y2
+    local hb={
+        [0]={p_x-1,p_x,p_y+2,p_y+p_h-2},
+        {p_x+p_w,p_x+p_w+1,p_y+2,p_y+p_h-2},
+        {p_x+2,p_x+p_w-2,p_y-1,p_y},
+        {p_x+2,p_x+p_w-2,p_y+p_h,p_y+p_h+1}
+    }
 
-    if dir==0 then
-        x1=p_x-1
-        x2=p_x
-        y1=p_y+2
-        y2=p_y+p_h-2
-    elseif dir==1 then
-        x1=p_x+p_w
-        x2=p_x+p_w+1
-        y1=p_y+2
-        y2=p_y+p_h-2
-    elseif dir==2 then
-        x1=p_x+2
-        x2=p_x+p_w-2
-        y1=p_y-1
-        y2=p_y
-    elseif dir==3 then
-        x1=p_x+2
-        x2=p_x+p_w-2
-        y1=p_y+p_h
-        y2=p_y+p_h+1
-    end
-
+    local x1,x2,y1,y2=unpack(hb[dir])
+    
     x1/=8
     x2/=8
     y1/=8
