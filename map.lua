@@ -304,13 +304,12 @@ function draw_sprites()
         spr(71,472,88)
     elseif p_map==12 then
         set_colors(5)
-        spr(26,528,368)
-        spr(26,536,368)
-        spr(26,544,368)
-        spr(26,552,368)
-        spr(26,752,368)
-        spr(26,760,368)
-        spr(26,768,368)
+        for i=528,552,8 do
+            spr(26,i,368)
+        end
+        for i=752,768,8 do
+            spr(26,i,368)
+        end
         if p_y>376 then
             map_fog(5)
         end
