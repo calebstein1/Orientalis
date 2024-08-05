@@ -151,7 +151,7 @@ function draw_sprites()
     elseif p_map==3 then
         set_colors(3)
         spr(112,344,144)
-        if not event_flags[5] and p_y>192 and (p_x<344 or p_y<312) then
+        if p_y>192 then
             map_fog(0)
         end
         if event_flags[4] and not event_flags[5] then
