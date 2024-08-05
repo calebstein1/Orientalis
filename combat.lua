@@ -7,17 +7,17 @@ function init_enemies()
     e_speed={4,6,6,0,8,6,0,0,0,0,7}
     e_xp={25,3,8,0,11,2,0,0,0,0,50}
     e_atk_str={
-        {"tears into "..p_name,"with its brutal claws"},
-        {"scratches at "..p_name,"with its sharp claws"},
-        {"throws a rock at",p_name.."'s head"},
+        {"tears into tara","with its brutal claws"},
+        {"scratches at tara","with its sharp claws"},
+        {"throws a rock at tara's head"},
         {},
-        {"charges "..p_name.." with","its stinger"},
-        {"tries to bite at",p_name},
-        {},
-        {},
+        {"charges tara with","its stinger"},
+        {"tries to bite at","tara"},
         {},
         {},
-        {"strikes "..p_name.." with","a magic bolt"}
+        {},
+        {},
+        {"strikes tara with","a magic bolt"}
     }
 end
 
@@ -37,7 +37,7 @@ end
 
 function print_combat_string(s)
     if s==0 then
-        print(p_name.." is attacked by",32,8,7)
+        print("tara is attacked by",32,8,7)
         print(e_name[e_id].."!",32,16,7)
     elseif s==1 then
         print("what will you do?",32,8,7)
@@ -50,26 +50,26 @@ function print_combat_string(s)
             print(str,32,i,7)
             i+=8
         end
-        print(p_name.." takes "..damage.." damage!",32,i+8,7)
+        print("tara takes "..damage.." damage!",32,i+8,7)
     elseif s==3 then
         print(e_name[e_id].." is",32,8,7)
         print("defeated!",32,16,11)
-        print(p_name.." gains "..e_xp[e_id].."xp!",32,32,7)
+        print("tara gains "..e_xp[e_id].."xp!",32,32,7)
     elseif s==4 then
-        print(p_name.." collapses from", 32,8,7)
+        print("tara collapses from", 32,8,7)
         print(e_name[e_id].."'s",32,16,7)
         print("attack!", 32,24,7)
-        print(p_name.." is defeated!",32,40,8)
+        print("tara is defeated!",32,40,8)
     elseif s==5 then
-        print(p_name.." strikes",32,8,7)
+        print("tara strikes",32,8,7)
         print(e_name[e_id].." for "..damage,32,16,7)
         print("damage!",32,24,7)
     elseif s==6 then
-        print(p_name.." patches her",32,8,7)
+        print("tara patches her",32,8,7)
         print("wounds with a",32,16,7)
         print("first aid kit!",32,24,7)
     elseif s==7 then
-        print(p_name.." levels up!",32,8,7)
+        print("tara levels up!",32,8,7)
     end
 end
 
