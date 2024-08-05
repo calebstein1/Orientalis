@@ -21,21 +21,20 @@ function set_camera()
 end
 
 function auto_cam()
-    local d=map_d[p_map]
     cam_x=p_x-64+(p_w/2)
-    if cam_x<d.x_start then
-        cam_x=d.x_start
+    if cam_x<m_xs[p_map] then
+        cam_x=m_xs[p_map]
     end
-    if cam_x>d.x_end-128 then
-        cam_x=d.x_end-128
+    if cam_x>m_xe[p_map]-128 then
+        cam_x=m_xe[p_map]-128
     end
 
     cam_y=p_y-64+(p_h/2)
-    if cam_y<d.y_start then
-        cam_y=d.y_start
+    if cam_y<m_ys[p_map] then
+        cam_y=m_ys[p_map:
     end
-    if cam_y>d.y_end-128 then
-        cam_y=d.y_end-128
+    if cam_y>m_ye[p_map]-128 then
+        cam_y=m_ye[p_map]-128
     end
 end
 
