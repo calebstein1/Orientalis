@@ -73,11 +73,7 @@ function player_controls()
             advance_combat()
         end
         if btnp(0) or btnp(1) then
-            if p_x==16 then
-                p_x=64
-            else
-                p_x=16
-            end
+            p_x=p_x==16 and 64 or 16
         end
     elseif p_state==5 then
         if (btnp(4) or btnp(5)) and not event_flags[8] then
@@ -85,11 +81,7 @@ function player_controls()
         end
     elseif p_state==7 or p_state==8 then
         if not p_quit and (btnp(2) or btnp(3)) then
-            if p_y==48 then
-                p_y=56
-            else
-                p_y=48
-            end
+            p_y=p_y==48 and 56 or 48
         end
         if btnp(5) then
             stop_music()
@@ -140,11 +132,7 @@ function animate_player()
         p_sp=83
         p_flp=false
         if p_state==7 and frame-p_anim>15 then
-            if p_a_over==99 then
-                p_a_over=100
-            else
-                p_a_over=99
-            end
+            p_a_over=p_a_over==99 and 100 or 99
             p_anim=frame
         elseif p_state==8 and frame-p_anim>24 then
             if p_a_over==117 or p_a_over==118 or p_a_over==119 then
@@ -169,18 +157,10 @@ end
 function do_walk_anim()
     if p_dir==0 then
         p_flp=true
-        if p_sp==68 then
-            p_sp=67
-        else
-            p_sp=68
-        end
+        p_sp=p_sp==68 and 67 or 68
     elseif p_dir==1 then
         p_flp=false
-        if p_sp==68 then
-            p_sp=67
-        else
-            p_sp=68
-        end
+        p_sp=p_sp==68 and 67 or 68
     elseif p_dir==2 then
         p_sp=81
         p_flp=not p_flp

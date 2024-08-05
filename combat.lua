@@ -22,17 +22,7 @@ function init_enemies()
 end
 
 function engage_combat(e)
-    p_wx=p_x/8
-    p_wy=p_y/8
-    p_wm=p_map
-    p_state=4
-    p_x=16
-    p_y=96
-    p_flp=false
-    p_map=0
-    c_state=0
-    c_str=0
-    e_id=e
+    p_wx,p_wy,p_wm,p_state,p_x,p_y,p_flp,p_map,c_state,c_str,e_id=p_x/8,p_y/8,p_map,4,16,96,false,0,0,0,e
 end
 
 function print_combat_string(s)

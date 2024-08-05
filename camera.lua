@@ -31,7 +31,7 @@ function auto_cam()
 
     cam_y=p_y-64+(p_h/2)
     if cam_y<m_ys[p_map] then
-        cam_y=m_ys[p_map:
+        cam_y=m_ys[p_map]
     end
     if cam_y>m_ye[p_map]-128 then
         cam_y=m_ye[p_map]-128
@@ -40,20 +40,7 @@ end
 
 function pan_cam(sx,sy,ex,ey,m,nm,s,f,h)
     if auto_camera then
-        auto_camera=false
-        p_map=m
-        n_map=nm
-        cam_hold=frame+f+h
-        cam_sx=sx
-        cam_sy=sy
-        cam_ex=ex
-        cam_ey=ey
-        cam_x=cam_sx
-        cam_y=cam_sy
-        cam_cur_scene=s
-
-        cam_dx=(ex-sx)/f
-        cam_dy=(ey-sy)/f
+        auto_camera,p_map,n_map,cam_hold,cam_sx,cam_sy,cam_ex,cam_ey,cam_x,cam_y,cam_cur_scene,cam_dx,cam_dy=false,m,nm,frame+f+h,sx,sy,ex,ey,sx,sy,s,(ex-sx)/f,(ey-sy)/f
     end
 end
 

@@ -66,11 +66,7 @@ end
 
 function update_poi_sprite()
     if frame%20==0 then
-        if poi_sp==105 then
-            poi_sp=106
-        else
-            poi_sp=105
-        end
+        poi_sp=poi_sp==105 and 106 or 105
     end
 end
 
