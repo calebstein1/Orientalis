@@ -1,15 +1,15 @@
-~1
+~1 Mayor after daybreak
 hi there, tara, what can i do
 for you today?
 
-~2
+~2 Guy by western cave during night sequence
 earthquake woke you too, huh?
 sure sounded like it came
 from back in the cave.
 i'd go check it out myself
 but... well you know...
 
-~3
+~3 Tara's friend before giant mole is defeated
 hi tara!
 beautiful day, isn't it?
 so hey, my dad was drinking
@@ -19,11 +19,11 @@ clear until he sobers up
 *sigh* i wish he'd quit, if
 not for himself, then for me
 
-~4
+~4 Tara's friend's dad drunk
 get out *hic* of here!
 i'm in no mood for guests
 
-~5
+~5 Guy warning about fog in the woods
 if you're planning on heading
 into the woods south of town,
 make sure you're prepared for
@@ -31,7 +31,7 @@ the thick fog you'll find
 there.
 can't hardly see a thing
 
-~6
+~6 Guy warning about molten rock in caves
 those earthquakes are causing
 some molten rock to rise up
 to the surface.
@@ -41,7 +41,7 @@ pretty dark, and a step on
 those molten rocks will
 sure hurt
 
-~7
+~7 Little brother on first talk
 hi big sister!
 i heard you get to go on
 a big adventure to save
@@ -49,11 +49,11 @@ the world! that's so cool!
 take these first aid kits
 i have, i hope they help!
 
-~8
+~8 Little brother on subsequent talks
 i wanna go on an adventure
 like you someday
 
-~9
+~9 Future traveler story exposition
 tara...
 i'm glad you came...
 i called you here for a
@@ -71,7 +71,7 @@ your path wi.. contain man...
 trials... keep fait... and
 goo... luck
 
-~10
+~10 Mom before meeting future traveler
 normally i'd tell you to go
 back to bed and *not* to
 sneak out and explore what
@@ -85,7 +85,7 @@ oh, and maybe let your little
 brother know you're going
 out if you haven't already
 
-~11
+~11 Mom after meeting future traveler, before daybreak
 welcome home, tara,
 i know it's nearly daybreak,
 but you've had a long night,
@@ -93,12 +93,12 @@ you might want to head to
 your room and have a quick
 nap before you head off again
 
-~12
+~12 Mom after daybreak
 you look a bit tired, honey
 your bed's always made up
 for you in case you need it
 
-~13
+~13 Giant mole pre battle
 this place is mine
 you cannot take it from me
 you're on an adventure to
@@ -106,7 +106,7 @@ save the world?
 haw haw haw...
 i shall enjoy snacking on you
 
-~14
+~14 Mom when homesick
 oh honey, you look so sad!
 come here, now that's better,
 isn't it?
@@ -115,21 +115,21 @@ remember, you can always come
 home if you need, that's what
 family is for
 
-~15
+~15 Mayor before daybreak
 i wonder what that noise was
 
-~16
+~16 Forest village innkeeper
 welcome to the inn here
 i'll bet you're exhausted
 furthest room to your left is
 open if you need to rest up
 
-~17
+~17 Cult member in inn
 hmmm...
 i sense uncleanness on you...
 begone from here
 
-~18
+~18 Clothing designer before cult
 welcome to our quiet village
 i design clothing, and this
 is the perfect place for me
@@ -138,7 +138,7 @@ my son loves it here too,
 he's probably outside playing
 right now
 
-~19
+~19 Clothing designer during cult
 oh what can i do?
 as soon as those odd folks
 dressed in all white showed
@@ -152,10 +152,10 @@ investigating, please take
 this cross pendant.
 i'll pray for your success
 
-~20
+~20 Clothing designer during cult after getting cross
 good luck
 
-~21
+~21 Clothing designer after cult
 oh wonderful news!
 my son returned and those
 odd people all left!
@@ -169,24 +169,24 @@ of climates.
 good luck on the rest
 of your adventure!
 
-~22
+~22 Clothing designer after getting parka
 the heroine of our village,
 you're welcome here anytime
 
-~23
+~23 Clothing designer's son before cult
 i love to go exploring in
 the woods!
 
-~24
+~24 Clothing designer's son after cult
 you're the coolest!
 
-~25
+~25 Cult leader without cross
 the child is unclean
 the world must be cleansed
 of your kind
 *a powerful magic is cast*
 
-~26
+~26 Cult leader with cross
 you who carry that cross
 you are not welcome here
 i will cleanse the world
