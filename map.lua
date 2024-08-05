@@ -38,6 +38,8 @@ end
 function set_map(n)
     p_map=n
     map_changed=frame
+    set_active_npc_list()
+    update_dialog()
 end
 
 function set_warp()
@@ -221,33 +223,14 @@ function draw_sprites()
 end
 
 function draw_map1_interior()
-    if p_submap==1 then
+    if p_submap==1 or p_submap==4 then
         spr(42,384,8,1,2)
         spr(42,280,80,1,2)
-        spr(115,360,32)
-        if not event_flags[3] then
-            spr(73,288,96)
-        else
-            spr(73,360,96)
-        end
-    elseif p_submap==2 then
-        spr(112,368,16)
-    elseif p_submap==3 then
+    elseif p_submap==3 or p_submap==5 then
         spr(42,384,8,1,2)
-        spr(112,336,88)
         if not event_flags[9] then
             spr(121,384,8)
         end
-    elseif p_submap==4 then
-        spr(42,384,8,1,2)
-        spr(42,280,80,1,2)
-        spr(112,360,96)
-        if not event_flags[11] then
-            spr(71,288,96)
-        end
-    elseif p_submap==5 then
-        spr(42,384,8,1,2)
-        spr(88,360,96)
     end
 end
 

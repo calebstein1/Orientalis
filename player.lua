@@ -33,25 +33,33 @@ function player_controls()
         and not btn(3) then
             p_state=0
         end
-        if btn(0) and not collide(0,0) then
+        if btn(0) then
             p_dir=0
-            p_state=1
-            p_x-=p_movement
+            if not collide(0) then
+                p_state=1
+                p_x-=p_movement
+            end
         end
-        if btn(1) and not collide(1,0) then
+        if btn(1) then
             p_dir=1
-            p_state=1
-            p_x+=p_movement
+            if not collide(0) then
+                p_state=1
+                p_x+=p_movement
+            end
         end
-        if btn(2) and not collide(2,0) then
+        if btn(2) then
             p_dir=2
-            p_state=1
-            p_y-=p_movement
+            if not collide(0) then
+                p_state=1
+                p_y-=p_movement
+            end
         end
-        if btn(3) and not collide(3,0) then
+        if btn(3) then
             p_dir=3
-            p_state=1
-            p_y+=p_movement
+            if not collide(0) then
+                p_state=1
+                p_y+=p_movement
+            end
         end
         if btnp(4) then
             show_menu()
@@ -175,7 +183,7 @@ function check_dialog()
         overworld_timer=frame
         bed_save()
     else
-        engage_dialog()
+        do_dialog()
     end
 end
 
@@ -191,7 +199,7 @@ function bed_save()
 end
 
 function check_warp()
-    if collide(p_dir,1) then
+    if collide(1) then
         warp_player()
     else
         connected_map_warp()
@@ -208,7 +216,7 @@ function warp_player()
 end
 
 function check_climbing()
-    if collide(p_dir,2) then
+    if collide(2) then
         p_state=2
     elseif p_state==2 then
         p_state=0
@@ -250,7 +258,7 @@ end
 
 function check_overworld_hazard()
     if ((p_map==8 or p_map==12) and frame-p_cooldown>60 and not event_flags[6])
-    or ((p_state==0 or p_state==1) and collide(p_dir,3) and frame-p_cooldown>3) then
+    or ((p_state==0 or p_state==1) and collide(3) and frame-p_cooldown>3) then
         event_flags[7]=true
         do_overworld_hazard()
     else

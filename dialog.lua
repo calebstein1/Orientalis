@@ -1,4 +1,5 @@
 function init_dialog()
+    dialog_list={7,10}
     dialog_strs={}
     dialog_scene=false
     dialog_finished=0
@@ -34,6 +35,48 @@ function draw_dialog()
     end
 end
 
+function update_dialog()
+    if event_flags[2] then
+        dialog_list[1]=8
+    end
+    if event_flags[3] then
+        dialog_list[2]=11
+    end
+    if event_flags[4] then
+        dialog_list[2]=p_homesick>0 and 14 or 12
+    end
+end
+
+function dialog_action(npc_id)
+    if npc_id==1 and not event_flags[2] then
+        event_flags[2]=true
+        p_heal_packs+=3
+        update_dialog()
+    elseif npc_id==2 and event_flags[3] and not event_flags[4] then
+        event_flags[4]=true
+        update_dialog()
+    end
+end
+
+function do_dialog()
+    if frame<dialog_finished+30 then
+        return
+    end
+
+    local dia={}
+    local npc_id=collide_npc()
+    if not npc_id then return end
+
+    dia=strings[dialog_list[npc_id]]
+    for d in all(dia) do
+        add(dialog_strs,d)
+    end
+    dialog_action(npc_id)
+    sfx(0)
+    advance_dialog()
+end
+
+-- DEPRICATED
 function engage_dialog()
     if frame<dialog_finished+30 then
         return

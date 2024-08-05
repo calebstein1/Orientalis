@@ -1,26 +1,37 @@
-function collide(dir,flag)
-    local hb={
+function collide(flag)
+    hb={
         [0]={p_x-1,p_x,p_y+2,p_y+p_h-2},
         {p_x+p_w,p_x+p_w+1,p_y+2,p_y+p_h-2},
         {p_x+2,p_x+p_w-2,p_y-1,p_y},
         {p_x+2,p_x+p_w-2,p_y+p_h,p_y+p_h+1}
     }
 
-    local x1,x2,y1,y2=unpack(hb[dir])
-    
-    x1/=8
-    x2/=8
-    y1/=8
-    y2/=8
+    hb_x1,hb_x2,hb_y1,hb_y2=unpack(hb[p_dir])
 
-    if fget(mget(x1,y1), flag)
-    or fget(mget(x1,y2), flag)
-    or fget(mget(x2,y1), flag)
-    or fget(mget(x2,y2), flag) then
+    if flag==0 and collide_npc() then
         return true
-    else
-        return false
     end
+    
+    if fget(mget(hb_x1/8,hb_y1/8), flag)
+    or fget(mget(hb_x1/8,hb_y2/8), flag)
+    or fget(mget(hb_x2/8,hb_y1/8), flag)
+    or fget(mget(hb_x2/8,hb_y2/8), flag) then
+        return true
+    end
+
+    return false
+end
+
+function collide_npc()
+    for npc in all(active_npc_list) do
+        if ((npc[3]<=hb_x1 and hb_x1<=npc[3]+8)
+            or (npc[3]<=hb_x2 and hb_x2<=npc[3]+8))
+        and ((npc[4]<=hb_y1 and hb_y1<=npc[4]+8)
+            or (npc[4]<=hb_y2 and hb_y2<=npc[4]+8)) then
+            return npc[1]
+        end
+    end
+    return false
 end
 
 function in_range(xl,xh,yl,yh)
@@ -100,4 +111,5 @@ function load_game()
     end
     p_x,p_y,p_max_hp,p_hp,p_heal_packs,p_heal_rate,p_atk,p_def,p_speed,p_level,p_xp,p_level_up,p_map,p_submap,p_homesick,p_sp,p_state=unpack(vals,0)
     p_sp,p_state=64,0
+    set_map(p_map)
 end

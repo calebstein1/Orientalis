@@ -20,6 +20,7 @@ function _update()
     update_player()
     update_poi_sprite()
     set_bg()
+    set_active_npc_list()
     play_music_for_location()
 end
 
@@ -27,5 +28,6 @@ function _draw()
     cls(bg)
     map(0,0)
     draw_sprites()
+    draw_active_npc()
     draw_dialog()
 end
