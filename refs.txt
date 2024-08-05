@@ -1,0 +1,65 @@
+state:
+0 idle
+1 walking
+2 climbing
+3 cutscene
+4 combat
+5 dialog
+6 select
+7 game over
+8 main menu
+9 overworld game over
+
+maps:
+0 combat
+1 indoor house
+2 first town
+3 east cave
+4 game over/main menu
+5 southern woods
+6 west cave
+7 hilltop
+8 snow forest
+9 forest village
+10 deep forest
+11 cult camp
+12 mountain
+
+event flags:
+1 intro cutscene done
+2 spoken to brother
+3 hilltop event
+4 first morning
+5 giant mole defeated
+6 has parka
+7 hazard damage
+8 sleeping
+9 left house after first daybreak
+10 cross pendant recieved
+11 cult defeated
+12 cult game over
+
+color palettes:
+0 default
+1 outdoor night
+3 cave
+4 island
+5 snow
+6 menu
+7 lush cave
+
+c_state values:
+0: intro
+1: player turn
+2: enemy turn
+3: player victory
+4: player defeat
+5: player turn result
+6: game over message
+
+Music tracks:
+0 main theme
+2 outdoor normal
+4 cave
+5 daybreak
+6 game over

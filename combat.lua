@@ -22,16 +22,6 @@ function init_enemies()
 end
 
 function engage_combat(e)
-    --[[
-    c_state values:
-    0: intro
-    1: player turn
-    2: enemy turn
-    3: player victory
-    4: player defeat
-    5: player turn result
-    6: game over message
-    ]]
     p_wx=p_x/8
     p_wy=p_y/8
     p_wm=p_map

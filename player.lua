@@ -1,36 +1,8 @@
 function init_player() 
     p_name="tara"
-    --[[
-    state:
-    0 idle
-    1 walking
-    2 climbing
-    3 cutscene
-    4 combat
-    5 dialog
-    6 select
-    7 game over
-    8 main menu
-    9 overworld game over
-    ]]
     p_sp,p_x,p_y,p_movement,p_w,p_h,p_cooldown,p_anim,p_a_over,p_flp,p_dir,p_state,
     p_max_hp,p_hp,p_heal_packs,p_heal_rate,p_atk,p_def,p_speed,p_level,p_xp,p_level_up,p_homesick,p_homesick_timer,
     p_wx,p_wy,p_wm,p_map,p_submap,num_event_flags=unpack(split("83,444,48,1,8,8,0,0,117,false,0,8,10,10,0,7,2,0,5,1,0,8,0,0,0,0,2,4,1,12"))
-    --[[
-    event flags:
-    1 intro cutscene done
-    2 spoken to brother
-    3 hilltop event
-    4 first morning
-    5 giant mole defeated
-    6 has parka
-    7 hazard damage
-    8 sleeping
-    9 left house after first daybreak
-    10 cross pendant recieved
-    11 cult defeated
-    12 cult game over
-    ]]
     event_flags={}
     for i=1,num_event_flags do
         event_flags[i]=false

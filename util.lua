@@ -33,15 +33,6 @@ end
 function set_colors(p)
     pal()
     pal(color_palette,1)
-    --[[
-    0 default
-    1 outdoor night
-    3 cave
-    4 island
-    5 snow
-    6 menu
-    7 lush cave
-    ]]
     if p==0 then
         return
     elseif p==1 then

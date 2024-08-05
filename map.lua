@@ -1,19 +1,3 @@
---[[
-0 combat
-1 indoor house
-2 first town
-3 east cave
-4 game over/main menu
-5 southern woods
-6 west cave
-7 hilltop
-8 snow forest
-9 forest village
-10 deep forest
-11 cult camp
-12 mountain
-]]
-
 map_d={
     [0]={
         x_start=0,
