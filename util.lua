@@ -93,7 +93,7 @@ end
 function load_game()
     local vals={}
     for i=1,num_event_flags do
-        event_flags[i]=peek(0x5e3f+i)==1 and true or false
+        event_flags[i]=peek(0x5e3f+i)==1
     end
     for i=0,14 do
         vals[i]=peek4(0x5e00+i*4)
