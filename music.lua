@@ -4,6 +4,7 @@ function play_music_for_location()
     if not music_playing and frame-overworld_timer>=15 then
         music_playing=true
         music(music_tracks[p_map],500)
+        music(-1)
     end
 end
 
