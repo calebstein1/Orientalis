@@ -1,5 +1,5 @@
 function init_dialog()
-    dialog_list={7,10,15,4,3,5,2,6,13,9}
+    dialog_list={7,10,15,4,3,5,2,6,13,9,23,17,16,18,25,27}
     dialog_strs={}
     dialog_scene=false
     dialog_finished=0
@@ -45,8 +45,22 @@ function update_dialog()
     if event_flags[4] then
         dialog_list[2]=p_homesick>0 and 14 or 12
     end
+    if event_flags[5] then
+        dialog_list[14]+=1
+    end
+    if event_flags[6] then
+        dialog_list[14]+=1
+    end
     if event_flags[9] then
         dialog_list[3]=1
+    end
+    if event_flags[10] then
+        dialog_list[14]+=1
+        dialog_list[15]=26
+    end
+    if event_flags[11] then
+        dialog_list[11]=24
+        dialog_list[14]+=1
     end
 end
 
@@ -65,6 +79,14 @@ function dialog_action(npc_id)
         engage_boss=true
     elseif npc_id==10 then
         event_flags[3]=true
+    elseif npc_id==14 then
+        if event_flags[5] and not event_flags[10] then
+            event_flags[10]=true
+        elseif event_flags[11] then
+            event_flags[6]=true
+        end
+    elseif npc_id==15 and not event_flags[10] then
+        event_flags[12]=true
     end
 end
 
@@ -82,59 +104,6 @@ function do_dialog()
         add(dialog_strs,d)
     end
     dialog_action(npc_id)
-    sfx(0)
-    advance_dialog()
-end
-
--- DEPRICATED
-function engage_dialog()
-    -- Forest village innkeeper
-    elseif p_submap==4 and in_range(352,376,88,112) then
-        dia=strings[16]
-    -- Forest village inn customer
-    elseif p_submap==4 and not event_flags[11] and in_range(280,304,88,112) then
-        dia=strings[17]
-    -- Clothing maker
-    elseif p_submap==5 and in_range(352,376,88,112) then
-        if not event_flags[5] then
-            dia=strings[18]
-        elseif not event_flags[10] then
-            dia=strings[19]
-            event_flags[10]=true
-        elseif not event_flags[11] then
-            dia=strings[20]
-        elseif not event_flags[6] then
-            dia=strings[21]
-            event_flags[6]=true
-        else
-            dia=strings[22]
-        end
-    -- Clothing maker's son
-    elseif in_range(208,232,448,472) then
-        if not event_flags[5] then
-            dia=strings[23]
-        elseif event_flags[11] then
-            dia=strings[24]
-        else
-            return
-        end
-    -- Cult high shaman
-    elseif not event_flags[11] and in_range(456,480,48,72) then
-        if not event_flags[10] then
-            dia=strings[25]
-            event_flags[12]=true
-        else
-            engage_boss=true
-            dia=strings[26]
-        end
-    -- No dialog
-    else
-        return
-    end
-
-    for d in all(dia) do
-        add(dialog_strs,d)
-    end
     sfx(0)
     advance_dialog()
 end

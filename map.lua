@@ -173,18 +173,8 @@ function draw_sprites()
         if p_y>232 then
             map_fog(5)
         end
-    elseif p_map==9 then
-        if event_flags[11] or not event_flags[5] then
-            spr(115,216,456)
-        end
     elseif p_map==10 then
         map_fog(5)
-    elseif p_map==11 and not event_flags[11] then
-        spr(87,464,56)
-        spr(72,448,64)
-        spr(71,480,64)
-        spr(72,456,88)
-        spr(71,472,88)
     elseif p_map==12 then
         set_colors(5)
         for i=528,552,8 do
