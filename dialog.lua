@@ -1,5 +1,5 @@
 function init_dialog()
-    dialog_list={7,10,15,4,3,5,2,6,13,9,23,17,16,18,25,27}
+    dialog_list={7,10,15,4,3,5,2,6,13,9,23,17,16,18,25,27,28}
     dialog_strs={}
     dialog_scene=false
     dialog_finished=0

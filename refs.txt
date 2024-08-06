@@ -15,6 +15,7 @@ npc ids:
 14 forest village clothingmaker
 15 cult high shaman
 16 cult members
+17 cult greeter
 
 state:
 0 idle
