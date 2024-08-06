@@ -140,24 +140,12 @@ function draw_sprites()
     elseif p_map==2 then
         if not event_flags[9] then
             set_colors(1)
-        else
-            if not event_flags[5] then
-                spr(114,216,112)
-            end
-            spr(116,32,152)
-            spr(40,240,32)
         end
-        if not event_flags[3] then
-            spr(113,16,128)
-        end
+        spr(40,240,32)
     elseif p_map==3 then
         set_colors(3)
-        spr(112,344,144)
         if p_y>192 then
             map_fog(0)
-        end
-        if event_flags[4] and not event_flags[5] then
-            spr(poi_sp,352,320)
         end
     elseif p_map==4 then
         cls()
@@ -179,9 +167,6 @@ function draw_sprites()
     elseif p_map==7 then
         if not event_flags[4] then
             set_colors(1)
-        end
-        if not event_flags[3] then
-            spr(poi_sp,464,432)
         end
     elseif p_map==8 then
         set_colors(5)

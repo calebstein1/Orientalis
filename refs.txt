@@ -1,3 +1,18 @@
+npc ids:
+1 brother
+2 mom
+3 Mayor
+4 hank
+5 tara's friend
+6 guy by south woods
+7 guy by west cave
+8 rock warning guy
+9 giant mole boss
+10 future traveler
+11 cult member in inn
+12 forest village innkeeper
+13 forest village clothingmaker
+
 state:
 0 idle
 1 walking

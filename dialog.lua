@@ -1,5 +1,5 @@
 function init_dialog()
-    dialog_list={7,10}
+    dialog_list={7,10,15,4,3,5,2,6,13,9}
     dialog_strs={}
     dialog_scene=false
     dialog_finished=0
@@ -45,6 +45,9 @@ function update_dialog()
     if event_flags[4] then
         dialog_list[2]=p_homesick>0 and 14 or 12
     end
+    if event_flags[9] then
+        dialog_list[3]=1
+    end
 end
 
 function dialog_action(npc_id)
@@ -52,9 +55,16 @@ function dialog_action(npc_id)
         event_flags[2]=true
         p_heal_packs+=3
         update_dialog()
-    elseif npc_id==2 and event_flags[3] and not event_flags[4] then
-        event_flags[4]=true
+    elseif npc_id==2 then 
+        if event_flags[3] and not event_flags[4] then
+            event_flags[4]=true
+        end
+        p_homesick,p_homesick_timer=0,0
         update_dialog()
+    elseif npc_id==9 then
+        engage_boss=true
+    elseif npc_id==10 then
+        event_flags[3]=true
     end
 end
 
@@ -78,66 +88,6 @@ end
 
 -- DEPRICATED
 function engage_dialog()
-    if frame<dialog_finished+30 then
-        return
-    end
-
-    local dia={}
-    -- Mayor
-    if p_submap==2 and in_range(360,384,8,32) then
-        if event_flags[9] then
-            dia=strings[1]
-        else
-            dia=strings[15]
-        end
-    -- Guy by west cave
-    elseif not event_flags[3] and in_range(8,32,120,144) then
-        dia=strings[2]
-    -- Girl by fisherman hut
-    elseif event_flags[4] and not event_flags[5] and in_range(208,232,104,128) then
-        dia=strings[3]
-    -- Hank the angry fisherman
-    elseif p_submap==3 and in_range(328,352,80,104) then
-        dia=strings[4]
-    -- Woods warning
-    elseif event_flags[4] and in_range(24,48,144,168) then
-        dia=strings[5]
-    -- Cave warning
-    elseif in_range(336,360,136,160) then
-        dia=strings[6]
-    -- Brother
-    elseif p_submap==1 and in_range(344,368,24,48) then
-        if not event_flags[2] then
-            event_flags[2]=true
-            dia=strings[7]
-            p_heal_packs+=3
-        else
-            dia=strings[8]
-        end
-    -- Future traveler
-    elseif not event_flags[3] and in_range(456,480,432,456) then
-        event_flags[3]=true
-        dia=strings[9]
-    -- Mom
-    elseif p_submap==1 and not event_flags[3] and in_range(280,304,88,112) then
-        dia=strings[10]
-    elseif p_submap==1 and in_range(352,376,88,112) then
-        if not event_flags[4] then
-            event_flags[4]=true
-            dia=strings[11]
-        else
-            if p_homesick>0 then
-                dia=strings[14]
-            else
-                dia=strings[12]
-            end
-        end
-        p_homesick=0
-        p_homesick_timer=0
-    -- Giant mole
-    elseif event_flags[4] and not event_flags[5] and in_range(344,368,312,336) then
-        engage_boss=true
-        dia=strings[13]
     -- Forest village innkeeper
     elseif p_submap==4 and in_range(352,376,88,112) then
         dia=strings[16]
