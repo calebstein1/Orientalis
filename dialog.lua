@@ -82,8 +82,10 @@ function dialog_action(npc_id)
     elseif npc_id==14 then
         if event_flags[5] and not event_flags[10] then
             event_flags[10]=true
+            update_dialog()
         elseif event_flags[11] then
             event_flags[6]=true
+            update_dialog()
         end
     elseif npc_id==15 and not event_flags[10] then
         event_flags[12]=true
