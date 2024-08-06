@@ -7,9 +7,9 @@ function _init()
     frame=0
     overworld_timer=0
     map_changed=0
-    poi_sp=105
     init_dialog()
     init_player()
+    init_npc()
     init_enemies()
     load_strings()
 end

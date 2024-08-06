@@ -77,7 +77,13 @@ end
 
 function update_poi_sprite()
     if frame%20==0 then
-        poi_sp=poi_sp==105 and 106 or 105
+        for npc in all(active_npc_list) do
+            if npc[2]==105 then
+                npc[2]=106
+            elseif npc[2]==106 then
+                npc[2]=105
+            end
+        end
     end
 end
 
