@@ -46,21 +46,21 @@ function update_dialog()
         dialog_list[2]=p_homesick>0 and 14 or 12
     end
     if event_flags[5] then
-        dialog_list[14]+=1
-    end
-    if event_flags[6] then
-        dialog_list[14]+=1
+        dialog_list[14]=19
     end
     if event_flags[9] then
         dialog_list[3]=1
     end
     if event_flags[10] then
-        dialog_list[14]+=1
+        dialog_list[14]=20
         dialog_list[15]=26
     end
     if event_flags[11] then
         dialog_list[11]=24
-        dialog_list[14]+=1
+        dialog_list[14]=21
+    end
+    if event_flags[6] then
+        dialog_list[14]=22
     end
 end
 
