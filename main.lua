@@ -1,13 +1,11 @@
 function _init()
     cartdata("calebstein1_terradestined_1")
     poke(0x5f2e, 1)
-    color_palette={[0]=0,129,2,131,4,5,6,7,136,137,10,139,140,13,142,143}
-    bg=0
-    music_playing=false
-    frame=0
-    overworld_timer=0
-    map_changed=0
+    init_timer()
     init_dialog()
+    init_music()
+    init_camera()
+    init_map()
     init_player()
     init_npc()
     init_enemies()

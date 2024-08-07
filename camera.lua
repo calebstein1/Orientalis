@@ -1,5 +1,7 @@
-auto_camera=true
-scene_list={}
+function init_camera()
+    auto_camera=true
+    scene_list={}
+end
 
 function set_camera()
     if auto_camera then

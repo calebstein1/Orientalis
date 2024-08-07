@@ -1,3 +1,8 @@
+function init_timer()
+    frame=0
+    overworld_timer=0
+end
+
 function collide(flag)
     hb={
         [0]={p_x-1,p_x,p_y+2,p_y+p_h-2},
