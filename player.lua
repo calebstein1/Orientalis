@@ -20,6 +20,7 @@ function update_player()
     set_warp()
     check_warp()
     check_combat()
+    check_combat_advance()
     check_climbing()
     check_overworld_hazard()
     update_homesick()
@@ -80,7 +81,9 @@ function player_controls()
         end
     elseif p_state==4 then
         if btnp(5) then
-            advance_combat()
+            do_advance_combat=true
+            overworld_timer=frame
+            sfx(0)
         end
         if btnp(0) or btnp(1) then
             p_x=p_x==16 and 64 or 16
@@ -256,6 +259,12 @@ function check_combat()
             end
         end
     end
+end
+
+function check_combat_advance()
+    if p_state~=4 or frame-overworld_timer<15 or not do_advance_combat then return end
+    do_advance_combat=false
+    advance_combat()
 end
 
 function check_overworld_hazard()

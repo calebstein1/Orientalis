@@ -20,6 +20,7 @@ function init_combat()
         {"strikes tara with","a magic bolt"}
     }
     homesick_penalty={[0]=0,1,3,4,5}
+    do_advance_combat=false
 end
 
 function engage_combat(e)
@@ -92,7 +93,6 @@ function advance_combat()
     elseif c_state==6 then
         player_death()
     end
-    sfx(0)
 end
 
 function player_turn()
