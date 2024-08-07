@@ -10,7 +10,7 @@ npc ids:
 9 giant mole boss
 10 future traveler
 11 clothingmaker's son
-12 cult member in inn
+12 inn customer
 13 forest village innkeeper
 14 forest village clothingmaker
 15 cult high shaman
