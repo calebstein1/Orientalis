@@ -124,10 +124,10 @@ i'll bet you're exhausted
 furthest room to your left is
 open if you need to rest up
 
-~17 Cult member in inn
-hmmm...
-i sense uncleanness on you...
-begone from here
+~17 inn customer before takeover
+i sure do love visiting this
+village, it's so different
+from the land i come from
 
 ~18 Clothing designer before cult
 welcome to our quiet village
@@ -202,3 +202,18 @@ we have everything you
 need right here, no need
 to go elsewhere, and no
 need to leave!
+
+~29 inn customer during takeover
+these people in white are
+sure giving me the creeps,
+they just appeared one day
+from the forest to the west
+of here, i'm not sure what
+their goals are, but they
+don't seem good
+
+~30 inn customer after takeover
+thank you for getting rid
+of those cultists, now i
+can go back to enjoying
+the natural beauty here!
