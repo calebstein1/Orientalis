@@ -35,12 +35,12 @@ end
 
 function intro_cutscene()
     if not scene_list[1] then
-        pan_cam(144,384,144,320,5,7,1,90,45)
+        pan_cam(144,384,144,320,5,7,1,180,90)
     elseif not scene_list[2] then
-        pan_cam(400,320,400,384,7,2,2,60,45)
+        pan_cam(400,320,400,384,7,2,2,120,90)
     elseif not scene_list[3] then
-        pan_cam(40,96,0,0,2,1,3,90,60)
-    elseif frame-overworld_timer>520 then
+        pan_cam(40,96,0,0,2,1,3,180,120)
+    elseif frame-overworld_timer>1040 then
         end_sleep()
         event_flags[1]=true
         reset_cinematic()
@@ -49,7 +49,7 @@ end
 
 function daybreak_scene()
     play_music(5,300)
-    if frame-map_changed>240 then
+    if frame-map_changed>480 then
         music_playing=false
         p_state=0
         event_flags[9]=true

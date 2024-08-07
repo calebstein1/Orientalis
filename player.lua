@@ -10,7 +10,7 @@ function init_player()
 end
 
 function update_player()
-    if event_flags[8] and frame-overworld_timer>90 then
+    if event_flags[8] and frame-overworld_timer>180 then
         event_flags[8]=false
         end_sleep()
     end
@@ -33,6 +33,13 @@ function player_controls()
         and not btn(3) then
             p_state=0
         end
+        if btnp(4) then
+            show_menu()
+        end
+        if btnp(5) then
+            check_dialog()
+        end
+        if frame%2~=0 then return end
         if btn(0) then
             p_dir=0
             if not collide(0) then
@@ -61,20 +68,15 @@ function player_controls()
                 p_y+=p_movement
             end
         end
-        if btnp(4) then
-            show_menu()
-        end
-        if btnp(5) then
-            check_dialog()
-        end
     elseif p_state==2 then
+        if frame%5~=0 then return end
         if btn(2) then
             p_dir=2
-            p_y-=p_movement/1.5
+            p_y-=p_movement
         end
         if btn(3) then
             p_dir=3
-            p_y+=p_movement/1.5
+            p_y+=p_movement
         end
     elseif p_state==4 then
         if btnp(5) then
@@ -127,22 +129,22 @@ function animate_player()
         elseif p_dir==3 then
             p_sp=64
         end
-    elseif p_state==1 and frame-p_anim>9 then
+    elseif p_state==1 and frame-p_anim>18 then
         do_walk_anim()
         p_anim=frame
     elseif p_state==2 then
         p_sp=84
-        if (btn(2) or btn(3)) and frame-p_anim>9 then
+        if (btn(2) or btn(3)) and frame-p_anim>18 then
             p_flp=not p_flp
             p_anim=frame
         end
     elseif p_state==4 or p_state==7 or p_state==8 then
         p_sp=83
         p_flp=false
-        if p_state==7 and frame-p_anim>15 then
+        if p_state==7 and frame-p_anim>30 then
             p_a_over=p_a_over==99 and 100 or 99
             p_anim=frame
-        elseif p_state==8 and frame-p_anim>24 then
+        elseif p_state==8 and frame-p_anim>48 then
             if p_a_over==117 or p_a_over==118 or p_a_over==119 then
                 p_a_over+=1
             else
@@ -150,7 +152,7 @@ function animate_player()
             end
             p_anim=frame
         end
-    elseif p_state==9 and frame-p_anim>30 then
+    elseif p_state==9 and frame-p_anim>60 then
         if p_sp==66 then
             p_sp=82
         elseif p_sp==82 then
@@ -226,12 +228,12 @@ end
 function check_combat()
     local dia={}
 
-    if (p_map==2 and p_x>160 and p_state==1 and frame-p_cooldown>21)
-    or (p_map==3 and p_y>192 and p_state==1 and frame-p_cooldown>15 and not event_flags[5])
-    or (p_map==5 and p_state==1 and frame-p_cooldown>18)
-    or (p_map==6 and p_state==1 and frame-p_cooldown>12)
+    if (p_map==2 and p_x>160 and p_state==1 and frame-p_cooldown>42)
+    or (p_map==3 and p_y>192 and p_state==1 and frame-p_cooldown>30 and not event_flags[5])
+    or (p_map==5 and p_state==1 and frame-p_cooldown>36)
+    or (p_map==6 and p_state==1 and frame-p_cooldown>24)
     then
-        if frame-map_changed<30 then
+        if frame-map_changed<60 then
             return
         end
         p_cooldown=frame
@@ -248,7 +250,7 @@ function check_combat()
                     add(dialog_strs,d)
                 end
                 advance_dialog()
-                p_cooldown=frame+90
+                p_cooldown=frame+180
             else
                 engage_combat(p_map)
             end
@@ -257,8 +259,8 @@ function check_combat()
 end
 
 function check_overworld_hazard()
-    if ((p_map==8 or p_map==12) and frame-p_cooldown>60 and not event_flags[6])
-    or ((p_state==0 or p_state==1) and collide(3) and frame-p_cooldown>3) then
+    if ((p_map==8 or p_map==12) and frame-p_cooldown>180 and not event_flags[6])
+    or (p_state==0 or p_state==1) and collide(3) then
         event_flags[7]=true
         do_overworld_hazard()
     else

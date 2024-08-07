@@ -81,7 +81,7 @@ function knockback(f)
 end
 
 function update_poi_sprite()
-    if frame%20==0 then
+    if frame%40==0 then
         for npc in all(active_npc_list) do
             if npc[2]==105 then
                 npc[2]=106

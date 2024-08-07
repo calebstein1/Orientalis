@@ -12,7 +12,7 @@ function _init()
     load_strings()
 end
 
-function _update()
+function _update60()
     increment_or_reset_timer()
     set_camera()
     update_player()

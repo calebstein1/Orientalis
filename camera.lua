@@ -5,6 +5,7 @@ end
 
 function set_camera()
     if auto_camera then
+        if frame%2~=0 then return end
         auto_cam()
     else
         if (cam_sx<cam_ex and cam_x<cam_ex) or (cam_sx>cam_ex and cam_x>cam_ex) then
@@ -15,7 +16,7 @@ function set_camera()
         end
         if frame>=cam_hold then
             scene_list[cam_cur_scene]=true
-            p_map=n_map
+            set_map(n_map)
             auto_camera=true
         end
     end
@@ -42,7 +43,8 @@ end
 
 function pan_cam(sx,sy,ex,ey,m,nm,s,f,h)
     if auto_camera then
-        auto_camera,p_map,n_map,cam_hold,cam_sx,cam_sy,cam_ex,cam_ey,cam_x,cam_y,cam_cur_scene,cam_dx,cam_dy=false,m,nm,frame+f+h,sx,sy,ex,ey,sx,sy,s,(ex-sx)/f,(ey-sy)/f
+        set_map(m)
+        auto_camera,n_map,cam_hold,cam_sx,cam_sy,cam_ex,cam_ey,cam_x,cam_y,cam_cur_scene,cam_dx,cam_dy=false,nm,frame+f+h,sx,sy,ex,ey,sx,sy,s,(ex-sx)/f,(ey-sy)/f
     end
 end
 

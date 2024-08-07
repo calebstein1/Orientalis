@@ -81,6 +81,7 @@ function dialog_action(npc_id)
         engage_boss=true
     elseif npc_id==10 then
         event_flags[3]=true
+        set_active_npc_list()
     elseif npc_id==14 then
         if event_flags[5] and not event_flags[10] then
             event_flags[10]=true
@@ -99,7 +100,7 @@ function dialog_action(npc_id)
 end
 
 function do_dialog()
-    if frame<dialog_finished+30 then
+    if frame<dialog_finished+60 then
         return
     end
 

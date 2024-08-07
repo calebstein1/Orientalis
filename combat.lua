@@ -167,7 +167,7 @@ function level_up()
 end
 
 function end_combat()
-    p_cooldown=frame+90
+    p_cooldown=frame+180
     p_state=0
     warp_player()
 end
