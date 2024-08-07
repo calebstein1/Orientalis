@@ -33,6 +33,8 @@ function player_controls()
         and not btn(2)
         and not btn(3) then
             p_state=0
+        elseif dialog_scene then
+            p_state=5
         end
         if btnp(4) then
             show_menu()
@@ -262,7 +264,7 @@ function check_combat()
 end
 
 function check_combat_advance()
-    if p_state~=4 or frame-overworld_timer<15 or not do_advance_combat then return end
+    if p_state~=4 or frame-overworld_timer<10 or not do_advance_combat then return end
     do_advance_combat=false
     advance_combat()
 end
