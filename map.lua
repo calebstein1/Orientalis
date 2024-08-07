@@ -45,6 +45,8 @@ function set_map(n)
     map_changed=frame
     set_active_npc_list()
     update_dialog()
+    set_bg()
+    play_music_for_location()
 end
 
 function set_warp()
