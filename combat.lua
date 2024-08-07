@@ -1,4 +1,4 @@
-function init_enemies()
+function init_combat()
     e_name={"the giant mole","the feral cat","the cave mole","","the killer wasp","the cave rat","","","","","the high shaman"}
     e_max_hp={20,5,7,0,4,3,0,0,0,0,22}
     e_hp={20,5,7,0,4,3,0,0,0,0,22}
@@ -19,6 +19,7 @@ function init_enemies()
         {},
         {"strikes tara with","a magic bolt"}
     }
+    homesick_penalty={[0]=0,1,3,4,5}
 end
 
 function engage_combat(e)
@@ -75,7 +76,7 @@ function advance_combat()
     end
 
     if c_state==1 then
-        damage=flr(flr(((p_atk-e_def[e_id])*mod)+.5)/(p_homesick+1)+.5)
+        damage=flr(((p_atk-e_def[e_id])*mod)+.5)-homesick_penalty[p_homesick]
         player_turn()
     elseif c_state==2 then
         damage=flr(((e_atk[e_id]-p_def)*mod)+.5)

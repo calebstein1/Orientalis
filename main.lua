@@ -8,7 +8,7 @@ function _init()
     init_map()
     init_player()
     init_npc()
-    init_enemies()
+    init_combat()
     load_strings()
 end
 
