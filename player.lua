@@ -103,15 +103,16 @@ function player_controls()
             sfx(0)
             if p_y==48 then
                 if p_state==7 then
-                    init_player()
-                    load_game()
+                    p_hp,p_wx,p_wy,p_wm,p_submap,p_state=p_max_hp,36,2,1,1,0
+                    warp_player()
                 else
                     init_player()
                     start_new_game()
                 end
             else
                 if p_state==7 then
-                    main_menu()
+                    init_player()
+                    load_game()
                 else
                     init_player()
                     load_game()
@@ -323,7 +324,7 @@ function game_over()
     p_a_over=99
     p_state=7
     p_map=4
-    p_x=444
+    p_x=438
     p_y=48
     play_music(6,150)
 end
