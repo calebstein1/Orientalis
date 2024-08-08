@@ -314,6 +314,7 @@ function end_sleep()
     p_y=16
     p_state=0
     p_dir=1
+    dialog_scene=false
 end
 
 function show_menu()
