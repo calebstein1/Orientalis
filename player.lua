@@ -107,7 +107,11 @@ function player_controls()
                     warp_player()
                 else
                     init_player()
-                    start_new_game()
+                    if @0x5eff~=1 then
+                        start_new_game()
+                    else
+                        load_game()
+                    end
                 end
             else
                 if p_state==7 then
@@ -115,7 +119,7 @@ function player_controls()
                     load_game()
                 else
                     init_player()
-                    load_game()
+                    start_new_game()
                 end
             end          
         end

@@ -110,6 +110,7 @@ function save_game()
         poke(0x5e3f+i,tonum(f))
         i+=1
     end
+    poke(0x5eff,1)
 end
 
 function load_game()

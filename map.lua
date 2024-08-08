@@ -242,8 +242,8 @@ function draw_main_menu()
     spr(69,456,22,2,3)
     spr(p_a_over,464,29)
     print("orientalis",444,16,1)
-    print("NEW GAME",452,48,1)
-    print("CONTINUE",452,56,1)
+    print("CONTINUE",452,48,1)
+    print("NEW GAME",452,56,1)
 end
 
 function draw_game_over()
