@@ -4,7 +4,7 @@ function init_music()
 end
 
 function play_music_for_location()
-    if not music_playing and frame-overworld_timer>=30 then
+    if not music_playing and frame-map_changed>=30 then
         music_playing=true
         music(music_tracks[p_map],500)
         music(-1)
@@ -19,7 +19,6 @@ function play_music(t,f)
 end
 
 function stop_music()
-    overworld_timer=frame
     music_playing=false
     music(-1,500)
 end

@@ -17,6 +17,7 @@ function _update60()
     set_camera()
     update_player()
     update_poi_sprite()
+    play_music_for_location()
 end
 
 function _draw()
