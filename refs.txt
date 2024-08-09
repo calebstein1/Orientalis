@@ -43,6 +43,9 @@ maps:
 10 deep forest
 11 cult camp
 12 mountain
+13 mountains descent
+14 desert
+15 desert cave
 
 event flags:
 1 intro cutscene done

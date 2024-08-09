@@ -1,9 +1,9 @@
 function init_map()
-    m_xs={[0]=0,272,0,272,400,0,272,400,400,144,0,400,528}
-    m_xe={[0]=128,400,272,400,528,272,400,528,528,272,144,528,776}
-    m_ys={[0]=0,0,0,128,0,224,352,384,128,336,336,0,256}
-    m_ye={[0]=128,128,224,352,128,352,512,512,400,512,512,128,512}
-    map_bg={4,11,5,0,11,5,11,7,11,11,11,7}
+    m_xs={[0]=0,272,0,272,400,0,272,400,400,144,0,400,528,776,776,904}
+    m_xe={[0]=128,400,272,400,528,272,400,528,528,272,144,528,776,904,1024,1032}
+    m_ys={[0]=0,0,0,128,0,224,352,384,128,336,336,0,256,368,0,368}
+    m_ye={[0]=128,128,224,352,128,352,512,512,400,512,512,128,512,512,368,512}
+    map_bg={4,11,5,0,11,5,11,7,11,11,11,7,11,11,5}
     map_changed=0
     color_palette={[0]=0,129,2,131,4,5,6,7,136,137,10,139,140,13,142,143}
     bg=0
@@ -37,6 +37,22 @@ function connected_map_warp()
         if p_x>144 then
             set_map(9)
         end
+    elseif p_map==13 then
+        if p_y>520 then
+            p_wx,p_wy,p_wm=(960-(896-p_x))/8,-1,14
+            warp_player()
+        end
+    elseif p_map==14 then
+        if p_y<-8 then
+            p_wx,p_wy,p_wm=(896-(960-p_x))/8,64,13
+            warp_player()
+        elseif p_y>368 then
+            set_map(15)
+        end
+    elseif p_map==15 then
+        if p_y<368 then
+            set_map(14)
+        end
     end
 end
 
@@ -59,10 +75,6 @@ function set_warp()
         p_wx=sm_x[p_submap]
         p_wy=sm_y[p_submap]
     elseif p_map==2 then
-        --[[
-        Default to house interior
-        Individual warps will override values as needed
-        ]]
         p_wx=42
         p_wy=14
         p_wm=1
@@ -125,7 +137,11 @@ function set_warp()
             p_wx=64
             p_wy=21
             p_wm=8
+        else
+            p_wx,p_wy,p_wm=98,49,13
         end
+    elseif p_map==13 then
+        p_wx,p_wy,p_wm=95,61,12
     end
 end
 
