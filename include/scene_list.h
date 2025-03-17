@@ -1,0 +1,6 @@
+#ifndef AMPHORA_SCENE_LIST_H
+#define AMPHORA_SCENE_LIST_H
+
+#define SCENES
+
+#endif /* AMPHORA_SCENE_LIST_H */
