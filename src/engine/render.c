@@ -20,6 +20,7 @@ static Vector2 render_logical_size = {0, 0 };
 static struct render_list_node_t *render_list;
 static struct render_list_node_t *render_list_head;
 static AmphoraImage *camera_target;
+static SDL_FRect camera_boundary;
 static Uint32 render_list_node_count;
 
 Vector2
@@ -55,6 +56,21 @@ void
 Amphora_SetCameraTarget(AmphoraImage *target) {
 	camera_mode = target ? CAM_TRACKING : CAM_MANUAL;
 	camera_target = target;
+}
+
+void
+Amphora_BoundCameraToMap(void) {
+	camera_boundary = *Amphora_GetMapRectangle();
+}
+
+void
+Amphora_BoundCamera(SDL_FRect boundary) {
+	camera_boundary = boundary;
+}
+
+void
+Amphora_UnboundCamera(void) {
+	SDL_memset(&camera_boundary, 0, sizeof(camera_boundary));
 }
 
 void
@@ -226,7 +242,7 @@ Amphora_AddRenderListNode(int order) {
 void
 Amphora_ProcessRenderList(void) {
 	struct render_list_node_t *garbage;
-	SDL_FRect *map_rect;
+	SDL_FRect map_rect;
 
 	while(render_list) {
 		while (render_list->next && render_list->next->garbage) {
@@ -247,10 +263,10 @@ Amphora_ProcessRenderList(void) {
 				Amphora_RenderString((const AmphoraString *) render_list->data);
 				break;
 			case AMPH_OBJ_MAP:
-				map_rect = Amphora_GetMapRectangle();
-				map_rect->x = -camera.x;
-				map_rect->y = -camera.y;
-				Amphora_RenderTexture((SDL_Texture *) render_list->data, NULL, map_rect, 0,
+				map_rect = *Amphora_GetMapRectangle();
+				map_rect.x = -camera.x;
+				map_rect.y = -camera.y;
+				Amphora_RenderTexture((SDL_Texture *) render_list->data, NULL, &map_rect, 0,
 						      SDL_FLIP_NONE);
 				break;
 			default:
@@ -298,6 +314,12 @@ Amphora_UpdateCamera(void) {
 	camera = Amphora_GetSpriteCenter(camera_target);
 	camera.x -= ((float)render_logical_size.x / 2.0f);
 	camera.y -= ((float)render_logical_size.y / 2.0f);
+	if (!camera_boundary.w && !camera_boundary.h) return;
+
+	if (camera.x < camera_boundary.x || camera.x + (float)render_logical_size.x > camera_boundary.x + camera_boundary.w)
+		camera.x = camera.x > 0 ? camera_boundary.x + camera_boundary.w - (float)render_logical_size.x : 0;
+	if (camera.y < camera_boundary.y || camera.y + (float)render_logical_size.y > camera_boundary.y + camera_boundary.h)
+		camera.y = camera.y > 0 ? camera_boundary.y + camera_boundary.h - (float)render_logical_size.y : 0;
 }
 
 void
